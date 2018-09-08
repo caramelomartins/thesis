@@ -1,0 +1,118 @@
+\documentclass[10pt,a4paper,twoside]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage[acronym]{glossaries}
+\usepackage[pdftex]{hyperref}
+\usepackage{csquotes}
+\usepackage[style=ieee,url=false]{biblatex}
+
+\renewcommand{\baselinestretch}{1.5} 
+
+% Use Arial font as default
+%
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\sfdefault}{phv}
+
+\def\FontLn{% 16 pt normal
+  \usefont{T1}{phv}{m}{n}\fontsize{16pt}{16pt}\selectfont}
+\def\FontLb{% 16 pt bold
+  \usefont{T1}{phv}{b}{n}\fontsize{16pt}{16pt}\selectfont}
+\def\FontMn{% 14 pt normal
+  \usefont{T1}{phv}{m}{n}\fontsize{14pt}{14pt}\selectfont}
+\def\FontMb{% 14 pt bold
+  \usefont{T1}{phv}{b}{n}\fontsize{14pt}{14pt}\selectfont}
+\def\FontSn{% 12 pt normal
+\usefont{T1}{phv}{m}{n}\fontsize{12pt}{12pt}\selectfont}
+
+\makeglossaries
+
+% Glossary
+\input{sections/glossary}
+
+% References
+
+\addbibresource{references/references.bib}
+
+\begin{document}
+
+\pagestyle{empty}
+
+% Cover
+\input{sections/cover}
+\cleardoublepage
+
+\pagestyle{plain}
+\pagenumbering{roman}
+
+% Acknowledgements
+\input{sections/acknowledgements}
+\cleardoublepage{\tiny}
+
+% Resumo
+\input{sections/resumo}
+\cleardoublepage
+
+% Abstract
+\input{sections/abstract}
+\cleardoublepage
+
+% TOC
+\tableofcontents
+\cleardoublepage
+
+% List of tables
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+\cleardoublepage
+
+% List of figures
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+% Generate list
+\listoffigures
+\cleardoublepage
+
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+% -------------------------------------------------------
+% Chapters
+% -------------------------------------------------------
+
+\input{sections/introduction}
+\cleardoublepage
+
+\input{sections/background}
+\cleardoublepage
+
+\input{sections/related}
+\cleardoublepage
+
+\input{sections/study}
+\cleardoublepage
+
+\input{sections/implementation}
+\cleardoublepage
+
+\input{sections/evaluation}
+\cleardoublepage
+
+\input{sections/discussion}
+\cleardoublepage
+
+\input{sections/conclusion}
+\cleardoublepage
+
+% -------------------------------------------------------
+% References
+% -------------------------------------------------------
+
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[heading=none]
+
+\end{document}
