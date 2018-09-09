@@ -1,3 +1,59 @@
 \chapter{Evaluation}
 
-\section{Functional Evaluation}
+\section{Qualitative Evaluation}
+
+\subsection{Guidelines for Access Control System Evaluation}
+
+in this section, we evaluate our system through the metrics proposed in \cite{hu_guidelines_2012} which is a continuation from what has been presented in \cite{hu_assessment_2006}. Leveraging these metrics allows us to have an understading of what the access control systems is capable of executing.
+
+\subsubsection{Administration Properties}
+
+\begin{itemize}
+	\item \textbf{Auditing}: \textit{blocked} audits the granting of access through the processing that happens inside the Transaction Processor. If the transactions submitted are approved, these are then stored in the blockchain. If, in turn, the transactions are rejected, the nodes will have a log that a given transaction has been rejected, along with the reason. At the same time, each client performs the needed validations for accessing a certificate, which means that denied read accesses won't be logged anywhere, except on the client node. The system does not provide additional log functions that can be customized and logging system failure can, also, only be done at the network level given the descentralized nature of the system. The auditing that gets stored is only per transaction, apart from all the information that can be stored in a transaction (such as allowing or revoking a given access), there are no more logs available.
+	\item \textbf{Capabilities Discovery}: The system has lacking capabilities discovery functionality. It is not possible to discover capabilities of a given subject due to the fact that those capabilities are stored inside each certificate, spread throughout the blockchain. It is possible to discover which subjects have access to each cetificate, nonetheless. It is not possible to discovery any more information about each capability.
+	\item \textbf{Ease of Privilege Assignments}: Assigning or removing a privilege is possible by executing the respective \textit{blocked} client. In both cases, it takes only one step to execute, apart from knowing the public identity of whoemever the privilege concerns. Updating a privilege is impossible. The system does not support the usage of group relations or inheritance.
+	\item \textbf{Specifying AC Rules}: The system does not support the specification of AC rules nor can't it handle any rule specification logic.
+	\item \textbf{Policy Management}: The system does not allow meta-policy information, expiration assignments, target event assignments, combinations for policies, policy distribution approval, management of policy authoritative sources or impact analysis. It does allow for target assignments, given that the default policy is directly assigned to a given target and it allows for runtime policy changes, in the sense that it allows a permission to be revoked during runtime.
+	\item \textbf{Delegation of Administrative Capabilities}: No policy administration delegation is allowed. The system does not support it.
+	\item \textbf{Flexibilities of Configuration into Existing Systems}: The access control is enforced via a combination of application logic, consensus protocols and cryptography. For viewing a certificate, a subject will need to possess the appropriate RSA private key, otherwise it won't be able to decrypt the data. For granting a permission, a subject also needs to have appropriate keys but, at the same time, needs to be either the issuer or recipient of a given certificate, otherwise the transaction will be rejected by the Transaction Processor running in the nodes.
+	\item \textbf{Horizontal Scope of Control}: The system supports an array of hosts, each running its own Transaction Processor, that will connect via the network. Each node will have a copy of the entire blockchain.
+	\item \textbf{Vertical Scope of Control}: The system covers application data that is store inside a blockchain. It does not cover any other scope of data.
+\end{itemize}
+
+\subsubsection{Enforcement Properties}
+
+\begin{itemize}
+	\item \textbf{Policy Combination, Composition, and Constraint}: The system allows only one policy and does not allow combination or composition of policies.
+	\item \textbf{Bypass}: It is currently possible to bypass the system by changing the code of the Transaction Processor and running a changed version on the network. Nonetheless, it would still have to bypass the consensus of the network because it would be issuing invalid policies which would result in rejected transactions. On the viewer, it would be extremely had to bypass the system due to the fact that all the data is encrypted and secret keys, only known to the subjects, would be needed to bypass that data. Nonetheless, having those keys, one could bypass the system.
+	\item \textbf{Least Privilege Principle}: Every subject is considered as having no access, unless it can decrypt one of the permissions, which means they have been granted access to that certificate. Granting access to a certificate grants access to only that certificate and no other on the system. At the same time, decrypting that certificate's symmetric key will prove useless when decrypting any other certificate because every certificate is encrypted with a different, randomly generated key.
+	\item \textbf{Separation of Duty}: Since the system is based on a permissions-per-certificate model, it doesn't support separation of duties.
+	\item \textbf{Safety}: There's a universal constraint on the system that states that only subjects that have the corresponding private keys, to the public keys that were granted access to. This prevents leakage of permissions. In case a permission is compromised, that permission should be revoked during runtime.
+	\item \textbf{Conflict Resolution or Prevention}: The system does not support conflict resolution or prevention due to the fact that it doesn't allow policy definiton in such a way that it would generate conflicts.
+	\item \textbf{Operational/Situational Awareness}: The system does not support this. At the same time, this functionality doesn't fit the model that has been defined.
+	\item \textbf{Granularity of Control}: The system only supports defining the granularity to the certificate object, it doesn't support any other finer-grained controls.
+	\item \textbf{Expression Properties}: The system does not support expressing policy, rule specification languages, rule composing using standards or rule combinations.
+	\item \textbf{Adaptable to Evolution of AC Policies}: The system does not support adapting to evolution because it only supports a single policy.
+\end{itemize}
+
+\subsubsection{Performance Properties}
+
+\begin{itemize}
+	\item \textbf{Response Time}: \textcolor{red}{EXPERIMENTAL EVALUATION}
+	\item \textbf{Policy Repository and Retrieval} - \textcolor{red}{EXPERIMENTAL EVALUATION}
+	\item \textbf{Policy Distribution}: Policy is distributed through a consensus protocol to all the nodes in the network, after each has validated the transaction, the data is updated accordingly in their blockchain.
+	\item \textbf{Authentication}: Authentication is performed on the basis of public key criptography, through the usage of public keys as identities.
+\end{itemize}
+
+\subsubsection{Support Properties}
+
+\begin{itemize}
+    \item \textbf{Policy Import and Export}: The system does not support import, export or convertion of access control policies.
+    \item \textbf{OS Compatibility}: The system supports only Ubuntu 18.04 LTS.
+    \item \textbf{Policy Source Management}: The system does not use authorative sources, given that one of the goals is descentralizing the system thus having no single authority, and, for that, does not support source management.
+    \item \textbf{User interfaces and API}: The system provides only command line user interfaces for interaction with the system.
+    \item \textbf{Verification and Compliance Function}: The system does not provide verification and compliance functionalities.
+\end{itemize}
+
+
+
+
