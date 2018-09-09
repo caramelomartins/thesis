@@ -11,3 +11,9 @@
 *.pdf
 *.run.xml
 *.synctex.gz
+*.acn
+*.glo
+*.ist
+*.lof
+*.lot
+*.toc
