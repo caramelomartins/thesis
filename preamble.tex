@@ -1,0 +1,40 @@
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{setspace}
+\usepackage[acronym]{glossaries}
+\usepackage[pdftex]{hyperref}
+\usepackage{csquotes}
+\usepackage[style=ieee,url=false]{biblatex}
+\usepackage{xcolor}
+\usepackage{subcaption}
+\graphicspath{{images/}}
+
+\renewcommand{\baselinestretch}{1.5} 
+
+% Use Arial font as default
+%
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\sfdefault}{phv}
+
+\def\FontLn{% 16 pt normal
+  \usefont{T1}{phv}{m}{n}\fontsize{16pt}{16pt}\selectfont}
+\def\FontLb{% 16 pt bold
+  \usefont{T1}{phv}{b}{n}\fontsize{16pt}{16pt}\selectfont}
+\def\FontMn{% 14 pt normal
+  \usefont{T1}{phv}{m}{n}\fontsize{14pt}{14pt}\selectfont}
+\def\FontMb{% 14 pt bold
+  \usefont{T1}{phv}{b}{n}\fontsize{14pt}{14pt}\selectfont}
+\def\FontSn{% 12 pt normal
+\usefont{T1}{phv}{m}{n}\fontsize{12pt}{12pt}\selectfont}
+
+\makeglossaries
+
+% References
+
+\addbibresource{references/references.bib}
+
+\AtEveryBibitem{%
+    \clearfield{note}%
+}
