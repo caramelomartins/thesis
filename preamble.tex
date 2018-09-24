@@ -9,9 +9,10 @@
 \usepackage[style=ieee,url=false]{biblatex}
 \usepackage{xcolor}
 \usepackage{subcaption}
+\usepackage{epigraph}
 \graphicspath{{images/}}
 
-\renewcommand{\baselinestretch}{1.5} 
+\renewcommand{\baselinestretch}{1.5}
 
 % Use Arial font as default
 %
@@ -19,20 +20,15 @@
 \renewcommand{\sfdefault}{phv}
 
 \def\FontLn{% 16 pt normal
-  \usefont{T1}{phv}{m}{n}\fontsize{16pt}{16pt}\selectfont}
+	\usefont{T1}{phv}{m}{n}\fontsize{16pt}{16pt}\selectfont}
 \def\FontLb{% 16 pt bold
-  \usefont{T1}{phv}{b}{n}\fontsize{16pt}{16pt}\selectfont}
+	\usefont{T1}{phv}{b}{n}\fontsize{16pt}{16pt}\selectfont}
 \def\FontMn{% 14 pt normal
-  \usefont{T1}{phv}{m}{n}\fontsize{14pt}{14pt}\selectfont}
+	\usefont{T1}{phv}{m}{n}\fontsize{14pt}{14pt}\selectfont}
 \def\FontMb{% 14 pt bold
-  \usefont{T1}{phv}{b}{n}\fontsize{14pt}{14pt}\selectfont}
+	\usefont{T1}{phv}{b}{n}\fontsize{14pt}{14pt}\selectfont}
 \def\FontSn{% 12 pt normal
-\usefont{T1}{phv}{m}{n}\fontsize{12pt}{12pt}\selectfont}
-
-% Glossary
-\input{sections/glossary}
-
-\makeglossaries
+	\usefont{T1}{phv}{m}{n}\fontsize{12pt}{12pt}\selectfont}
 
 % References
 
@@ -43,6 +39,6 @@
 \addbibresource{references/methods.bib}
 
 \AtEveryBibitem{%
-    \clearfield{note}%
+	\clearfield{note}%
 }
 
