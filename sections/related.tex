@@ -1,15 +1,33 @@
 \chapter{Related Work}
 \label{chap:related}
 
-\section{Access Control}
+In this chapter we present some relevant background and work that is related with this thesis. Due to the broad nature of our research problem, as described in the previous chapter, there's a need to overview several different areas of interest. We start by reviewing, in Section \ref{sec:related-ac}, existing literature on \gls{ac} models and applications, discussing how they related to this research and highlighting the chosen models for our use case. Section \ref{sec:related-blockchain} reviews different blockchain approaches, dissecting their components, and describes existing literature on blockchain applications. Section \ref{sec:related-crypto} presents a primer on cryptography systems, meant to be understood as background for the research presented, and discusses those systems related to this thesis. Finally, Section \ref{sec:related-ec} reviews some of the work done on the topic of Educational Certificates, which is the use case of focus in this thesis. By the end of this chapter, it should be possible to realize how these concepts, and existing literature, relate to the core contributions of thesis. It should also be possible to contextualize our core research within the existing literature and, at the same time, lay out the necessary concepts to understand the forthcoming chapters.
 
-\subsection{Models}
+\section{Access Control}
+\label{sec:related-ac}
+
+\glsdesc{ac} has been a core component in every technology evolution and continues to be as relevant today. It has always played a central role in technology because information is a valuable asset that must be protected from prying hands. Due to that fact, both governments and corporations have spent resources on developing \gls{ac} models and instantiations, while academia produced a broad spectrum of literature on the topic. Said literature has been produced with all sorts of approaches, from the purely theoretical to implementation-based approaches. Nonetheless, no matter what has been produced and developed previously, there are always new challenges to be faced and, with every new evolution, a new challenge emerges, which has led the field to be one of extensive study ever since the beginnings of the computer age. As more sensitive data is shared and stored by third-parties, the relevance of \gls{ac} is only increasing, rather than decreasing, creating an optimal context for researchers to be able to developed interesting new research that solves important problems.
+
+\subsection{Approaches and Models}
+
+\subsubsection{\gls{mac}}
+
+\glsdesc{mac} is a keystone \gls{ac} approach characterized by embedding access control policies inside systems rather than in external sources. To help clarify, let us imagine an application, written in a given programming language, which has access to a given set of resources. Using \gls{mac}, the access control policies for a subject to access each of the resources would have to be embedded - hard-coded through programming - into the application itself such that any adjustment to the access control policies would require an adjustment to the application itself. This approach emerged in the early stages of \gls{ac} research, when research on this topic was very focused for military applications.
+
+\subsubsection{\gls{dac}}
+
+\subsubsection{\gls{rbac}}
+
+\subsubsection{\gls{abac}}
+
+\subsubsection{Cryptography Access Control}
 
 \subsection{Applications}
 
 \subsection{Discussion}
 
 \section{Blockchain}
+\label{sec:related-blockchain}
 
 \subsection{Public vs. Private}
 
@@ -28,6 +46,7 @@ Research over using BlockChain to resolve problems with \textit{data ownership} 
 \subsection{Discussion}
 
 \section{Cryptography}
+\label{sec:related-crypto}
 
 \subsection{Symmetric Encryption}
 
@@ -36,6 +55,7 @@ Research over using BlockChain to resolve problems with \textit{data ownership} 
 \subsection{Discussion}
 
 \section{Educational Certificates}
+\label{sec:related-ec}
 
 In most cases, facilities providing education to students, apprentices or trainees, by completion of a specific amount of learning hours, credits or practical assignments, or all of those combined, provide an achievement certificate. A certificate validates that someone has reached a level of understanding, mastery or capability that is expected by the end of the course. At the same time, these certificates are also proof, from a \textit{learners} perspective, that these courses have been successfully completed, either to share with a recruiter, as requirements for further education or simply as a certification of completion. Given this, guaranteeing validity and integrity of these certificates is highly important.
   
