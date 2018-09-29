@@ -35,49 +35,64 @@ As previously explained, the Transaction Processor component connects to the val
 The Certificate Issuer component is responsible for submitting a new transaction to the validator networks. This component can be found in \texttt{protego.cert\_issuer.py} and can be executed by running the Python script in \texttt{bin/cert-issuer}. To perform its responsabilities, the script receives the parameters:
 
 \begin{itemize}
-    \item Recipient: Recipient's DSA Public Key.
-    \item Secret: Issuer's DSA Private key.
-    \item Recipient RSA: Path to Recipient's RSA Public Key.
-    \item Issuer RSA: Path to Issuer's RSA Public Key.
+	\item Recipient: Recipient's DSA Public Key.
+	\item Secret: Issuer's DSA Private key.
+	\item Recipient RSA: Path to Recipient's RSA Public Key.
+	\item Issuer RSA: Path to Issuer's RSA Public Key.
 \end{itemize}
 
 With these parameteres, the Certificate Issuer will start by generating a new symmetric key to encrypt the data, as well as a new certificate identifier. It will then proceed by generating the payload that will be embbeded in the transaction, and batch, to be submited. It will submit the new transaction and print out both the certificate's identifier and where to check for status of the transaction submission. A user can now validate if the transaction has been accepted. After this point, a certificate with the provided identifier has been generated.
 
 \subsection{Certificate Revoker}
 
-The Certificate Revoker component is responsible for executing the revocation protocol mentioned in Chapter \ref{chap:design}. This component is implemented in module \texttt{protego.cert\_revoker.py} and can be executed by running the script \texttt{bin/cert-revoker}. It can be executed by passing the following parameters, referencing the actor who is executing it:
+The Certificate Revoker component is responsible for executing the revocation protocol mentioned in Chapter \ref{chap:design}. This component is implemented in module \texttt{protego.cert\_revoker} and can be executed by running the script \texttt{bin/cert-revoker}. It can be executed by passing the following parameters, referencing the actor who is executing it:
 
 \begin{itemize}
-    \item Certificate: Identifier of the certificate to revoke.
-    \item Secret DSA: DSA Private Key to validate identity.
-    \item Secret RSA: RSA Private Key to decrypt the information.
+	\item Certificate: Identifier of the certificate to revoke.
+	\item Secret DSA: DSA Private Key to validate identity.
+	\item Secret RSA: RSA Private Key to decrypt the information.
 \end{itemize}
 
 The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, the component creates a payload with the same information but with the property \texttt{active} modified to \texttt{False} - this indicates the certificate is revoked. After generating the new payload, a transaction, and batch, are generated and submitted with the new information. Similarly to what happens with the Certificate Issuer, it will print out where to check for status of the transaction submission.
 
 \subsection{Certificate Manager}
 
-\subsection{Certificate Viewer}
-
-The Certificate Viewer component is responsible solely for displaying certificate information to the user, pending on the correct decryption of the data.  This component can be found in \texttt{protego.cert\_viewer.py} and can be executed by running the Python script in \texttt{bin/cert-viewer}. To perform its responsabilities, the script receives the parameters:
+The Certificate Manager component is responsible for performing the activities of granting and revoking access to a certificate by a particular subject. It can be executed by any user but the transactions will solely be approved if signed by the certificate's recipient. This component can be found in \texttt{protego.manager} and can be executed by running the Python script in \texttt{bin/manager}. To perform its responsabilities, the script receives the parameters:
 
 \begin{itemize}
-    \item Certificate: Identifier of the certificate to revoke.
-    \item Secret DSA: DSA Private Key to validate identity.
-    \item Secret RSA: RSA Private Key to decrypt the information.
+	\item Certificate: Identifier of the certificate to revoke.
+	\item Subject DSA: DSA Public Key of Subject.
+	\item Subject RSA: RSA Public Key of Subject.
+	\item Secret DSA: DSA Private Key to validate identity.
+	\item Secret RSA: RSA Private Key to decrypt the information.
+	\item Remove: If the action to perform is revoking access, instead of granting.
+\end{itemize}
+
+The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, it creates a payload with the access modification operation, submits a new transaction and batch, and prints out where to check for status of the transaction submission. If the transactions is accepted, the permissions are updated, otherwise they will stay the same.
+
+\subsection{Certificate Viewer}
+
+The Certificate Viewer component is responsible solely for displaying certificate information to the user, pending on the correct decryption of the data.  This component can be found in \texttt{protego.cert\_viewer} and can be executed by running the Python script in \texttt{bin/cert-viewer}. To perform its responsabilities, the script receives the parameters:
+
+\begin{itemize}
+	\item Certificate: Identifier of the certificate to revoke.
+	\item Secret DSA: DSA Private Key to validate identity.
+	\item Secret RSA: RSA Private Key to decrypt the information.
 \end{itemize}
 
 The script works by determining the certificate's address and fetching the certificate information, followed by decrypting the symmetric key, through the RSA private key. If decryption fails, it will exit with an error. If the decryption succeeds, it will proceed with decrypting the certificate information and print out the following information:
 
 \begin{itemize}
-    \item ID - Identifier of the Certificate;
-    \item Issuer - DSA Public Key of Issuer;
-    \item Recipient - DSA Public Key of Recipient;
-    \item Issuance Date;
-    \item Status - Whether the certificate is active or revoked.
+	\item ID - Identifier of the Certificate;
+	\item Issuer - DSA Public Key of Issuer;
+	\item Recipient - DSA Public Key of Recipient;
+	\item Issuance Date;
+	\item Status - Whether the certificate is active or revoked.
 \end{itemize}
 
 \subsection{Other Utilities}
+
+Apart from the core components, described above, we've implemented that are necessary in order for the system to be functional. The package \texttt{addressing}, with its module \texttt{addresser.py}, is shared throughout the other components and contains  information about the transaction definition, such as: \emph{(i)} family name to use with Hyperledger Sawtooth, \emph{(ii)} family version that is currently being used and \emph{(iii)} prefix of the addressing scheme. It also contains a shared method \texttt{make\_certificate\_address(identifier)}, which is used across components to determine the address for a given certificate. Furthermore, in the module \texttt{protego.utils}, we can find auxiliary methods for submitting a batch (\texttt{submit\_batch(data)}), fetching certificate information (\texttt{fetch\_state(certificate\_address)}), creating batches (\texttt{make\_batch(txn, signer)}), creating transactions (\texttt{make\_transaction(payload, signer, inputs, outputs)}), encrypting and decrypting, with both AES and RSA.
 
 \section{Proof-of-Concept}
 \label{sec:implementation-poc}
