@@ -734,773 +734,130 @@ file = {Thomas_1997_Team-based Access Control (TMAC).pdf:/home/hmartins/Dropbox/
 	file = {Goyal et al_2006_Attribute-based encryption for fine-grained access control of encrypted data.pdf:/home/hmartins/Dropbox/Papers/Goyal et al_2006_Attribute-based encryption for fine-grained access control of encrypted data.pdf:application/pdf}
 }
 
-% --------------------------------------------------------------
-% Access Control
-%---------------------------------------------------------------
-@techreport{bell_secure_1973,
-address = {Bedford, Massachusetts},
-title = {Secure {Computer} {Systems}: {Mathematical} {Foundations}},
-shorttitle = {Secure computer systems},
-number = {2547},
-institution = {Mitre Corporation},
-author = {Bell, D. Elliott and LaPadula, Leonard J.},
-month = nov,
-year = {1973},
-note = {02395},
-keywords = {Master's, IGI Global},
-file = {Bell_LaPadula_1973_Secure Computer Systems.pdf:/home/hmartins/Dropbox/Zotero/Bell_LaPadula_1973_Secure Computer Systems.pdf:application/pdf}
-}
-
-@inproceedings{yu_achieving_2010,
-address = {Piscataway, NJ, USA},
-series = {{INFOCOM}'10},
-title = {Achieving {Secure}, {Scalable}, and {Fine}-grained {Data} {Access} {Control} in {Cloud} {Computing}},
-isbn = {978-1-4244-5836-3},
-url = {http://dl.acm.org/citation.cfm?id=1833515.1833621},
-booktitle = {Proceedings of the 29th {Conference} on {Information} {Communications}},
-publisher = {IEEE Press},
-author = {Yu, Shucheng and Wang, Cong and Ren, Kui and Lou, Wenjing},
-year = {2010},
-note = {01929},
-keywords = {Master's, IGI Global},
-pages = {534--542},
-file = {Yu et al_2010_Achieving Secure, Scalable, and Fine-grained Data Access Control in Cloud.pdf:/home/hmartins/Dropbox/Papers/Yu et al_2010_Achieving secure, scalable, and fine-grained data access control in cloud.pdf:application/pdf}
-}
-
-@inproceedings{maesa_blockchain_2017,
-	title = {Blockchain based access control},
-	booktitle = {{IFIP} {International} {Conference} on {Distributed} {Applications} and {Interoperable} {Systems}},
-	publisher = {Springer},
-	author = {Maesa, Damiano Di Francesco and Mori, Paolo and Ricci, Laura},
-	year = {2017},
-	note = {00013},
-	keywords = {Master's, IGI Global},
-	pages = {206--220},
-	file = {Maesa et al_2017_Blockchain based access control.pdf:/home/hmartins/Dropbox/Papers/Maesa et al_2017_Blockchain based access control.pdf:application/pdf}
-}
-
-@inproceedings{thomas_towards_1993,
-address = {New York, NY, USA},
-series = {{NSPW} '92-93},
-title = {Towards a {Task}-based {Paradigm} for {Flexible} and {Adaptable} {Access} {Control} in {Distributed} {Applications}},
-isbn = {0-8186-5430-9},
-url = {http://doi.acm.org/10.1145/283751.283810},
-doi = {10.1145/283751.283810},
-booktitle = {Proceedings on the 1992-1993 {Workshop} on {New} {Security} {Paradigms}},
-publisher = {ACM},
-author = {Thomas, R. K. and Sandhu, R. S.},
-year = {1993},
-note = {00095},
-keywords = {Master's, IGI Global},
-pages = {138--142},
-file = {Thomas_Sandhu_1993_Towards a Task-based Paradigm for Flexible and Adaptable Access Control in.pdf:/home/hmartins/Dropbox/Zotero/Thomas_Sandhu_1993_Towards a Task-based Paradigm for Flexible and Adaptable Access Control in.pdf:application/pdf}
-}
-
-
-@inproceedings{ruj_dacc:_2011,
-address = {Washington, DC, USA},
-series = {{TRUSTCOM} '11},
-title = {{DACC}: {Distributed} {Access} {Control} in {Clouds}},
-isbn = {978-0-7695-4600-1},
-url = {http://dx.doi.org/10.1109/TrustCom.2011.15},
-doi = {10.1109/TrustCom.2011.15},
-booktitle = {Proceedings of the 2011IEEE 10th {International} {Conference} on {Trust}, {Security} and {Privacy} in {Computing} and {Communications}},
-publisher = {IEEE Computer Society},
-author = {Ruj, Sushmita and Nayak, Amiya and Stojmenovic, Ivan},
-year = {2011},
-note = {00281},
-keywords = {Master's, Access control, IGI Global, Bilinear maps, Decentralized attribute-based encryption, Storage in Clouds},
-pages = {91--98},
-annote = {Extracted Annotations (10/3/2017, 10:25:17 PM)
-"We propose DACC (Distributed Access Control in Clouds) algorithm, where one or more KDCs distribute keys to data owners and users." (Ruj et al 2011:91)
-"DACC also supports revocation of users, without redistributing keys to all the users of cloud services. We show that our approach results in lower communication, computation and storage overheads, compared to existing models and schemes." (Ruj et al 2011:91)
-"Hence we use the cryptographic technique called Attribute Based Encryption (ABE) to achieve access control in clouds." (Ruj et al 2011:91)
-"Earlier work (by Yu et al [17]) assumed that owners encrypt data with attributes that they possess and send it to the cloud to securely store them. The owners give not only access rights to users, but also give them attributes and corresponding secret keys." (Ruj et al 2011:92)
-"The access policy is in the form of a tree, with attributes" (Ruj et al 2011:92)
-"as leaf nodes and Boolean functions AND and OR as internal nodes. Threshold gates t-out-of-n are included in this representation, because they are constructed from AND and OR gates when t = n and t = 1, respectively." (Ruj et al 2011:92)
-"However, this may not hold, because in a distributed system, authorities can fail or be corrupt." (Ruj et al 2011:92)
-"The attribute authority (KDC) in all mentioned protocols is assumed to be honest. However, this may not hold, because in a distributed system, authorities can fail or be corrupt." (Ruj et al 2011:92)
-"Chase and Chow [24] devised a multi-authority ABE protocol which required no trusted authority. However, the main problem was that a user required at least one attribute from each of the authorities, which might not be practical." (Ruj et al 2011:92)
-"ABE was used for access control. They used cryptographic protocol [24], with multiple authorities to distribute attributes for access control." (Ruj et al 2011:93)
-"Wang et al [26] proposed a hierarchical access control mechanism for cloud storage. It relies on Bethencourt et al [22] CP-ABE and Hierarchical IBE [27]. The attribute authorities are arranged in a hierarchical way, with a root master (playing the role of a trusted KDC), and several domain masters who generate keys for the domains and distribute them to the users." (Ruj et al 2011:93)
-"In DACC, the cloud is assumed to be honest. If this requirement is not possible to satisfy, then care should be taken, that the cloud does not modify the data that it contains." (Ruj et al 2011:97)
-"[17] S. Yu, C. Wang, K. Ren, and W. Lou, "Attribute based data sharing with attribute revocation," in ASIACCS, D. Feng, D. A. Basin, and P. Liu, Eds. ACM, 2010, pp. 261-270." (Ruj et al 2011:97)
-"[18] A. B. Lewko and B. Waters, "Decentralizing attribute-based encryption," in EUROCRYPT, ser. Lecture Notes in Computer Science, K. G. Paterson, Ed., vol. 6632. Springer, 2011, pp. 568-588." (Ruj et al 2011:97)
-"[21] V. Goyal, O. Pandey, A. Sahai, and B. Waters, "Attribute-based encryption for fine-grained access control of encrypted data," in ACM Conference on Computer and Communications Security, 2006, pp. 89- 98." (Ruj et al 2011:97)
-"[28] S. Ruj, A. Nayak, and I. Stojmenovic, "Distributed fine-grained access control in wireless sensor networks," in IPDPS. IEEE, 2011, pp. 352- 362." (Ruj et al 2011:98)},
-file = {Ruj et al_2011_DACC.pdf:/home/hmartins/Dropbox/Papers/Ruj et al_2011_DACC.pdf:application/pdf}
-}
-
-@article{calero_toward_2010,
-title = {Toward a {Multi}-{Tenancy} {Authorization} {System} for {Cloud} {Services}},
-volume = {8},
-issn = {1540-7993},
-url = {http://dx.doi.org/10.1109/MSP.2010.194},
-doi = {10.1109/MSP.2010.194},
-number = {6},
-journal = {IEEE Security and Privacy},
-author = {Calero, Jose M. Alcaraz and Edwards, Nigel and Kirschnick, Johannes and Wilcock, Lawrence and Wray, Mike},
-month = nov,
-year = {2010},
-note = {00149},
-keywords = {Master's, security, role-based access control, authorization, Cloud computing, hierarchical RBAC, privacy, IGI Global},
-pages = {48--55},
-file = {Calero et al_2010_Toward a Multi-Tenancy Authorization System for Cloud Services.pdf:/home/hmartins/Dropbox/Zotero/Calero et al_2010_Toward a Multi-Tenancy Authorization System for Cloud Services.pdf:application/pdf}
-}
-
-@article{lampson_protection_1974,
-	title = {Protection},
-	volume = {8},
-	issn = {0163-5980},
-	url = {http://doi.acm.org/10.1145/775265.775268},
-	doi = {10.1145/775265.775268},
-	number = {1},
-	journal = {SIGOPS Oper. Syst. Rev.},
-	author = {Lampson, Butler W.},
-	month = jan,
-	year = {1974},
-	note = {01886},
-	keywords = {Master's, IGI Global},
-	pages = {18--24},
-	file = {Lampson_1974_Protection.pdf:/home/hmartins/Dropbox/Papers/Lampson_1974_Protection.pdf:application/pdf}
-}
-
-@inproceedings{ruj_privacy_2012,
-address = {Washington, DC, USA},
-series = {{CCGRID} '12},
-title = {Privacy {Preserving} {Access} {Control} with {Authentication} for {Securing} {Data} in {Clouds}},
-isbn = {978-0-7695-4691-9},
-url = {https://doi.org/10.1109/CCGrid.2012.92},
-doi = {10.1109/CCGrid.2012.92},
-booktitle = {Proceedings of the 2012 12th {IEEE}/{ACM} {International} {Symposium} on {Cluster}, {Cloud} and {Grid} {Computing} ({Ccgrid} 2012)},
-publisher = {IEEE Computer Society},
-author = {Ruj, Sushmita and Stojmenovic, Milos and Nayak, Amiya},
-year = {2012},
-note = {00184},
-keywords = {Master's, Access control, Authentication, Attribute-based encryption, Attribute-based signatures, Cloud storage, IGI Global},
-pages = {556--563},
-file = {Ruj et al_2012_Privacy Preserving Access Control with Authentication for Securing Data in.pdf:/home/hmartins/Dropbox/Papers/Ruj et al_2012_Privacy Preserving Access Control with Authentication for Securing Data in.pdf:application/pdf}
-}
-
-@article{denning_lattice_1976,
-	title = {A {Lattice} {Model} of {Secure} {Information} {Flow}},
-	volume = {19},
-	issn = {0001-0782},
-	url = {http://doi.acm.org/10.1145/360051.360056},
-	doi = {10.1145/360051.360056},
-	number = {5},
-	journal = {Commun. ACM},
-	author = {Denning, Dorothy E.},
-	month = may,
-	year = {1976},
-	note = {02213},
-	keywords = {Master's, security, information flow, lattice, program certification, protection, security class, master keys, IGI Global},
-	pages = {236--243},
-	file = {Denning_1976_A Lattice Model of Secure Information Flow.pdf:/home/hmartins/Dropbox/Zotero/Denning_1976_A Lattice Model of Secure Information Flow.pdf:application/pdf}
-}
-
-@inproceedings{weissman_security_1969,
-address = {New York, NY, USA},
-series = {{AFIPS} '69 ({Fall})},
-title = {Security {Controls} in the {ADEPT}-50 {Time}-sharing {System}},
-url = {http://doi.acm.org/10.1145/1478559.1478574},
-doi = {10.1145/1478559.1478574},
-booktitle = {Proceedings of the {November} 18-20, 1969, {Fall} {Joint} {Computer} {Conference}},
-publisher = {ACM},
-author = {Weissman, C.},
-year = {1969},
-note = {00213},
-keywords = {Master's, IGI Global},
-pages = {119--133},
-file = {Weissman_1969_Security Controls in the ADEPT-50 Time-sharing System.pdf:/home/hmartins/Dropbox/Zotero/Weissman_1969_Security Controls in the ADEPT-50 Time-sharing System.pdf:application/pdf}
-}
-
-
-@inproceedings{graham_protection:_1972,
-address = {New York, NY, USA},
-series = {{AFIPS} '72 ({Spring})},
-title = {Protection: {Principles} and {Practice}},
-url = {http://doi.acm.org/10.1145/1478873.1478928},
-doi = {10.1145/1478873.1478928},
-booktitle = {Proceedings of the {May} 16-18, 1972, {Spring} {Joint} {Computer} {Conference}},
-publisher = {ACM},
-author = {Graham, G. Scott and Denning, Peter J.},
-year = {1972},
-note = {00654},
-keywords = {Master's, IGI Global},
-pages = {417--429},
-file = {Graham_Denning_1972_Protection.pdf:/home/hmartins/Dropbox/Papers/Graham_Denning_1972_Protection.pdf:application/pdf}
-}
-
-@inproceedings{park_rbac_1999,
-address = {New York, NY, USA},
-series = {{RBAC} '99},
-title = {{RBAC} on the {Web} by {Smart} {Certificates}},
-isbn = {1-58113-180-1},
-url = {http://doi.acm.org/10.1145/319171.319172},
-doi = {10.1145/319171.319172},
-booktitle = {Proceedings of the {Fourth} {ACM} {Workshop} on {Role}-based {Access} {Control}},
-publisher = {ACM},
-author = {Park, Joon S. and Sandhu, Ravi},
-year = {1999},
-note = {00077},
-keywords = {Master's, IGI Global},
-pages = {1--9},
-annote = {Extracted Annotations (10/8/2017, 3:03:29 PM)
-"we issued smart certificates - which hold the subjects' role information and configured a Web server to use the role information in the certificate instead of identities for its access control mechanism." (Park and Sandhu 1999:1)
-"However, current approaches to access control on Web servers are mostly based on individual users; therefore, they do not scale to enterprise-wide systems." (Park and Sandhu 1999:1)
-"Public-key infrastructure (PKI) has been recognized as a crucial enabling technology for security in largescale networks." (Park and Sandhu 1999:1)
-"The basic purpose of X.509 certificates is simply the binding of users to keys." (Park and Sandhu 1999:1)
-"The basic notion of RBAC is that permissions are associated with roles, and users are assigned to appropriate roles. This greatly simplifies security management ." (Park and Sandhu 1999:2)
-"With RBAC, system administrators can create roles, grant permissions to those roles, and then assign users to the roles on the basis of their specific job responsibilities and policy." (Park and Sandhu 1999:2)
-"we can use those attributes for many purposes, including attribute-based access control, authorization, authentication, and electronic transactions." (Park and Sandhu 1999:2)
-"A bundled (identity and attributes) smart certificate is useful for the user-pull model," (Park and Sandhu 1999:3)
-"[PS99] [PSG99] Joon S. Park and Ravi Sandhu. Smart certificates: Extending x.509 for secure attribute services on the Web. In Proceedings of 22nd National Information Systems Security Conference, Crystal City, VA, October 1999. Joon S. Park, Ravi Sandhu, and SreeLatha Ghanta. RBAC on the Web by secure cookies. In Proceedings of the IFIP WGll.3" (Park and Sandhu 1999:9)
-"[SP98] Ravi Sandhu and Joon S. Park. Decentralized user-role assignment for Web-based intranets. In Proceedings of 3rd ACM Workshop on Role-Based Access Control, pages l- 12. ACM, Fairfax, VA, October 22-23 1998." (Park and Sandhu 1999:9)},
-file = {Park_Sandhu_1999_RBAC on the Web by Smart Certificates.pdf:/home/hmartins/Dropbox/Zotero/Park_Sandhu_1999_RBAC on the Web by Smart Certificates.pdf:application/pdf}
-}
-
-@techreport{karger_non-discretionary_1977,
-address = {Cambridge, MA, USA},
-title = {Non-discretionary {Access} {Control} for {Decentralized} {Computing} {Systems}},
-url = {http://www.dtic.mil/docs/citations/ADA040808},
-number = {179},
-urldate = {2017-10-09},
-institution = {Massachusetts Institute of Technology},
-author = {Karger, Paul Ashley},
-month = may,
-year = {1977},
-note = {00055},
-keywords = {Master's, IGI Global},
-file = {Karger_1977_Non-discretionary Access Control for Decentralized Computing Systems.pdf:/home/hmartins/Dropbox/Zotero/Karger_1977_Non-discretionary Access Control for Decentralized Computing Systems.pdf:application/pdf}
-}
-
-@article{ruj_decentralized_2014,
-title = {Decentralized {Access} {Control} with {Anonymous} {Authentication} of {Data} {Stored} in {Clouds}},
-volume = {25},
-issn = {1045-9219},
-url = {http://dx.doi.org/10.1109/TPDS.2013.38},
-doi = {10.1109/TPDS.2013.38},
-number = {2},
-journal = {IEEE Trans. Parallel Distrib. Syst.},
-author = {Ruj, Sushmita and Stojmenovic, Milos and Nayak, Amiya},
-month = feb,
-year = {2014},
-note = {00201},
-keywords = {Master's, Access control, attribute-based encryption, attribute-based signatures, authentication, cloud storage, IGI Global},
-pages = {384--394},
-annote = {Extracted Annotations (10/3/2017, 11:13:49 PM)
-"We propose a new decentralized access control scheme for secure data storage in clouds, that supports anonymous authentication." (Ruj et al 2014:384)
-"This is achieved by means of searchable encryption [3], [4]." (Ruj et al 2014:384)
-"It is important to have log of the transactions performed; however, it is an important concern to decide how much information to keep in the log. Accountability has been addressed in TrustCloud [8]. Secure provenance has been studied in [9]." (Ruj et al 2014:384)
-"Access control in clouds is gaining attention because it is important that only authorized users have access to valid service. A huge amount of information is being stored in the cloud, and much of this is sensitive information. Care should be taken to ensure access control of this sensitive information" (Ruj et al 2014:385)
-"There are broadly three types of access control: User Based Access Control (UBAC), Role Based Access Control (RBAC), and Attribute Based Access Control (ABAC)." (Ruj et al 2014:385)
-"There has been some work on ABAC in clouds (for example, [12], [13], [14], [15], [16]). All these work use a cryptographic primitive known as Attribute Based Encryption (ABE). The The eXtensible Access Control Markup Language (XACML) [17] has been proposed for ABAC in clouds [18]." (Ruj et al 2014:385)
-"Access control in health care has been studied in [12], [13]." (Ruj et al 2014:385)
-"Access control in online social networking has been studied in [19]." (Ruj et al 2014:385)
-"There are cryptographic protocols like ring signatures [20], mesh signatures [21], group signatures [22], which can be used in these situations." (Ruj et al 2014:385)
-"a new protocol known as Attribute Based Signature (ABS) has been applied. ABS was proposed by Maji et al. [23]. In ABS, users have a claim predicate associated with a message." (Ruj et al 2014:385)
-"Existing work [38], [18], [12], [13], [14], [15], [16] on access control in cloud are centralized in nature." (Ruj et al 2014:385)
-"Although Yang et al. [34] proposed a decentralized approach, their technique does not authenticate users, who want to remain anonymous while accessing the cloud. In an earlier work, Ruj et al. [16] proposed a distributed access control mechanism in clouds." (Ruj et al 2014:385)
-"We have presented a decentralized access control technique with anonymous authentication, which provides user revocation and prevents replay attacks. The cloud does not know the identity of the user who stores information, but only verifies the user's credentials. Key distribution is done in a decentralized way. One limitation is that the cloud knows the access policy for each record stored in the cloud. In future, we would like to hide the attributes and access policy of a user." (Ruj et al 2014:393)
-"[1] S. Ruj, M. Stojmenovic and A. Nayak, "Privacy Preserving Access Control with Authentication for Securing Data in Clouds", IEEE/ACM International Symposium on Cluster, Cloud and Grid Computing, pp. 556-563, 2012." (Ruj et al 2014:393)
-"[10] D. F. Ferraiolo and D. R. Kuhn, "Role-based access controls," in 15th National Computer Security Conference, 1992. [11] D. R. Kuhn, E. J. Coyne, and T. R. Weil, "Adding attributes to role-based access control," IEEE Computer, vol. 43, no. 6, pp. 79-81, 2010." (Ruj et al 2014:393)
-"[12] M. Li, S. Yu, K. Ren, and W. Lou, "Securing personal health records in cloud computing: Patient-centric andfine-grained data access control in multiowner settings," in SecureComm, pp. 89-106, 2010." (Ruj et al 2014:393)
-"[14] G. Wang, Q. Liu, and J. Wu, "Hierarchical attribute-based encryption for fine-grained access control in cloud storage services," in ACM CCS, , pp. 735-737, 2010." (Ruj et al 2014:393)
-"[15] F. Zhao, T. Nishide, and K. Sakurai, "Realizingfine-grained andflexible access control to outsourced data with attribute-based cryptosystems," in ISPEC, ser. Lecture Notes in Computer Science, vol. 6672. Springer, pp. 83-97, 2011." (Ruj et al 2014:393)
-"[35] A. B. Lewko and B. Waters, "Decentralizing attribute-based encryption," in EUROCRYPT, ser. Lecture Notes in Computer Science, vol. 6632. Springer, pp. 568-588, 2011." (Ruj et al 2014:393)},
-file = {Ruj et al_2014_Decentralized Access Control with Anonymous Authentication of Data Stored in.pdf:/home/hmartins/Dropbox/Papers/Ruj et al_2014_Decentralized access control with anonymous authentication of data stored in.pdf:application/pdf}
-}
-
-
-@inproceedings{bauer_distributed_2005,
-title = {Distributed proving in access-control systems},
-doi = {10.1109/SP.2005.9},
-booktitle = {2005 {IEEE} {Symposium} on {Security} and {Privacy} ({S}\&{P}'05)},
-author = {Bauer, L. and Garriss, S. and Reiter, M. K.},
-month = may,
-year = {2005},
-note = {00138},
-keywords = {Master's, Access control, authorisation, access-control policy, access-control systems, Algorithm design and analysis, Assembly, automatic tactic generation, cache storage, caching, Computer science, distributed algorithms, Distributed algorithms, distributed proof-generation algorithm, distributed proving, formal logic, Logic, Military computing, Monitoring, performance, Proposals, remote requests, software performance evaluation, usability, Usability, user interruptions, IGI Global},
-pages = {81--95},
-annote = {Extracted Annotations (10/8/2017, 8:16:06 PM)
-"In order to permit a requested operation, a reference monitor must verify evidence that the request should be granted. In classical approaches to access control, this evidence may be the presence of an authenticated identity on an access-control list, or the verification of a capability presented with the request." (Bauer et al 2005:81)
-"In this paper, we introduce a distributed strategy by which this proof can be generated and show that the strategy outperforms prior approaches in many contexts." (Bauer et al 2005:81)
-"In traditional approaches to distributed authorization, credentials are distributed across multiple users. A single user (either the requester of a resource or its owner, depending on the model) is responsible for proving that access should be allowed, and in the course of proving the user may fetch credentials from other users. All users except for the one proving access are passive; their only responsibility is to make their credentials available for download. We propose a different model: each user is both a repository of credentials and an active participant in the proof-generation process. In this model, a user who is generating a proof is now able to ask other users not only for their certificates, but also to prove for him subgoals that are part of his proof. Each user has a tactical theorem prover that he uses to prove both his own and other users' goals. In such a system there are multiple strategies for creating proofs." (Bauer et al 2005:84)
-"Previous work on distributed authorization systems largely did not focus on practical strategies for collecting the certificates used to show that a request satisfies an access-control policy. However, attention to these strategies is necessary for the deployment of rich certificatebased access control, particularly in cases where credentials are created dynamically with user involvement." (Bauer et al 2005:92)
-"[5] L. Bauer, M. A. Schneider, and E. W. Felten. A general and flexible access-control system for the Web. In Proceedings of the 11th USENIX Security Symposium, San Francisco, CA, Aug. 2002." (Bauer et al 2005:92)
-"[7] M. Blaze, J. Feigenbaum, and J. Lacy. Decentralized trust management. In Proceedings of the 1996 IEEE Symposium on Security and Privacy, pages 164-173, Oakland, CA, 1996." (Bauer et al 2005:92)},
-file = {Bauer et al_2005_Distributed proving in access-control systems.pdf:/home/hmartins/Dropbox/Papers/Bauer et al_2005_Distributed proving in access-control systems.pdf:application/pdf}
-}
-
-
-@article{satyanarayanan_integrating_1989,
-	title = {Integrating {Security} in a {Large} {Distributed} {System}},
-	volume = {7},
-	issn = {0734-2071},
-	url = {http://doi.acm.org/10.1145/65000.65002},
-	doi = {10.1145/65000.65002},
-	number = {3},
-	journal = {ACM Trans. Comput. Syst.},
-	author = {Satyanarayanan, M.},
-	month = aug,
-	year = {1989},
-	note = {00274},
-	keywords = {Master's, IGI Global},
-	pages = {247--280},
-	annote = {Extracted Annotations (10/8/2017, 7:33:03 PM)
-			"In the light of these considerations, we opted to use an Access List mechanism in Andrew." (Satyanarayanan 1989:261)
-			"An entry in an access list maps a member of the protection domain into a set of Rights, which are merely bit positions in a 32-bit mask. The interpretation of rights is specific to each Vice service." (Satyanarayanan 1989:261)
-			"Vice associates an access list with each directory." (Satyanarayanan 1989:262)},
-	file = {Satyanarayanan_1989_Integrating Security in a Large Distributed System.pdf:/home/hmartins/Dropbox/Zotero/Satyanarayanan_1989_Integrating Security in a Large Distributed System.pdf:application/pdf}
-}
-
-@article{miltchev_decentralized_2008,
-	title = {Decentralized {Access} {Control} in {Distributed} {File} {Systems}},
-	volume = {40},
-	issn = {0360-0300},
-	url = {http://doi.acm.org/10.1145/1380584.1380588},
-	doi = {10.1145/1380584.1380588},
-	number = {3},
-	journal = {ACM Comput. Surv.},
-	author = {Miltchev, Stefan and Smith, Jonathan M. and Prevelakis, Vassilis and Keromytis, Angelos and Ioannidis, Sotiris},
-	month = aug,
-	year = {2008},
-	note = {00049},
-	keywords = {Master's, Authentication, authorization, certificates, credentials, decentralized access control, networked file systems, trust management, IGI Global},
-	pages = {10:1--10:30},
-	file = {Miltchev et al_2008_Decentralized Access Control in Distributed File Systems.pdf:/home/hmartins/Dropbox/Papers/Miltchev et al_2008_Decentralized Access Control in Distributed File Systems.pdf:application/pdf}
-}
-
-@incollection{bryan_christiansen_access_2018,
-address = {Hershey, PA, USA},
-title = {Access {Control} {Challenges} in {Enterprise} {Ecosystems}: {Blockchain}-{Based} {Technologies} as an {Opportunity} for {Enhanced} {Access} {Control}},
-isbn = {978-1-5225-5927-6},
-url = {http://services.igi-global.com/resolvedoi/resolve.aspx?doi=10.4018/978-1-5225-5927-6.ch004},
-abstract = {There is an increasing gap between the needs of modern, complex, and distributed environments in regards to control of access to data and the level to which classical access control solutions can fulfill those needs. The purpose of this chapter is to highlight the current state of art of existing research over access control in increasingly decentralized environments and to argue how the subject of access control is more relevant than ever before, with increasing research opportunities emerging. In this chapter, the authors analyze the current state of the art of access control mechanisms and systems over decentralized applications with a focus on enterprise ecosystems, analyze the current challenges and opportunities that the new technological landscape offers, specifically over the application of blockchain-based technologies in access control, and propose new research directions for the future.},
-booktitle = {Global {Cyber} {Security} {Labor} {Shortage} and {International} {Business} {Risk}},
-publisher = {IGI Global},
-author = {{Hugo Santos Martins} and {Sérgio Luís Guerreiro}},
-editor = {{Bryan Christiansen} and {Agnieszka Piekarz}},
-month = oct,
-year = {2018},
-doi = {10.4018/978-1-5225-5927-6.ch004},
-note = {00000 },
-pages = {51--76},
-file = {Hugo Santos Martins_Sérgio Luís Guerreiro_2018_Access Control Challenges in Enterprise Ecosystems.pdf:/home/hmartins/Dropbox/Papers/Hugo Santos Martins_Sérgio Luís Guerreiro_2018_Access Control Challenges in Enterprise Ecosystems.pdf:application/pdf}
-}
-
-
-@article{harrison_protection_1976,
-	title = {Protection in {Operating} {Systems}},
-	volume = {19},
-	issn = {0001-0782},
-	url = {http://doi.acm.org/10.1145/360303.360333},
-	doi = {10.1145/360303.360333},
-	number = {8},
-	journal = {Commun. ACM},
-	author = {Harrison, Michael A. and Ruzzo, Walter L. and Ullman, Jeffrey D.},
-	month = aug,
-	year = {1976},
-	note = {01465},
-	keywords = {Master's, protection, decidability, operating system, protection system, Turing machine, IGI Global},
-	pages = {461--471},
-	file = {Harrison et al_1976_Protection in Operating Systems.pdf:/home/hmartins/Dropbox/Papers/Harrison et al_1976_Protection in operating systems.pdf:application/pdf}
-}
-
-@techreport{biba_integrity_1977,
-	address = {Bedford, Massachusetts},
-	title = {Integrity {Considerations} for {Secure} {Computer} {Systems}},
-	url = {http://www.dtic.mil/docs/citations/ADA039324},
-	number = {3153},
-	urldate = {2017-10-11},
-	institution = {Mitre Corporation},
-	author = {Biba, Kenneth J.},
+@article{sandhu_schematic_1988,
+	title = {The {Schematic} {Protection} {Model}: {Its} {Definition} and {Analysis} for {Acyclic} {Attenuating} {Schemes}},
+	volume = {35},
+	issn = {0004-5411},
+	url = {http://doi.acm.org/10.1145/42282.42286},
+	doi = {10.1145/42282.42286},
+	number = {2},
+	journal = {J. ACM},
+	author = {Sandhu, Ravinderpal Singh},
 	month = apr,
-	year = {1977},
-	note = {02067},
+	year = {1988},
+	note = {00199},
 	keywords = {Master's, IGI Global},
-	file = {Biba_1977_Integrity Considerations for Secure Computer Systems.pdf:/home/hmartins/Dropbox/Papers/Biba_1977_Integrity considerations for secure computer systems.pdf:application/pdf}
+	pages = {404--432},
+	file = {Sandhu_1988_The Schematic Protection Model.pdf:/home/hmartins/Dropbox/Papers/Sandhu_1988_The Schematic Protection Model.pdf:application/pdf}
 }
 
-@inproceedings{ferraiolo_role-based_1992,
-address = {Baltimore, Maryland, United States},
-title = {Role-based {Access} {Controls}},
-url = {https://csrc.nist.gov/CSRC/media/Projects/Role-Based-Access-Control/documents/ferraiolo-kuhn-92.pdf},
-urldate = {2017-10-08},
-booktitle = {Proceedings of 15th {NIST}-{NCSC} national {Computer} {Security} {Conference}},
-author = {Ferraiolo, David and Kuhn, Richard},
-month = oct,
-year = {1992},
-note = {00078},
-keywords = {Master's, IGI Global},
-pages = {554--563},
-file = {Ferraiolo_Kuhn_1992_Role-based Access Controls.pdf:/home/hmartins/Dropbox/Papers/Ferraiolo_Kuhn_1992_Role-based access controls.pdf:application/pdf}
-}
-
-@article{sandhu_role-based_1996,
-title = {Role-{Based} {Access} {Control} {Models}},
-volume = {29},
-issn = {0018-9162},
-url = {http://dx.doi.org/10.1109/2.485845},
-doi = {10.1109/2.485845},
-number = {2},
-journal = {Computer},
-author = {Sandhu, Ravi S. and Coyne, Edward J. and Feinstein, Hal L. and Youman, Charles E.},
-month = feb,
-year = {1996},
-note = {08368},
-keywords = {Master's, IGI Global},
-pages = {38--47},
-annote = {23/11/2017
-		This paper was the foundational work for the standardization of RBAC models. It includes 4 proposed reference models for RBAC, and formal definitions, as well as some future work left to be done.
-		Problems:
-		- "One of the outstanding research problems in this area is to develop a systematic approach to the design and analysis of RBAC congurations. Some recent research on the design and analysis of role hierarchies has been reported [8, 9, 14]."
-		- "The management aspects of RBAC need further work."},
-file = {Sandhu et al_1996_Role-Based Access Control Models.pdf:/home/hmartins/Dropbox/Zotero/Sandhu et al_1996_Role-Based Access Control Models.pdf:application/pdf}
-}
-
-@inproceedings{sandhu_typed_1992,
-	address = {Washington, DC, USA},
-	series = {{SP} '92},
-	title = {The {Typed} {Access} {Matrix} {Model}},
-	isbn = {0-8186-2825-1},
-	url = {http://dl.acm.org/citation.cfm?id=882488.884182},
-	booktitle = {Proceedings of the 1992 {IEEE} {Symposium} on {Security} and {Privacy}},
-	publisher = {IEEE Computer Society},
-	author = {Sandhu, Ravi S.},
-	year = {1992},
-	note = {00369},
-	keywords = {Master's, IGI Global},
-	pages = {122--},
-	file = {Sandhu_1992_The Typed Access Matrix Model.pdf:/home/hmartins/Dropbox/Papers/Sandhu_1992_The Typed Access Matrix Model.pdf:application/pdf}
-}
-
-@article{sandhu_lattice-based_1993,
-title = {Lattice-{Based} {Access} {Control} {Models}},
-volume = {26},
-issn = {0018-9162},
-url = {http://dx.doi.org/10.1109/2.241422},
-doi = {10.1109/2.241422},
-number = {11},
-journal = {Computer},
-author = {Sandhu, Ravi S.},
-month = nov,
-year = {1993},
-note = {00895},
-keywords = {Master's, IGI Global},
-pages = {9--19},
-file = {Sandhu_1993_Lattice-Based Access Control Models.pdf:/home/hmartins/Dropbox/Papers/Sandhu_1993_Lattice-Based Access Control Models.pdf:application/pdf}
-}
-
-@book{organick_multics_1972,
-address = {Cambridge, MA, USA},
-title = {The {Multics} {System}: {An} {Examination} of {Its} {Structure}},
-isbn = {0-262-15012-3},
-publisher = {MIT Press},
-author = {Organick, Elliott I.},
-year = {1972},
-note = {00572},
-keywords = {Master's, IGI Global}
-}
-
-@inproceedings{barkley_role_1997,
-	title = {Role based access control for the world wide web},
-	url = {http://ws680.nist.gov/publication/get_pdf.cfm?pub_id=916553},
+@inproceedings{ferraiolo_role-based_1995,
+	title = {Role-based access control ({RBAC}): {Features} and motivations.},
+	url = {https://www.researchgate.net/profile/D_Kuhn2/publication/238743515_Role-based_access_control_features_and_motivations/links/562e7d3808ae04c2aeb5d98b.pdf},
 	urldate = {2017-10-10},
-	booktitle = {20th {National} {Computer} {Security} {Conference}},
-	author = {Barkley, John and Cincotta, Anthony and Ferraiolo, David and Gavrila, Serban and Kuhn, D. Richard},
-	year = {1997},
-	note = {00142},
+	booktitle = {Proceedings of 11th {Annual} {Computer} {Security} {Application} {Conference}},
+	author = {Ferraiolo, David and Cugini, Janet and Kuhn, D. Richard},
+	year = {1995},
+	note = {00938},
 	keywords = {Master's},
-	pages = {331--340},
-	file = {Barkley et al_1997_Role based access control for the world wide web.pdf:/home/hmartins/Dropbox/Papers/Barkley et al_1997_Role based access control for the world wide web.pdf:application/pdf}
+	file = {Ferraiolo et al_1995_Role-based access control (RBAC).pdf:/home/hmartins/Dropbox/Papers/Ferraiolo et al_1995_Role-based access control (RBAC).pdf:application/pdf}
 }
 
-@inproceedings{gavrila_formal_1998,
-	title = {Formal specification for role based access control user/role and role/role relationship management},
-	isbn = {978-1-58113-113-0},
-	url = {http://portal.acm.org/citation.cfm?doid=286884.286902},
-	doi = {10.1145/286884.286902},
-	language = {en},
-	urldate = {2017-08-17},
-	publisher = {ACM Press},
-	author = {Gavrila, Serban I. and Barkley, John F.},
-	year = {1998},
-	note = {00191},
-	keywords = {Master's},
-	pages = {81--90},
-	file = {Gavrila_Barkley_1998_Formal specification for role based access control user-role and role-role.pdf:/home/hmartins/Dropbox/Papers/Gavrila_Barkley_1998_Formal specification for role based access control user-role and role-role.pdf:application/pdf}
+@article{bertino_temporal_1996,
+	title = {A {Temporal} {Access} {Control} {Mechanism} for {Database} {Systems}},
+	volume = {8},
+	issn = {1041-4347},
+	url = {http://dx.doi.org/10.1109/69.485637},
+	doi = {10.1109/69.485637},
+	number = {1},
+	journal = {IEEE Trans. on Knowl. and Data Eng.},
+	author = {Bertino, Elisa and Bettini, Claudio and Ferrari, Elena and Samarati, Pierangela},
+	month = feb,
+	year = {1996},
+	note = {00158},
+	keywords = {Master's, IGI Global, access control., database management, Database security, general logic programs, temporal authorization, temporal reasoning},
+	pages = {67--80},
+	file = {Bertino et al_1996_A Temporal Access Control Mechanism for Database Systems.pdf:/home/hmartins/Dropbox/Zotero/Bertino et al_1996_A Temporal Access Control Mechanism for Database Systems.pdf:application/pdf}
 }
 
-@inproceedings{bertino_trbac:_2000,
-address = {New York, NY, USA},
-series = {{RBAC} '00},
-title = {{TRBAC}: {A} {Temporal} {Role}-based {Access} {Control} {Model}},
-isbn = {1-58113-259-X},
-url = {http://doi.acm.org/10.1145/344287.344298},
-doi = {10.1145/344287.344298},
-booktitle = {Proceedings of the {Fifth} {ACM} {Workshop} on {Role}-based {Access} {Control}},
-publisher = {ACM},
-author = {Bertino, Elisa and Bonatti, Piero Andrea and Ferrari, Elena},
-year = {2000},
-note = {01070},
-keywords = {Master's, IGI Global},
-pages = {21--30},
-file = {Bertino et al_2000_TRBAC.pdf:/home/hmartins/Dropbox/Papers/Bertino et al_2000_TRBAC.pdf:application/pdf}
-}
-
-@inproceedings{park_rbac_1999,
-address = {New York, NY, USA},
-series = {{RBAC} '99},
-title = {{RBAC} on the {Web} by {Smart} {Certificates}},
-isbn = {1-58113-180-1},
-url = {http://doi.acm.org/10.1145/319171.319172},
-doi = {10.1145/319171.319172},
-booktitle = {Proceedings of the {Fourth} {ACM} {Workshop} on {Role}-based {Access} {Control}},
-publisher = {ACM},
-author = {Park, Joon S. and Sandhu, Ravi},
-year = {1999},
-note = {00077},
-keywords = {Master's, IGI Global},
-pages = {1--9},
-annote = {Extracted Annotations (10/8/2017, 3:03:29 PM)
-"we issued smart certificates - which hold the subjects' role information and configured a Web server to use the role information in the certificate instead of identities for its access control mechanism." (Park and Sandhu 1999:1)
-"However, current approaches to access control on Web servers are mostly based on individual users; therefore, they do not scale to enterprise-wide systems." (Park and Sandhu 1999:1)
-"Public-key infrastructure (PKI) has been recognized as a crucial enabling technology for security in largescale networks." (Park and Sandhu 1999:1)
-"The basic purpose of X.509 certificates is simply the binding of users to keys." (Park and Sandhu 1999:1)
-"The basic notion of RBAC is that permissions are associated with roles, and users are assigned to appropriate roles. This greatly simplifies security management ." (Park and Sandhu 1999:2)
-"With RBAC, system administrators can create roles, grant permissions to those roles, and then assign users to the roles on the basis of their specific job responsibilities and policy." (Park and Sandhu 1999:2)
-"we can use those attributes for many purposes, including attribute-based access control, authorization, authentication, and electronic transactions." (Park and Sandhu 1999:2)
-"A bundled (identity and attributes) smart certificate is useful for the user-pull model," (Park and Sandhu 1999:3)
-"[PS99] [PSG99] Joon S. Park and Ravi Sandhu. Smart certificates: Extending x.509 for secure attribute services on the Web. In Proceedings of 22nd National Information Systems Security Conference, Crystal City, VA, October 1999. Joon S. Park, Ravi Sandhu, and SreeLatha Ghanta. RBAC on the Web by secure cookies. In Proceedings of the IFIP WGll.3" (Park and Sandhu 1999:9)
-"[SP98] Ravi Sandhu and Joon S. Park. Decentralized user-role assignment for Web-based intranets. In Proceedings of 3rd ACM Workshop on Role-Based Access Control, pages l- 12. ACM, Fairfax, VA, October 22-23 1998." (Park and Sandhu 1999:9)},
-file = {Park_Sandhu_1999_RBAC on the Web by Smart Certificates.pdf:/home/hmartins/Dropbox/Zotero/Park_Sandhu_1999_RBAC on the Web by Smart Certificates.pdf:application/pdf}
-}
-
-@inproceedings{park_role-based_2003,
-address = {New York, NY, USA},
-series = {{SACMAT} '03},
-title = {Role-based {Access} {Control} for {Collaborative} {Enterprise} in {Peer}-to-peer {Computing} {Environments}},
-isbn = {1-58113-681-1},
-url = {http://doi.acm.org/10.1145/775412.775424},
-doi = {10.1145/775412.775424},
-booktitle = {Proceedings of the {Eighth} {ACM} {Symposium} on {Access} {Control} {Models} and {Technologies}},
-publisher = {ACM},
-author = {Park, Joon S. and Hwang, Junseok},
-year = {2003},
-note = {00107},
-keywords = {Master's, security, peer-to-peer computing, role-based access control, IGI Global},
-pages = {93--99},
-file = {Park_Hwang_2003_Role-based Access Control for Collaborative Enterprise in Peer-to-peer.pdf:/home/hmartins/Dropbox/Zotero/Park_Hwang_2003_Role-based Access Control for Collaborative Enterprise in Peer-to-peer.pdf:application/pdf}
-}
-
-@inproceedings{chakraborty_trustbac:_2006,
-address = {New York, NY, USA},
-series = {{SACMAT} '06},
-title = {{TrustBAC}: {Integrating} {Trust} {Relationships} into the {RBAC} {Model} for {Access} {Control} in {Open} {Systems}},
-isbn = {1-59593-353-0},
-url = {http://doi.acm.org/10.1145/1133058.1133067},
-doi = {10.1145/1133058.1133067},
-booktitle = {Proceedings of the {Eleventh} {ACM} {Symposium} on {Access} {Control} {Models} and {Technologies}},
-publisher = {ACM},
-author = {Chakraborty, Sudip and Ray, Indrajit},
-year = {2006},
-note = {00257},
-keywords = {Master's, access control, RBAC, trust, IGI Global},
-pages = {49--58},
-annote = {Extracted Annotations (10/8/2017, 2:40:33 PM)
-"these models have often found to be inadequate for open and decentralized multi-centric systems where the user population is dynamic and the identity of all users are not known in advance." (Chakraborty and Ray 2006:50)
-"we propose a trust based access control model called TrustBAC." (Chakraborty and Ray 2006:50)
-"Users are assigned to trust levels instead of roles based on a number of factors like user credentials, user behavior history, user recommendation etc." (Chakraborty and Ray 2006:50)
-"The TrustBAC model thus incorporates the advantages of both the role based access control model and credential based access control models." (Chakraborty and Ray 2006:50)
-"Thus, with RBAC, security is managed at a level corresponding to an organization's human resource structure. Notwithstanding the success of the RBAC model, researchers have often found the model to be inadequate for open and decentralized multi-centric systems where the user population is dynamic and the identity of all users are not known in advance." (Chakraborty and Ray 2006:50)
-"trust levels in the users can be determined not only by using the credentials presented by the user but also from the results of past interactions with the user, from recommendations about the user and/or knowledge about other characteristics of the user. A user is mapped to different trust levels based on these information. Trust levels (and not users, unlike in conventional RBAC) are then mapped to roles of RBAC." (Chakraborty and Ray 2006:51)
-"One advantage of TMAC model is it allows role-based permissions across ob ject types as well as fine-grained, identity-based control on individual users in certain roles and to individual ob ject instances." (Chakraborty and Ray 2006:51)
-"Basic purpose of an access control mechanism is to protect system resources by restricting the user's activities on them." (Chakraborty and Ray 2006:56)
-"[3] L. Bauer, M. A. Schneider, and E. W. Felten. A General and Flexible Access-Control System for the Web. In Proceedings of the 11th USENIX Security Symposium, San Francisco, California, USA, August 2002." (Chakraborty and Ray 2006:58)
-"[8] M. Blaze, J. Feigenbaum, and J. Lacy. Decentralized Trust Management. In Proceedings of 17th IEEE Symposium on Security and Privacy, pages 164-173, Oakland, California, USA, May 1996." (Chakraborty and Ray 2006:58)
-"[10] D. Chadwick, A. Otenko, and E. Ball. Role-Based Access Control with X.509 Attribute Certificates. IEEE Internet Computing, 7(2):62-69, March/April 2003." (Chakraborty and Ray 2006:58)
-"[17] A. Harrington and C. Jensen. Cryptographic Access Control in a Distributed File System. In Proceedings of the 8th ACM Symposium on Access Control Models and Technologies (SACMAT'03), pages 158-165, Como, Italy, June 2003." (Chakraborty and Ray 2006:58)
-"[23] N. Li, W. Winsborough, and J. Mitchell. Beyond Proof-of-Compliance: Safety and Availability Analysis in Trust Management. In Proceedings of the 2003 IEEE Symposium on Security and Privacy, Oakland, California, May 2003." (Chakraborty and Ray 2006:59)
-"[24] J. S. Park and J. Hwang. Role-based Access Control for Collaborative Enterprise In Peer-to-Peer Computing Environments. In Proceedings of the 8th ACM Symposium on Access Control Models and Technologies (SACMAT'03), pages 93-99, Como, Italy, June 2003." (Chakraborty and Ray 2006:59)
-"[27] R. Sandhu and X. Zhang. Peer-to-Peer Access Control Architecture Using Trusted Computing Technology. In Proceedings of the 10th ACM Symposium on Access Control Models and Technologies (SACMAT'05), pages 147-158, Stockholm, Sweeden, June 2005. [28] R. K. Thomas. Team-based Access Control (TMAC): A Primitive for Applying Role-based Access Controls in Collaborative Environments. In Proceedings of the Second ACM Workshop on Role-based Access Control (RBAC'97), pages 13-19, Fairfax, Virginia, USA, November 1997." (Chakraborty and Ray 2006:59)
-"[30] H. F. Wedde and M. Lischka. Role-Based Access Control in Ambient and Remote Space. In Proceedings of the 9th ACM Symposium on Access Control Models and Technologies (SACMAT'04), pages 21-30, Yorktown Heights, New York, USA, June 2004." (Chakraborty and Ray 2006:59)},
-file = {Chakraborty_Ray_2006_TrustBAC.pdf:/home/hmartins/Dropbox/Papers/Chakraborty_Ray_2006_TrustBAC.pdf:application/pdf}
-}
-
-@article{joshi_generalized_2005,
-title = {A {Generalized} {Temporal} {Role}-{Based} {Access} {Control} {Model}},
-volume = {17},
-issn = {1041-4347},
-url = {http://dx.doi.org/10.1109/TKDE.2005.1},
-doi = {10.1109/TKDE.2005.1},
-number = {1},
-journal = {IEEE Trans. on Knowl. and Data Eng.},
-author = {Joshi, James B. D. and Bertino, Elisa and Latif, Usman and Ghafoor, Arif},
-month = jan,
-year = {2005},
-note = {00721},
-keywords = {Master's, temporal constraints, 65, Index Terms- Access control, role hierarchy, role-based, separation of duty., IGI Global},
-pages = {4--23},
-file = {Joshi et al_2005_A Generalized Temporal Role-Based Access Control Model.pdf:/home/hmartins/Dropbox/Zotero/Joshi et al_2005_A Generalized Temporal Role-Based Access Control Model.pdf:application/pdf}
-}
-
-@inproceedings{ray_lrbac:_2006,
-address = {Berlin, Heidelberg},
-title = {{LRBAC}: {A} {Location}-{Aware} {Role}-{Based} {Access} {Control} {Model}},
-isbn = {978-3-540-68963-8},
-abstract = {With the growing use of wireless networks and mobile devices, we are moving towards an era where location information will be necessary for access control. The use of location information can be used for enhancing the security of an application, and it can also be exploited to launch attacks. For critical applications, a formal model for location-based access control is needed that increases the security of the application and ensures that the location information cannot be exploited to cause harm. In this paper, we show how the Role-Based Access Control (RBAC) model can be extended to incorporate the notion of location. We show how the different components in the RBAC model are related with location and how this location information can be used to determine whether a subject has access to a given object. This model is suitable for applications consisting of static and dynamic objects, where location of the subject and object must be considered before granting access.},
-booktitle = {Information {Systems} {Security}},
-publisher = {Springer Berlin Heidelberg},
-author = {Ray, Indrakshi and Kumar, Mahendra and Yu, Lijun},
-editor = {Bagchi, Aditya and Atluri, Vijayalakshmi},
-year = {2006},
-note = {00140},
-keywords = {Master's, IGI Global},
-pages = {147--161},
-file = {Ray et al_2006_LRBAC.pdf:/home/hmartins/Dropbox/Papers/Ray et al_2006_LRBAC.pdf:application/pdf}
-}
-
-@inproceedings{park_towards_2002,
-	title = {Towards usage control models: beyond traditional access control},
-	shorttitle = {Towards usage control models},
-	url = {http://dl.acm.org/citation.cfm?id=507722},
-	urldate = {2017-10-11},
-	booktitle = {Proceedings of the seventh {ACM} symposium on {Access} control models and technologies},
-	publisher = {ACM},
-	author = {Park, Jaehong and Sandhu, Ravi},
-	year = {2002},
-	note = {00500},
-	keywords = {Master's},
-	pages = {57--64},
-	file = {Park_Sandhu_2002_Towards usage control models.pdf:/home/hmartins/Dropbox/Papers/Park_Sandhu_2002_Towards usage control models.pdf:application/pdf}
-}
-
-@inproceedings{kalam_organization_2003,
-title = {Organization based access control},
-url = {http://ieeexplore.ieee.org/abstract/document/1206966/},
-urldate = {2017-08-17},
-booktitle = {Policies for {Distributed} {Systems} and {Networks}, 2003. {Proceedings}. {POLICY} 2003. {IEEE} 4th {International} {Workshop} on},
-publisher = {IEEE},
-author = {Kalam, Anas Abou El and Baida, R. EI and Balbiani, Philippe and Benferhat, Salem and Cuppens, Frédéric and Deswarte, Yves and Miege, Alexandre and Saurel, Claire and Trouessin, Gilles},
-year = {2003},
-note = {00493},
-keywords = {Master's},
-pages = {120--131},
-file = {Kalam et al_2003_Organization based access control.pdf:/home/hmartins/Dropbox/Papers/Kalam et al_2003_Organization based access control.pdf:application/pdf}
-}
-
-@inproceedings{sandhu_usage_2003,
-title = {Usage control: {A} vision for next generation access control},
-volume = {2776},
-shorttitle = {Usage control},
-url = {http://link.springer.com/content/pdf/10.1007/b12005.pdf#page=31},
-urldate = {2017-10-11},
-booktitle = {{MMM}-{ACNS}},
-publisher = {Springer},
-author = {Sandhu, Ravi and Park, Jaehong},
-year = {2003},
-note = {00278},
-keywords = {Master's},
-pages = {17--31},
-file = {Sandhu_Park_2003_Usage control.pdf:/home/hmartins/Dropbox/Papers/Sandhu_Park_2003_Usage control.pdf:application/pdf}
-}
-
-@inproceedings{thomas_team-based_1997,
-address = {New York, NY, USA},
-series = {{RBAC} '97},
-title = {Team-based {Access} {Control} ({TMAC}): {A} {Primitive} for {Applying} {Role}-based {Access} {Controls} in {Collaborative} {Environments}},
-isbn = {0-89791-985-8},
-url = {http://doi.acm.org/10.1145/266741.266748},
-doi = {10.1145/266741.266748},
-booktitle = {Proceedings of the {Second} {ACM} {Workshop} on {Role}-based {Access} {Control}},
-publisher = {ACM},
-author = {Thomas, Roshan K.},
-year = {1997},
-note = {00363},
-keywords = {Master's, IGI Global},
-pages = {13--19},
-file = {Thomas_1997_Team-based Access Control (TMAC).pdf:/home/hmartins/Dropbox/Zotero/Thomas_1997_Team-based Access Control (TMAC).pdf:application/pdf}
-}
-
-
-@inproceedings{wang_logic-based_2004,
-address = {New York, NY, USA},
-series = {{FMSE} '04},
-title = {A {Logic}-based {Framework} for {Attribute} {Based} {Access} {Control}},
-isbn = {1-58113-971-3},
-url = {http://doi.acm.org/10.1145/1029133.1029140},
-doi = {10.1145/1029133.1029140},
-booktitle = {Proceedings of the 2004 {ACM} {Workshop} on {Formal} {Methods} in {Security} {Engineering}},
-publisher = {ACM},
-author = {Wang, Lingyu and Wijesekera, Duminda and Jajodia, Sushil},
-year = {2004},
-note = {00292},
-keywords = {Master's, attribute based access control, constrained logic programming with sets, IGI Global},
-pages = {45--55},
-file = {Wang et al_2004_A Logic-based Framework for Attribute Based Access Control.pdf:/home/hmartins/Dropbox/Papers/Wang et al_2004_A Logic-based Framework for Attribute Based Access Control.pdf:application/pdf}
-}
-
-@inproceedings{yuan_attributed_2005,
-	address = {Washington, DC, USA},
-	series = {{ICWS} '05},
-	title = {Attributed {Based} {Access} {Control} ({ABAC}) for {Web} {Services}},
-	isbn = {0-7695-2409-5},
-	url = {http://dx.doi.org/10.1109/ICWS.2005.25},
-	doi = {10.1109/ICWS.2005.25},
-	booktitle = {Proceedings of the {IEEE} {International} {Conference} on {Web} {Services}},
-	publisher = {IEEE Computer Society},
-	author = {Yuan, Eric and Tong, Jin},
-	year = {2005},
-	note = {00656},
+@inproceedings{bertino_supporting_1996,
+	address = {San Francisco, CA, USA},
+	series = {{VLDB} '96},
+	title = {Supporting {Periodic} {Authorizations} and {Temporal} {Reasoning} in {Database} {Access} {Control}},
+	isbn = {1-55860-382-4},
+	url = {http://dl.acm.org/citation.cfm?id=645922.673475},
+	booktitle = {Proceedings of the 22th {International} {Conference} on {Very} {Large} {Data} {Bases}},
+	publisher = {Morgan Kaufmann Publishers Inc.},
+	author = {Bertino, Elisa and Bettini, Claudio and Ferrari, Elena and Samarati, Pierangela},
+	year = {1996},
+	note = {00022},
 	keywords = {Master's, IGI Global},
-	pages = {561--569}
+	pages = {472--483},
+	file = {Bertino et al_1996_Supporting Periodic Authorizations and Temporal Reasoning in Database Access.pdf:/home/hmartins/Dropbox/Zotero/Bertino et al_1996_Supporting Periodic Authorizations and Temporal Reasoning in Database Access.pdf:application/pdf}
 }
 
-@inproceedings{goyal_attribute-based_2006,
-	title = {Attribute-based encryption for fine-grained access control of encrypted data},
-	booktitle = {Proceedings of the 13th {ACM} conference on {Computer} and communications security},
-	publisher = {Acm},
-	author = {Goyal, Vipul and Pandey, Omkant and Sahai, Amit and Waters, Brent},
-	year = {2006},
-	note = {04093},
-	keywords = {Master's},
-	pages = {89--98},
-	file = {Goyal et al_2006_Attribute-based encryption for fine-grained access control of encrypted data.pdf:/home/hmartins/Dropbox/Papers/Goyal et al_2006_Attribute-based encryption for fine-grained access control of encrypted data.pdf:application/pdf}
+@article{bertino_access_1998,
+	title = {An {Access} {Control} {Model} {Supporting} {Periodicity} {Constraints} and {Temporal} {Reasoning}},
+	volume = {23},
+	issn = {0362-5915},
+	url = {http://doi.acm.org/10.1145/293910.293151},
+	doi = {10.1145/293910.293151},
+	number = {3},
+	journal = {ACM Trans. Database Syst.},
+	author = {Bertino, Elisa and Bettini, Claudio and Ferrari, Elena and Samarati, Pierangela},
+	month = sep,
+	year = {1998},
+	note = {00297},
+	keywords = {Master's, access control, periodic authorization, temporal constraints, time management, IGI Global},
+	pages = {231--285},
+	file = {Bertino et al_1998_An Access Control Model Supporting Periodicity Constraints and Temporal.pdf:/home/hmartins/Dropbox/Zotero/Bertino et al_1998_An Access Control Model Supporting Periodicity Constraints and Temporal.pdf:application/pdf}
 }
 
-
-@inproceedings{wang_hierarchical_2010,
-address = {New York, NY, USA},
-series = {{CCS} '10},
-title = {Hierarchical {Attribute}-based {Encryption} for {Fine}-grained {Access} {Control} in {Cloud} {Storage} {Services}},
-isbn = {978-1-4503-0245-6},
-url = {http://doi.acm.org/10.1145/1866307.1866414},
-doi = {10.1145/1866307.1866414},
-booktitle = {Proceedings of the 17th {ACM} {Conference} on {Computer} and {Communications} {Security}},
-publisher = {ACM},
-author = {Wang, Guojun and Liu, Qin and Wu, Jie},
-year = {2010},
-note = {00593},
-keywords = {Master's, IGI Global, cloud computing, fine-grained access control, hierarchical attribute-based encryption, scalability},
-pages = {735--737},
-file = {Wang et al_2010_Hierarchical Attribute-based Encryption for Fine-grained Access Control in.pdf:/home/hmartins/Dropbox/Papers/Wang et al_2010_Hierarchical Attribute-based Encryption for Fine-grained Access Control in.pdf:application/pdf}
-}
-
-
-@inproceedings{yu_attribute_2010,
-	title = {Attribute based data sharing with attribute revocation},
-	booktitle = {Proceedings of the 5th {ACM} {Symposium} on {Information}, {Computer} and {Communications} {Security}},
+@inproceedings{bonatti_erbac:_2013,
+	address = {New York, NY, USA},
+	series = {{SACMAT} '13},
+	title = {{ERBAC}: {Event}-driven {RBAC}},
+	isbn = {978-1-4503-1950-8},
+	url = {http://doi.acm.org/10.1145/2462410.2462415},
+	doi = {10.1145/2462410.2462415},
+	booktitle = {Proceedings of the 18th {ACM} {Symposium} on {Access} {Control} {Models} and {Technologies}},
 	publisher = {ACM},
-	author = {Yu, Shucheng and Wang, Cong and Ren, Kui and Lou, Wenjing},
-	year = {2010},
-	note = {00709},
-	keywords = {Master's},
-	pages = {261--270},
-	file = {Yu et al_2010_Attribute based data sharing with attribute revocation.pdf:/home/hmartins/Dropbox/Papers/Yu et al_2010_Attribute based data sharing with attribute revocation.pdf:application/pdf}
+	author = {Bonatti, Piero and Galdi, Clemente and Torres, Davide},
+	year = {2013},
+	note = {00021},
+	keywords = {Master's, RBAC, IGI Global, event-driven access control},
+	pages = {125--136},
+	file = {Bonatti et al_2013_ERBAC.pdf:/home/hmartins/Dropbox/Papers/Bonatti et al_2013_ERBAC.pdf:application/pdf}
 }
 
+@inproceedings{covington_generalized_2000,
+	address = {Baltimore, Maryland, United States},
+	title = {Generalized {Role}-{Based} {Access} {Control} for {Securing} {Future} {Applications}},
+	booktitle = {Proceedings of the 23rd {National} {Information} {Systems} {Security} {Conference}},
+	publisher = {Georgia Tech College of Computing},
+	author = {Covington, Michael J. and Moyer, Matthew James and Ahamad, Mustaque},
+	month = oct,
+	year = {2000},
+	note = {00210},
+	keywords = {Master's, IGI Global},
+	file = {Covington et al_2000_Generalized Role-Based Access Control for Securing Future Applications.pdf:/home/hmartins/Dropbox/Zotero/Covington et al_2000_Generalized Role-Based Access Control for Securing Future Applications.pdf:application/pdf}
+}
+
+@article{damiani_georbac:_2007,
+	title = {{GEO}-{RBAC}: {A} {Spatially} {Aware} {RBAC}},
+	volume = {10},
+	issn = {1094-9224},
+	url = {http://doi.acm.org/10.1145/1210263.1210265},
+	doi = {10.1145/1210263.1210265},
+	number = {1},
+	journal = {ACM Trans. Inf. Syst. Secur.},
+	author = {Damiani, Maria Luisa and Bertino, Elisa and Catania, Barbara and Perlasca, Paolo},
+	month = feb,
+	year = {2007},
+	note = {00540},
+	keywords = {Master's, access-control model, GIS, location-based services, IGI Global},
+	file = {Damiani et al_2007_GEO-RBAC.pdf:/home/hmartins/Dropbox/Papers/Damiani et al_2007_GEO-RBAC.pdf:application/pdf}
+}
 
 @techreport{hu_guide_2014,
 	title = {Guide to {Attribute} {Based} {Access} {Control} ({ABAC}) {Definition} and {Considerations}},
@@ -1516,55 +873,159 @@ file = {Wang et al_2010_Hierarchical Attribute-based Encryption for Fine-grained
 	file = {Hu et al_2014_Guide to Attribute Based Access Control (ABAC) Definition and Considerations.pdf:/home/hmartins/Dropbox/Papers/Hu et al_2014_Guide to Attribute Based Access Control (ABAC) Definition and Considerations.pdf:application/pdf}
 }
 
+@inproceedings{cruz_constraint_2009,
+	address = {Berlin, Heidelberg},
+	title = {A {Constraint} and {Attribute} {Based} {Security} {Framework} for {Dynamic} {Role} {Assignment} in {Collaborative} {Environments}},
+	isbn = {978-3-642-03354-4},
+	abstract = {We investigate a security framework for collaborative applications that relies on the role-based access control (RBAC) model. In our framework, roles are pre-defined and organized in a hierarchy (partial order). However, we assume that users are not previously identified, therefore the actions that they can perform are dynamically determined based on their own attribute values and on the attribute values associated with the resources. Those values can vary over time (e.g., the user's location or whether the resource is open for visiting) thus enabling or disabling a user's ability to perform an action on a particular resource. In our framework, constraint values form partial orders and determine the association of actions with the resources and of users with roles. We have implemented our framework by exploring the capabilities of semantic web technologies, and in particular of OWL 1.1, to model both our framework and the domain of interest and to perform several types of reasoning. In addition, we have implemented a user interface whose purpose is twofold: (1) to offer a visual explanation of the underlying reasoning by displaying roles and their associations with users (e.g., as the user's locations vary); and (2) to enable monitoring of users that are involved in a collaborative application. Our interface uses the Google Maps API and is particularly suited to collaborative applications where the users' geospatial locations are of interest.},
+	booktitle = {Collaborative {Computing}: {Networking}, {Applications} and {Worksharing}},
+	publisher = {Springer Berlin Heidelberg},
+	author = {Cruz, Isabel F. and Gjomemo, Rigel and Lin, Benjamin and Orsini, Mirko},
+	editor = {Bertino, Elisa and Joshi, James B. D.},
+	year = {2009},
+	note = {00022},
+	keywords = {Master's, IGI Global},
+	pages = {322--339},
+	file = {Cruz et al_2009_A Constraint and Attribute Based Security Framework for Dynamic Role Assignment.pdf:/home/hmartins/Dropbox/Papers/Cruz et al_2009_A Constraint and Attribute Based Security Framework for Dynamic Role Assignment.pdf:application/pdf}
+}
+
+@inproceedings{zhang_attribute-based_2005,
+	address = {New York, NY, USA},
+	series = {{SAC} '05},
+	title = {An {Attribute}-based {Access} {Matrix} {Model}},
+	isbn = {1-58113-964-0},
+	url = {http://doi.acm.org/10.1145/1066677.1066760},
+	doi = {10.1145/1066677.1066760},
+	booktitle = {Proceedings of the 2005 {ACM} {Symposium} on {Applied} {Computing}},
+	publisher = {ACM},
+	author = {Zhang, Xinwen and Li, Yingjiu and Nalla, Divya},
+	year = {2005},
+	note = {00069},
+	keywords = {Master's, access control, decidability, access matrix model, safety analysis, IGI Global},
+	pages = {359--363},
+	file = {Zhang et al_2005_An Attribute-based Access Matrix Model.pdf:/home/hmartins/Dropbox/Papers/Zhang et al_2005_An Attribute-based Access Matrix Model.pdf:application/pdf}
+}
+
+@article{lang_flexible_2009,
+	title = {A {Flexible} {Attribute} {Based} {Access} {Control} {Method} for {Grid} {Computing}},
+	volume = {7},
+	issn = {1570-7873, 1572-9184},
+	url = {http://link.springer.com/10.1007/s10723-008-9112-1},
+	doi = {10.1007/s10723-008-9112-1},
+	language = {en},
+	number = {2},
+	urldate = {2017-12-22},
+	journal = {Journal of Grid Computing},
+	author = {Lang, Bo and Foster, Ian and Siebenlist, Frank and Ananthakrishnan, Rachana and Freeman, Tim},
+	month = jun,
+	year = {2009},
+	note = {00119},
+	keywords = {Master's},
+	pages = {169--180},
+	file = {Lang et al_2009_A Flexible Attribute Based Access Control Method for Grid Computing.pdf:/home/hmartins/Dropbox/Papers/Lang et al_2009_A Flexible Attribute Based Access Control Method for Grid Computing.pdf:application/pdf}
+}
+
+@article{kuhn_adding_2010,
+	title = {Adding attributes to role-based access control},
+	volume = {43},
+	url = {http://csrc.nist.gov/groups/SNS/rbac/documents/kuhn-coyne-weil-10.pdf},
+	number = {6},
+	urldate = {2017-10-11},
+	journal = {Computer},
+	author = {Kuhn, D. Richard and Coyne, Edward J. and Weil, Timothy R.},
+	year = {2010},
+	note = {00365},
+	keywords = {Master's},
+	pages = {79--81},
+	file = {Kuhn et al_2010_Adding attributes to role-based access control.pdf:/home/hmartins/Dropbox/Papers/Kuhn et al_2010_Adding attributes to role-based access control.pdf:application/pdf}
+}
+
+@inproceedings{wang_hierarchical_2010,
+	address = {New York, NY, USA},
+	series = {{CCS} '10},
+	title = {Hierarchical {Attribute}-based {Encryption} for {Fine}-grained {Access} {Control} in {Cloud} {Storage} {Services}},
+	isbn = {978-1-4503-0245-6},
+	url = {http://doi.acm.org/10.1145/1866307.1866414},
+	doi = {10.1145/1866307.1866414},
+	booktitle = {Proceedings of the 17th {ACM} {Conference} on {Computer} and {Communications} {Security}},
+	publisher = {ACM},
+	author = {Wang, Guojun and Liu, Qin and Wu, Jie},
+	year = {2010},
+	note = {00593},
+	keywords = {Master's, IGI Global, cloud computing, fine-grained access control, hierarchical attribute-based encryption, scalability},
+	pages = {735--737},
+	file = {Wang et al_2010_Hierarchical Attribute-based Encryption for Fine-grained Access Control in.pdf:/home/hmartins/Dropbox/Papers/Wang et al_2010_Hierarchical Attribute-based Encryption for Fine-grained Access Control in.pdf:application/pdf}
+}
+
+@inproceedings{yu_attribute_2010,
+	title = {Attribute based data sharing with attribute revocation},
+	booktitle = {Proceedings of the 5th {ACM} {Symposium} on {Information}, {Computer} and {Communications} {Security}},
+	publisher = {ACM},
+	author = {Yu, Shucheng and Wang, Cong and Ren, Kui and Lou, Wenjing},
+	year = {2010},
+	note = {00709},
+	keywords = {Master's},
+	pages = {261--270},
+	file = {Yu et al_2010_Attribute based data sharing with attribute revocation.pdf:/home/hmartins/Dropbox/Papers/Yu et al_2010_Attribute based data sharing with attribute revocation.pdf:application/pdf}
+}
+
+@inproceedings{jin_unified_2012,
+	address = {Berlin, Heidelberg},
+	title = {A {Unified} {Attribute}-{Based} {Access} {Control} {Model} {Covering} {DAC}, {MAC} and {RBAC}},
+	isbn = {978-3-642-31540-4},
+	abstract = {Recently, there has been considerable interest in attribute based access control (ABAC) to overcome the limitations of the dominant access control models (i.e, discretionary-DAC, mandatory-MAC and role based-RBAC) while unifying their advantages. Although some proposals for ABAC have been published, and even implemented and standardized, there is no consensus on precisely what is meant by ABAC or the required features of ABAC. There is no widely accepted ABAC model as there are for DAC, MAC and RBAC. This paper takes a step towards this end by constructing an ABAC model that has “just sufficient” features to be “easily and naturally” configured to do DAC, MAC and RBAC. For this purpose we understand DAC to mean owner-controlled access control lists, MAC to mean lattice-based access control with tranquility and RBAC to mean flat and hierarchical RBAC. Our central contribution is to take a first cut at establishing formal connections between the three successful classical models and desired ABAC models.},
+	booktitle = {Data and {Applications} {Security} and {Privacy} {XXVI}},
+	publisher = {Springer Berlin Heidelberg},
+	author = {Jin, Xin and Krishnan, Ram and Sandhu, Ravi},
+	editor = {Cuppens-Boulahia, Nora and Cuppens, Frédéric and Garcia-Alfaro, Joaquin},
+	year = {2012},
+	note = {00276},
+	keywords = {Master's, IGI Global},
+	pages = {41--55},
+	file = {Jin et al_2012_A Unified Attribute-Based Access Control Model Covering DAC, MAC and RBAC.pdf:/home/hmartins/Dropbox/Papers/Jin et al_2012_A Unified Attribute-Based Access Control Model Covering DAC, MAC and RBAC.pdf:application/pdf}
+}
+
 @article{wan_hasbe:_2012,
-title = {{HASBE}: {A} {Hierarchical} {Attribute}-{Based} {Solution} for {Flexible} and {Scalable} {Access} {Control} in {Cloud} {Computing}},
-volume = {7},
-issn = {1556-6013},
-doi = {10.1109/TIFS.2011.2172209},
-number = {2},
-journal = {IEEE Transactions on Information Forensics and Security},
-author = {Wan, Z. and Liu, J. and Deng, R. H.},
-month = apr,
-year = {2012},
-note = {00414},
-keywords = {Master's, Access control, authorisation, cryptography, Encryption, Cloud computing, Scalability, IGI Global, access expiration time, ciphertext policy attribute set based encryption, cloud computing, computational complexity, data privacy, data security, Educational institutions, fine grained access control, hierarchical attribute set based encryption, IT industry, multiple value assignments, outsourced data, outsourcing, privacy concerns, security concerns, user revocation},
-pages = {743--754},
-file = {Wan et al_2012_HASBE.pdf:/home/hmartins/Dropbox/Papers/Wan et al_2012_HASBE.pdf:application/pdf}
+	title = {{HASBE}: {A} {Hierarchical} {Attribute}-{Based} {Solution} for {Flexible} and {Scalable} {Access} {Control} in {Cloud} {Computing}},
+	volume = {7},
+	issn = {1556-6013},
+	doi = {10.1109/TIFS.2011.2172209},
+	number = {2},
+	journal = {IEEE Transactions on Information Forensics and Security},
+	author = {Wan, Z. and Liu, J. and Deng, R. H.},
+	month = apr,
+	year = {2012},
+	note = {00414},
+	keywords = {Master's, Access control, authorisation, cryptography, Encryption, Cloud computing, Scalability, IGI Global, access expiration time, ciphertext policy attribute set based encryption, cloud computing, computational complexity, data privacy, data security, Educational institutions, fine grained access control, hierarchical attribute set based encryption, IT industry, multiple value assignments, outsourced data, outsourcing, privacy concerns, security concerns, user revocation},
+	pages = {743--754},
+	file = {Wan et al_2012_HASBE.pdf:/home/hmartins/Dropbox/Papers/Wan et al_2012_HASBE.pdf:application/pdf}
+}
+
+@inproceedings{yang_attribute-based_2013,
+	title = {Attribute-based fine-grained access control with efficient revocation in cloud storage systems},
+	booktitle = {Proceedings of the 8th {ACM} {SIGSAC} symposium on {Information}, computer and communications security},
+	publisher = {ACM},
+	author = {Yang, Kan and Jia, Xiaohua and Ren, Kui},
+	year = {2013},
+	note = {00098},
+	keywords = {Master's},
+	pages = {523--528},
+	file = {Yang et al_2013_Attribute-based fine-grained access control with efficient revocation in cloud.pdf:/home/hmartins/Dropbox/Papers/Yang et al_2013_Attribute-based fine-grained access control with efficient revocation in cloud.pdf:application/pdf}
 }
 
 
-@inproceedings{ruj_dacc:_2011,
-address = {Washington, DC, USA},
-series = {{TRUSTCOM} '11},
-title = {{DACC}: {Distributed} {Access} {Control} in {Clouds}},
-isbn = {978-0-7695-4600-1},
-url = {http://dx.doi.org/10.1109/TrustCom.2011.15},
-doi = {10.1109/TrustCom.2011.15},
-booktitle = {Proceedings of the 2011IEEE 10th {International} {Conference} on {Trust}, {Security} and {Privacy} in {Computing} and {Communications}},
-publisher = {IEEE Computer Society},
-author = {Ruj, Sushmita and Nayak, Amiya and Stojmenovic, Ivan},
-year = {2011},
-note = {00281},
-keywords = {Master's, Access control, IGI Global, Bilinear maps, Decentralized attribute-based encryption, Storage in Clouds},
-pages = {91--98},
-annote = {Extracted Annotations (10/3/2017, 10:25:17 PM)
-"We propose DACC (Distributed Access Control in Clouds) algorithm, where one or more KDCs distribute keys to data owners and users." (Ruj et al 2011:91)
-"DACC also supports revocation of users, without redistributing keys to all the users of cloud services. We show that our approach results in lower communication, computation and storage overheads, compared to existing models and schemes." (Ruj et al 2011:91)
-"Hence we use the cryptographic technique called Attribute Based Encryption (ABE) to achieve access control in clouds." (Ruj et al 2011:91)
-"Earlier work (by Yu et al [17]) assumed that owners encrypt data with attributes that they possess and send it to the cloud to securely store them. The owners give not only access rights to users, but also give them attributes and corresponding secret keys." (Ruj et al 2011:92)
-"The access policy is in the form of a tree, with attributes" (Ruj et al 2011:92)
-"as leaf nodes and Boolean functions AND and OR as internal nodes. Threshold gates t-out-of-n are included in this representation, because they are constructed from AND and OR gates when t = n and t = 1, respectively." (Ruj et al 2011:92)
-"However, this may not hold, because in a distributed system, authorities can fail or be corrupt." (Ruj et al 2011:92)
-"The attribute authority (KDC) in all mentioned protocols is assumed to be honest. However, this may not hold, because in a distributed system, authorities can fail or be corrupt." (Ruj et al 2011:92)
-"Chase and Chow [24] devised a multi-authority ABE protocol which required no trusted authority. However, the main problem was that a user required at least one attribute from each of the authorities, which might not be practical." (Ruj et al 2011:92)
-"ABE was used for access control. They used cryptographic protocol [24], with multiple authorities to distribute attributes for access control." (Ruj et al 2011:93)
-"Wang et al [26] proposed a hierarchical access control mechanism for cloud storage. It relies on Bethencourt et al [22] CP-ABE and Hierarchical IBE [27]. The attribute authorities are arranged in a hierarchical way, with a root master (playing the role of a trusted KDC), and several domain masters who generate keys for the domains and distribute them to the users." (Ruj et al 2011:93)
-"In DACC, the cloud is assumed to be honest. If this requirement is not possible to satisfy, then care should be taken, that the cloud does not modify the data that it contains." (Ruj et al 2011:97)
-"[17] S. Yu, C. Wang, K. Ren, and W. Lou, "Attribute based data sharing with attribute revocation," in ASIACCS, D. Feng, D. A. Basin, and P. Liu, Eds. ACM, 2010, pp. 261-270." (Ruj et al 2011:97)
-"[18] A. B. Lewko and B. Waters, "Decentralizing attribute-based encryption," in EUROCRYPT, ser. Lecture Notes in Computer Science, K. G. Paterson, Ed., vol. 6632. Springer, 2011, pp. 568-588." (Ruj et al 2011:97)
-"[21] V. Goyal, O. Pandey, A. Sahai, and B. Waters, "Attribute-based encryption for fine-grained access control of encrypted data," in ACM Conference on Computer and Communications Security, 2006, pp. 89- 98." (Ruj et al 2011:97)
-"[28] S. Ruj, A. Nayak, and I. Stojmenovic, "Distributed fine-grained access control in wireless sensor networks," in IPDPS. IEEE, 2011, pp. 352- 362." (Ruj et al 2011:98)},
-file = {Ruj et al_2011_DACC.pdf:/home/hmartins/Dropbox/Papers/Ruj et al_2011_DACC.pdf:application/pdf}
+@inproceedings{bhatt_access_2017,
+	address = {Cham},
+	title = {Access {Control} {Model} for {AWS} {Internet} of {Things}},
+	isbn = {978-3-319-64701-2},
+	abstract = {Internet of Things (IoT) has received considerable attention in both industry and academia in recent years. There has been significant research on access control models for IoT in academia, while industrial deployment of several cloud-enabled IoT platforms have already been introduced. However, as yet there is no consensus on a formal access control model for cloud-enabled IoT. Currently, most of the cloud-enabled IoT platforms utilize some customized form of Role-Based Access Control (RBAC), but RBAC by itself is insufficient to address the dynamic requirements of IoT. In this paper, we study one of the commercial cloud-IoT platform, AWS IoT, and develop a formal access control model for it, which we call AWS-IoTAC. We do this by extending AWS cloud's formal access control (AWSAC) model, previously published in the academic literature, to incorporate the IoT specific components. The AWS-IoTAC model is abstracted from AWS IoT documentation and has been formalized based on AWSAC definitions. We show how this model maps to a recently proposed Access Control Oriented (ACO) architecture for cloud-enabled IoT. We demonstrate a smart-home use case in AWS IoT platform, and inspired by this use case, we propose some Attribute-Based Access Control (ABAC) extensions to the AWS-IoTAC model for enhancing the flexibility of access control in IoT.},
+	booktitle = {Network and {System} {Security}},
+	publisher = {Springer International Publishing},
+	author = {Bhatt, Smriti and Patwa, Farhan and Sandhu, Ravi},
+	editor = {Yan, Zheng and Molva, Refik and Mazurczyk, Wojciech and Kantola, Raimo},
+	year = {2017},
+	note = {00011},
+	pages = {721--736}
 }
 
 @article{ouaddah_access_2017,
@@ -1578,126 +1039,291 @@ file = {Ruj et al_2011_DACC.pdf:/home/hmartins/Dropbox/Papers/Ruj et al_2011_DAC
 	author = {Ouaddah, Aafaf and Mousannif, Hajar and Abou Elkalam, Anas and Ait Ouahman, Abdellah},
 	month = jan,
 	year = {2017},
-	note = {00056},
+	note = {00055},
 	keywords = {Master's, Access control, 00-01, 99-00, Internet of Things, Privacy, Security, IGI Global},
 	pages = {237--262},
 	file = {Ouaddah et al_2017_Access Control in the Internet of Things.pdf:/home/hmartins/Dropbox/Papers/Ouaddah et al_2017_Access Control in the Internet of Things.pdf:application/pdf}
 }
 
-@inproceedings{dorri_blockchain_2017,
-title = {Blockchain for {IoT} security and privacy: {The} case study of a smart home},
-doi = {10.1109/PERCOMW.2017.7917634},
-booktitle = {2017 {IEEE} {International} {Conference} on {Pervasive} {Computing} and {Communications} {Workshops} ({PerCom} {Workshops})},
-author = {Dorri, A. and Kanhere, S. S. and Jurdak, R. and Gauravaram, P.},
-month = mar,
-year = {2017},
-note = {00104},
-keywords = {cloud storage, Internet of Things, Privacy, Security, Online banking, Cloud computing, cloud computing, data privacy, BC-based smart home framework, Blockchain-based approaches, Conferences, home automation, Internet of Things privacy, Internet of Things security, IoT privacy, IoT security, POW, proof-of-work, resource-constrained IoT devices, smart home setting, Smart homes, storage management},
-pages = {618--623},
-file = {Dorri et al_2017_Blockchain for IoT security and privacy.pdf:/home/hmartins/Dropbox/Papers/Dorri et al_2017_Blockchain for IoT security and privacy.pdf:application/pdf}
+@article{akl_cryptographic_1983,
+	title = {Cryptographic solution to a problem of access control in a hierarchy},
+	volume = {1},
+	url = {http://dl.acm.org/citation.cfm?id=357372},
+	number = {3},
+	urldate = {2017-09-30},
+	journal = {ACM Transactions on Computer Systems (TOCS)},
+	author = {Akl, Selim G. and Taylor, Peter D.},
+	year = {1983},
+	note = {00657},
+	keywords = {Master's},
+	pages = {239--248},
+	file = {Akl_Taylor_1983_Cryptographic solution to a problem of access control in a hierarchy.pdf:/home/hmartins/Dropbox/Papers/Akl_Taylor_1983_Cryptographic solution to a problem of access control in a hierarchy.pdf:application/pdf}
 }
 
-@article{calero_toward_2010,
-title = {Toward a {Multi}-{Tenancy} {Authorization} {System} for {Cloud} {Services}},
-volume = {8},
-issn = {1540-7993},
-url = {http://dx.doi.org/10.1109/MSP.2010.194},
-doi = {10.1109/MSP.2010.194},
-number = {6},
-journal = {IEEE Security and Privacy},
-author = {Calero, Jose M. Alcaraz and Edwards, Nigel and Kirschnick, Johannes and Wilcock, Lawrence and Wray, Mike},
-month = nov,
-year = {2010},
-note = {00149},
-keywords = {Master's, security, role-based access control, authorization, Cloud computing, hierarchical RBAC, privacy, IGI Global},
-pages = {48--55},
-file = {Calero et al_2010_Toward a Multi-Tenancy Authorization System for Cloud Services.pdf:/home/hmartins/Dropbox/Zotero/Calero et al_2010_Toward a Multi-Tenancy Authorization System for Cloud Services.pdf:application/pdf}
+@article{mackinnon_optimal_1985,
+	title = {An optimal algorithm for assigning cryptographic keys to control access in a hierarchy},
+	number = {9},
+	journal = {IEEE Transactions on Computers},
+	author = {MacKinnon, Stephen J. and Taylor, Peter D. and Meijer, Henk and Akl, Selim G.},
+	year = {1985},
+	note = {00227},
+	keywords = {Master's},
+	pages = {797--802},
+	file = {MacKinnon et al_1985_An optimal algorithm for assigning cryptographic keys to control access in a.pdf:/home/hmartins/Dropbox/Papers/MacKinnon et al_1985_An optimal algorithm for assigning cryptographic keys to control access in a.pdf:application/pdf}
 }
 
-@inproceedings{sandhu_peer--peer_2005,
-title = {Peer-to-peer access control architecture using trusted computing technology},
-url = {http://dl.acm.org/citation.cfm?id=1064005},
-urldate = {2017-08-24},
-booktitle = {Proceedings of the tenth {ACM} symposium on {Access} control models and technologies},
-publisher = {ACM},
-author = {Sandhu, Ravi and Zhang, Xinwen},
-year = {2005},
-note = {00186},
-keywords = {Read, Interesting, Master's},
-pages = {147--158},
-annote = {Extracted Annotations (10/8/2017, 3:50:52 PM)
-"s. In this paper we propose a trusted computing architecture to enforce access control policies in such applications." (Sandhu and Zhang 2005:147)
-"By monitoring and verifying the integrity and properties of running applications in a platform using the functions of trusted computing, the TRM can enforce various policies on behalf of object owners." (Sandhu and Zhang 2005:147)
-"In this paper, we consider a client to be a computing platform such that a user (object owner) can distribute some objects directly or indirectly to it, and other users (including the owner) can access the object on the platform." (Sandhu and Zhang 2005:147)
-"The lack of strong security mechanisms on client platforms in general, and the push for an open environment on computing devices, such as PDAs, smart phones, notebooks, etcetera, leave the client extremely vulnerable to software attacks. It has been generally accepted for some time that software alone cannot provide an adequate foundation for building a high-assurance trusted platform." (Sandhu and Zhang 2005:147)
-"t. TC technologies seek to protect data in creation, processing, storage, and transfer primarily by exposing the cryptographic secrets required to access the data only to software which has a verifiable chain of trust, be it on a single computer or across multiple computers." (Sandhu and Zhang 2005:148)
-"TC primitives include cryptographic operations and trusted storage of root keys as a foundation for security." (Sandhu and Zhang 2005:148)
-"TC focuses on the assurance that an entity does behave in the expected manner through mechanisms of integrity measurement, storage, and reporting." (Sandhu and Zhang 2005:148)
-"2.2.1 Decentralized Dissemination Control In decentralized dissemination control (DCON), an object is distributed to a client platform, where the object owner may want to enforce some security policies to control the access, i.e., by trusting the subject that receives and views the object, and the platform and the state of applications." (Sandhu and Zhang 2005:149)
-"In recent and emerging computing models, a server needs to trust a client, with respect to both platform and user authentication." (Sandhu and Zhang 2005:149)
-"is that security policies are enforced on the client platform. Policy enforcement is dependent on trust between platforms." (Sandhu and Zhang 2005:149)
-"In modern open systems certainly the application and possibly the operating system are likely to be much more dynamic requiring mechanisms to guarantee their integrity." (Sandhu and Zhang 2005:149)
-"In distributed and decentralized systems, an object or policy owner needs to trust that the valid user is authenticated and authorized in a client platform before being allowed to access a protected object." (Sandhu and Zhang 2005:149)
-"The first step to control access to an object in a client platform is the generation and distribution of the policy and the object encryption secret." (Sandhu and Zhang 2005:151)
-"For global and open environment, this may rely on some trusted third party. For example, an independent CA certifies that software with particular integrity value and patch version satisfies a particular property, and this CA is trusted by an attestation challenger (e.g., Alice's platform). Secrets generated by a se" (Sandhu and Zhang 2005:151)
-"[19] J. S. Park and R. Sandhu. Binding identities and attributes using digitally signed certificates. In Proc. ACSAC, 2000. [20] A. Sadeghi and C. Stuble. Taming trusted platforms by operating system design. In Information Security Applications, 4th International Workshop, LNCS 2908, 2003." (Sandhu and Zhang 2005:158)},
-file = {Sandhu_Zhang_2005_Peer-to-peer access control architecture using trusted computing technology.pdf:/home/hmartins/Dropbox/Papers/Sandhu_Zhang_2005_Peer-to-peer access control architecture using trusted computing technology.pdf:application/pdf}
+@article{sandhu_cryptographic_1988,
+	title = {Cryptographic implementation of a tree hierarchy for access control},
+	volume = {27},
+	url = {http://www.profsandhu.com/journals/ipl/ipl_crypto_88.pdf},
+	doi = {https://doi.org/10.1016/0020-0190(88)90099-3},
+	number = {2},
+	urldate = {2017-11-06},
+	journal = {Information Processing Letters},
+	author = {Sandhu, Ravi S.},
+	year = {1988},
+	note = {00286},
+	keywords = {Master's},
+	pages = {95--98},
+	file = {Sandhu_1988_Cryptographic implementation of a tree hierarchy for access control.pdf:/home/hmartins/Dropbox/Papers/Sandhu_1988_Cryptographic implementation of a tree hierarchy for access control.pdf:application/pdf}
+}
+
+@article{denning_master_1981,
+	title = {Master {Keys} for {Group} {Sharing}},
+	volume = {12},
+	url = {http://ai2-s2-pdfs.s3.amazonaws.com/6b41/78650217e249e0b1cc2169f17300a9bb15c4.pdf},
+	number = {1},
+	urldate = {2017-11-06},
+	journal = {Information Processing Letters},
+	author = {Denning, Dorothy E. and Schneider, Fred B.},
+	month = feb,
+	year = {1981},
+	note = {00016},
+	keywords = {Master's},
+	pages = {23--25},
+	file = {Denning_Schneider_1981_Master Keys for Group Sharing.pdf:/home/hmartins/Dropbox/Papers/Denning_Schneider_1981_Master Keys for Group Sharing.pdf:application/pdf}
+}
+
+@incollection{brassard_flexible_1990,
+	address = {New York, NY},
+	title = {Flexible {Access} {Control} with {Master} {Keys}},
+	volume = {435},
+	isbn = {978-0-387-97317-3},
+	url = {http://link.springer.com/10.1007/0-387-34805-0_29},
+	language = {en},
+	urldate = {2017-10-09},
+	booktitle = {Advances in {Cryptology} — {CRYPTO}’ 89 {Proceedings}},
+	publisher = {Springer New York},
+	author = {Chick, Gerald C. and Tavares, Stafford E.},
+	editor = {Brassard, Gilles},
+	year = {1990},
+	note = {00000},
+	keywords = {Master's},
+	pages = {316--322},
+	file = {Chick_Tavares_1990_Flexible Access Control with Master Keys.pdf:/home/hmartins/Dropbox/Papers/Chick_Tavares_1990_Flexible Access Control with Master Keys.pdf:application/pdf}
+}
+
+@inproceedings{park_binding_2000,
+	title = {Binding identities and attributes using digitally signed certificates},
+	url = {http://ieeexplore.ieee.org/abstract/document/898865/},
+	urldate = {2017-10-08},
+	booktitle = {Computer {Security} {Applications}, 2000. {ACSAC}'00. 16th {Annual} {Conference}},
+	publisher = {IEEE},
+	author = {Park, Joon S. and Sandhu, Ravi},
+	year = {2000},
+	note = {00094},
+	keywords = {Master's},
+	pages = {120--127},
+	annote = {Extracted Annotations (10/8/2017, 7:57:35 PM)
+"The identity information and attributes are tightly coupled by a single signature. In other words, once a certificate is issued, the information in the certificate cannot be changed unless a new certificate is reissued. Under a simple policy, this binder is useful, since the system management is simplified. There is only one CA to trust." (Park and Sandhu 2000:123)
+"This binder supports multiple CAs and different lifetimes of identity and attribute certificates. Initially, a subject, let's say, Alice, has one or more ID certificates issued and digitally signed by different ID CAs as usual." (Park and Sandhu 2000:124)
+"This binder supports multiple CAs and different lifetimes of identity and attributes like the autonomic signature, but it provides a tightly-coupled binding mechanism between identities and attributes." (Park and Sandhu 2000:125)},
+	file = {Park_Sandhu_2000_Binding identities and attributes using digitally signed certificates.pdf:/home/hmartins/Dropbox/Papers/Park_Sandhu_2000_Binding identities and attributes using digitally signed certificates.pdf:application/pdf}
+}
+
+@inproceedings{miklau_controlling_2003,
+	title = {Controlling access to published data using cryptography},
+	url = {http://dl.acm.org/citation.cfm?id=1315528},
+	urldate = {2017-09-30},
+	booktitle = {Proceedings of the 29th international conference on {Very} large data bases-{Volume} 29},
+	publisher = {VLDB Endowment},
+	author = {Miklau, Gerome and Suciu, Dan},
+	year = {2003},
+	note = {00360},
+	keywords = {Read, Master's},
+	pages = {898--909},
+	annote = {Extracted Annotations (10/2/2017, 10:44:29 PM)
+"Recent research into integration systems and peer-to-peer databases has created new ways for diverse groups to share and process data [23, 34, 21, 28]." (Miklau and Suciu 2003:898)
+"The trust, confidentiality and security issues involved in sharing data are immense however [18, 31], and there are few tools for managing access to the data that peers are encouraged or required to share (especially when distributed data processing is needed)." (Miklau and Suciu 2003:898)
+"Database security has been studied extensively in the past [13, 1, 9], however none of that work applies to data publishing." (Miklau and Suciu 2003:898)
+"More recent work has also addressed the client's security [10]:" (Miklau and Suciu 2003:899)
+"Current Approaches to Access Control There are two traditional approaches to controlled access to data. The first keeps the data on a secure server that authenticates users and enforces the access policies, without publishing the data. The other is to publish multiple views of the data, one for each user or class of users." (Miklau and Suciu 2003:901)
+"[10] B. Chor, O. Goldreich, E. Kushilevitz, and M. Sudan. Private information retrieval. In Foundations of Computer Science (FOCS), 1995." (Miklau and Suciu 2003:909)
+"[11] J. Daemen and V. Rijmen. The block cipher rijndael. In CARDIS, pages 277-284, 1998." (Miklau and Suciu 2003:909)
+"[21] S. Gribble, A. Halevy, Z. Ives, M. Rodrig, and D. Suciu. What can peer-to-peer do for databases, and vice versa? WebDB Workshop on Databases and the Web, June 2001." (Miklau and Suciu 2003:909)},
+	file = {Miklau_Suciu_2003_Controlling access to published data using cryptography.pdf:/home/hmartins/Dropbox/Papers/Miklau_Suciu_2003_Controlling access to published data using cryptography.pdf:application/pdf}
+}
+
+@inproceedings{di_vimercati_over-encryption:_2007,
+	title = {Over-encryption: {Management} of access control evolution on outsourced data},
+	shorttitle = {Over-encryption},
+	url = {http://dl.acm.org/citation.cfm?id=1325869},
+	urldate = {2017-08-17},
+	booktitle = {Proceedings of the 33rd international conference on {Very} large data bases},
+	publisher = {VLDB endowment},
+	author = {Di Vimercati, Sabrina De Capitani and Foresti, Sara and Jajodia, Sushil and Paraboschi, Stefano and Samarati, Pierangela},
+	year = {2007},
+	note = {00468},
+	keywords = {Read, Master's},
+	pages = {123--134},
+	annote = {Extracted Annotations (10/8/2017, 2:35:32 PM)
+"the enforcement of selective authorization policies and the support of policy updates in dynamic scenarios." (Di Vimercati et al 2007:123)
+"t, it is legitimate for the data owner to demand the data not to be disclosed to the service provider itself," (Di Vimercati et al 2007:123)
+"The model allows the definition of an encryption policy equivalent to the authorization policy to be enforced on the resources." (Di Vimercati et al 2007:124)
+"we propose the use of a two-layer approach to enforce selective encryption without requesting the owner to re-encrypt the resources every time there is a change in the authorization policy." (Di Vimercati et al 2007:124)
+"). Since keys need to remain secret, while tokens are public, the use of tokens greatly simplifies key management." (Di Vimercati et al 2007:124)
+"Authorizations are of the form huser,resource i.1" (Di Vimercati et al 2007:124)
+"To avoid users having to store and manage a huge number of (secret) keys, we exploit the key derivation method via tokens. Exploiting tokens, the release to each user of a set of keys K = \{k1 , . . . , kn\} can be equivalently obtained by the release to each user of a single key ki ∈ K and the publication of a set of tokens allowing to derive (directly or indirectly) all keys kj ∈ K, j 6= i." (Di Vimercati et al 2007:125)
+"The owner encrypts the resources and sends them to the server in encrypted form; the server can impose another layer of encryption (following directions by the data owner)." (Di Vimercati et al 2007:126)
+"derivation keys and access keys . Access keys are the ones actually used to encrypt resources, while derivation keys are used to provide the derivation capability via tokens," (Di Vimercati et al 2007:126)
+"Policy update operations can be of three kinds: 1) inserting/deleting a user; 2) inserting/deleting a resource; and 3) granting/revoking an authorization." (Di Vimercati et al 2007:127)
+"There is an emerging trend towards scenarios where resource management is outsourced to an external service providing storage capabilities and high-bandwidth distribution channels." (Di Vimercati et al 2007:134)
+"[3] S. Akl and P. Taylor. Cryptographic solution to a problem of access control in a hierarchy. ACM TOCS, 1(3):239-248, August 1983. [4] M. Atallah, K. Frikken, and M. Blanton. Dynamic and efficient key management for access hierarchies. In Proc. of the 12th ACM CCS05, Alexandria, VA, USA, Nov. 2005." (Di Vimercati et al 2007:134)
+"[8] J. Crampton, K. Martin, and P. Wild. On key assignment for hierarchical access control. In Proc. of the 19th IEEE CSFW'06, Venice, Italy, July 2006." (Di Vimercati et al 2007:134)
+"[10] H. Hacig ̈um ̈us, B. Iyer, and S. Mehrotra. Providing database as a service. In Proc. of 18th ICDE, San Jose, CA, USA, Feb. 2002. [11] H. Hacig ̈um ̈us, B. Iyer, S. Mehrotra, and C. Li. Executing SQL over encrypted data in the database-service-provider model. In Proc. of the ACM SIGMOD 2002, Madison, Wisconsin, USA, June 2002." (Di Vimercati et al 2007:134)
+"[13] G. Miklau and D. Suciu. Controlling access to published data using cryptography. In Proc. of the 29th VLDB conference, Berlin, Germany, Sept. 2003." (Di Vimercati et al 2007:134)
+"[15] R. Sandhu. On some cryptographic solutions for access control in a tree hierarchy. In Proc. of the FJCC'87, Dallas, TX, USA, Oct. 1987." (Di Vimercati et al 2007:134)},
+	file = {Di Vimercati et al_2007_Over-encryption.pdf:/home/hmartins/Dropbox/Papers/Di Vimercati et al_2007_Over-encryption.pdf:application/pdf}
+}
+
+@inproceedings{harrington_cryptographic_2003,
+	address = {New York, NY, USA},
+	series = {{SACMAT} '03},
+	title = {Cryptographic {Access} {Control} in a {Distributed} {File} {System}},
+	isbn = {1-58113-681-1},
+	url = {http://doi.acm.org/10.1145/775412.775432},
+	doi = {10.1145/775412.775432},
+	booktitle = {Proceedings of the {Eighth} {ACM} {Symposium} on {Access} {Control} {Models} and {Technologies}},
+	publisher = {ACM},
+	author = {Harrington, Anthony and Jensen, Christian},
+	year = {2003},
+	note = {00107},
+	keywords = {Master's, access control, cryptography, network file systems, IGI Global},
+	pages = {158--165},
+	annote = {Extracted Annotations (10/8/2017, 2:49:46 PM)
+"Traditional access control mechanisms rely on a reference monitor to mediate access to protected resources. Reference monitors are inherently centralized" (Harrington and Jensen 2003:158)
+"ty. Cryptographic access control is a new distributed access control paradigm designed for a global federation of information systems." (Harrington and Jensen 2003:158)
+"Current access control mechanisms invoke a reference monitor [1] to verify a principal's right to access a protected object every time the object is referenced." (Harrington and Jensen 2003:158)
+"ACLs do not scale well, because it is difficult to delegate the right to delegate, i.e. modify the ACL. This means that the ACLs have to be organised into a hierarchy where the right to delegate access rights corresponds to the right to modify the ACL in a specific branch of the hierarchy, Thus, the ACL hierarchy must reflect the structure of the entire organisation.1" (Harrington and Jensen 2003:158)
+"In addition, a distributed reference monitor enforces a homogeneous security policy on a heterogeneous environment and requires global knowledge on the part of the entity that defines security policy." (Harrington and Jensen 2003:158)
+"We therefore need to rethink the notion of access control in large-" (Harrington and Jensen 2003:158)
+"scale open systems, such as the Internet, in a way that separates enforceme nt of access control policies from the storage of objects in the system and, at the same time, ensures the confidentiality and integrity of data stored and transferred in the system." (Harrington and Jensen 2003:159)
+"l, a novel access control mechanism that eliminates the need for a reference monitor and relies exclusively on cryptography to ensure confidentiality and integrity of data stored in the system." (Harrington and Jensen 2003:159)
+"Data are encrypted with the private key, also called the encryption key and decrypted with the public key, also called the decryption key." (Harrington and Jensen 2003:159)
+"The advantage of this approach is that it is inherently distributed, i.e., the tokens needed to access data only have meaning where data is used, so there is no need for coordination of access control state among clients and servers in the system." (Harrington and Jensen 2003:159)
+"The cryptographic access control mechanism is designed to operate in an open network where establishing the identity of the client conveys no information about the likely behaviour of the client and thus, is irrelevant to the secure operation of the server." (Harrington and Jensen 2003:159)
+"The cryptographic access control mechanism seeks to reposition the burden of access control from the server to the client." (Harrington and Jensen 2003:159)
+"using a log-structured file system [22, 30, 25, 6], where modifications are written to a log instead of overwriting disk blocks. An attacker may write false log entries, but this is easily detected and corrupt disk blocks can be ignored, i.e. by reading the latest entry written to the log that decrypts correctly." (Harrington and Jensen 2003:159)
+"A simple approach is to provide the server with the decryption key, which allows it to identify incorrect log-entries and remove them from the log. However, the decryption key alone does not allow the server to detect invalid log-entries in unstructured binary data, so we require that the client signs log-entries, with the encryption key before they are sent to the server." (Harrington and Jensen 2003:159)
+"Data stored on the server are encrypted with a symmetric algorithm and signed with the encryption key as before. The digital signature is used by clients to guarantee integrity of the data and by the server to provide a means for log compression as described in Section 2.2." (Harrington and Jensen 2003:160)
+"It is a fundamental requirement of our system that the user have complete trust in the client machine." (Harrington and Jensen 2003:160)
+"All data stored locally are unencrypted and if a malicious agent succeeds in compromising the client machine then data confidentiality is destroyed." (Harrington and Jensen 2003:160)
+"However compromising a client only affects the subset of system files which are associated with that client." (Harrington and Jensen 2003:160)
+"The system is designed to operate over a public unsecured network. All data are encrypted by the client before the remote storage procedures are invoked. This ensures that all data is encrypted prior to being transmitted across the network. All data sent from the server to the client is also encrypted. The use of digital signatures protects against deliberate or accidental changes to the payload of the network packets. This effectively means that data integrity and confidentiality are guaranteed and the user need not place any trust in the network." (Harrington and Jensen 2003:160)
+"Contrary to traditional access control mechanisms, cryptographic access control implements a client centric view of the trusted computing base (TCB)." (Harrington and Jensen 2003:161)
+"Minimal trust is placed in the server and any interceptor of messages can only inflict as much damage as a malicious server. The strong encryption safeguards data confidentiality and the signature validation routines protect data integrity." (Harrington and Jensen 2003:163)
+"Security policies are defined by the users and enforced by the way that they distribute keys. The current prototype lacks a secure key distribution mechanism, which would facilitate file sharing." (Harrington and Jensen 2003:164)
+"We have described these challenges and have offered a critique of the suitability of the cryptographic access control mechanism for use in modern distributed systems. We have found the cryptographic access control mechanism to be flexible and scalable yet powerful enough to effectively protect resources in insecure environments." (Harrington and Jensen 2003:164)
+"[6] C. Czezatke and M. A. Ertl. LinLogFS — a log-structured filesystem for Linux. In Freenix Track of Usenix Annual Technical Conference, pages 77-88, 2000." (Harrington and Jensen 2003:164)
+"[8] M. Fischer, N. Lynch, and M. Paterson. Impossibility of distributed consensus with one faulty process. Journal of the ACM, 32(2):374-382, 1985." (Harrington and Jensen 2003:164)
+"[9] K. Fu, M. F. Kaashoek, and D. Mazi 'eres. Fast and secure distributed read-only file system. In Proceedigs of the 4th Symposium on Operating Systems Design and Implementation, pages 181-196, San Diego, California, U.S.A., October 2000." (Harrington and Jensen 2003:164)
+"[10] A. Harrington. Cryptographic access control for a network file system. Master's thesis, Trinity College, Dublin, 2001." (Harrington and Jensen 2003:164)
+"[15] R. N. M. Burrows, M. Abadi. A logic of authentication. ACM Transactions on Computer Systems, 8(1):18-36, February 1990." (Harrington and Jensen 2003:164)
+"[20] J. T. Regan and C. D. Jensen. Capability file names: Separating authorisation from user management in an internet file system. In Proceedings of the 2001 USENIX Security Symposium, pages 221-234, Washington D.C., U.S.A., August 2001." (Harrington and Jensen 2003:165)
+"[22] M. Rosenblum and J. K. Ousterhout. The design and implementation of a log-structured file system. ACM Transactions on Computer Systems, 10(1):26-52, 1992. [23] J. H. Saltzer, D. P. Reed, and D. D. Clark. End-to-end arguments in system design. ACM Transactions on Computer Systems, 2(4):277-288, Nov. 1984." (Harrington and Jensen 2003:165)
+"[27] M. Satyanarayanan. Integrating security in a large distributed system. ACM Transactions on Computer Systems, 7(3):247-280, 1989." (Harrington and Jensen 2003:165)
+"[30] M. I. Seltzer, K. Bostic, M. K. McKusick, and C. Staelin. An implementation of a log-structured file system for UNIX. In USENIX Winter, pages 307-326, 1993." (Harrington and Jensen 2003:165)},
+	file = {Harrington_Jensen_2003_Cryptographic Access Control in a Distributed File System.pdf:/home/hmartins/Dropbox/Zotero/Harrington_Jensen_2003_Cryptographic Access Control in a Distributed File System.pdf:application/pdf}
+}
+
+@article{moffett_specifying_1990,
+	title = {Specifying {Discretionary} {Access} {Control} policy for {Distributed} {Systems}},
+	volume = {13},
+	url = {https://s3.amazonaws.com/academia.edu.documents/30736613/10.1.1.41.6306.pdf?AWSAccessKeyId=AKIAIWOWYYGZ2Y53UL3A&Expires=1507589182&Signature=xy5kz5kZLqrqxWbkBAxxgXVCgTE%3D&response-content-disposition=inline%3B%20filename%3DSpecifying_discretionary_access_control.pdf},
+	number = {9},
+	urldate = {2017-10-09},
+	journal = {Computer Communications},
+	author = {Moffett, Jonathan and Sloman, Morris and Twidle, Kevin},
+	month = nov,
+	year = {1990},
+	note = {00081},
+	keywords = {Master's},
+	pages = {571--580},
+	file = {Moffett et al_1990_Specifying Discretionary Access Control policy for Distributed Systems.pdf:/home/hmartins/Dropbox/Papers/Moffett et al_1990_Specifying Discretionary Access Control policy for Distributed Systems.pdf:application/pdf}
+}
+
+@inproceedings{sandhu_implementation_1992,
+	title = {Implementation considerations for the typed access matrix model in a distributed environment},
+	url = {https://pdfs.semanticscholar.org/1a08/30fe6b5145a363040dcf12fbab5d6d687e25.pdf},
+	urldate = {2017-10-10},
+	booktitle = {Proceedings of the 15th {NIST}-{SCSC} {National} {Computer} {Security} {Conference}, {Baltimore}, {Maryland}},
+	author = {Sandhu, Ravi S. and Suri, Gurpreet S.},
+	year = {1992},
+	note = {00027},
+	keywords = {Master's},
+	pages = {221--235},
+	file = {Sandhu_Suri_1992_Implementation considerations for the typed access matrix model in a.pdf:/home/hmartins/Dropbox/Papers/Sandhu_Suri_1992_Implementation considerations for the typed access matrix model in a.pdf:application/pdf}
+}
+
+@inproceedings{johnston_authorization_1998,
+	title = {Authorization and attribute certificates for widely distributed access control},
+	doi = {10.1109/ENABL.1998.725715},
+	booktitle = {Enabling {Technologies}: {Infrastructure} for {Collaborative} {Enterprises}, 1998. ({WET} {ICE} '98) {Proceedings}., {Seventh} {IEEE} {International} {Workshops} on},
+	author = {Johnston, W. and Mudumbai, S. and Thompson, M.},
+	month = jun,
+	year = {1998},
+	note = {00192},
+	keywords = {Master's, Access control, authorisation, Authentication, authorization, access groups, Access protocols, attribute certificates, Authorization, certification, Collaboration, Contracts, distributed access rights management, Environmental management, geographically dispersed stakeholders, Human resource management, independent stakeholders, Laboratories, multiple stakeholders, policy engine, Resource management, use-condition certificates, wide area networks, widely distributed access control, IGI Global},
+	pages = {340--345},
+	file = {Johnston et al_1998_Authorization and attribute certificates for widely distributed access control.pdf:/home/hmartins/Dropbox/Papers/Johnston et al_1998_Authorization and attribute certificates for widely distributed access control.pdf:application/pdf}
 }
 
 @inproceedings{sandhu_decentralized_1998,
-address = {New York, NY, USA},
-series = {{RBAC} '98},
-title = {Decentralized {User}-role {Assignment} for {Web}-based {Intranets}},
-isbn = {1-58113-113-5},
-url = {http://doi.acm.org/10.1145/286884.286887},
-doi = {10.1145/286884.286887},
-booktitle = {Proceedings of the {Third} {ACM} {Workshop} on {Role}-based {Access} {Control}},
-publisher = {ACM},
-author = {Sandhu, Ravi and Park, Joon S.},
-year = {1998},
-note = {00058},
-keywords = {Master's, IGI Global},
-pages = {1--12},
-annote = {Extracted Annotations (10/8/2017, 3:46:41 PM)
+	address = {New York, NY, USA},
+	series = {{RBAC} '98},
+	title = {Decentralized {User}-role {Assignment} for {Web}-based {Intranets}},
+	isbn = {1-58113-113-5},
+	url = {http://doi.acm.org/10.1145/286884.286887},
+	doi = {10.1145/286884.286887},
+	booktitle = {Proceedings of the {Third} {ACM} {Workshop} on {Role}-based {Access} {Control}},
+	publisher = {ACM},
+	author = {Sandhu, Ravi and Park, Joon S.},
+	year = {1998},
+	note = {00058},
+	keywords = {Master's, IGI Global},
+	pages = {1--12},
+	annote = {Extracted Annotations (10/8/2017, 3:46:41 PM)
 "The intricacy of security administration is one of the most challenging problems in large networked systems." (Sandhu and Park 1998:1)
 "Web servers which enforce RBAC at the granularity of individual URL's and an administrative tool that allows a security administrator to define roles, role-role relationships and assign user to roles." (Sandhu and Park 1998:1)
 "In large organizations which have large numbers of roles and users, managing these roles and users, and their interrelationships, is a burdensome task that often is highly centralized and delegated to a small group of administrators. Some suitable decentralization of this administrative task is essential." (Sandhu and Park 1998:2)
 "[BCF+97] John Barkley, Anthony Cincotta, David Ferraiolo, Serban Gavrilla, and Richard Kuhn. Role based access control for the World Wide Web. Technical report, National Institute of Standards and Technology, 1997." (Sandhu and Park 1998:11)},
-file = {Sandhu_Park_1998_Decentralized User-role Assignment for Web-based Intranets.pdf:/home/hmartins/Dropbox/Zotero/Sandhu_Park_1998_Decentralized User-role Assignment for Web-based Intranets.pdf:application/pdf}
+	file = {Sandhu_Park_1998_Decentralized User-role Assignment for Web-based Intranets.pdf:/home/hmartins/Dropbox/Zotero/Sandhu_Park_1998_Decentralized User-role Assignment for Web-based Intranets.pdf:application/pdf}
 }
-
-@article{miltchev_decentralized_2008,
-	title = {Decentralized {Access} {Control} in {Distributed} {File} {Systems}},
-	volume = {40},
-	issn = {0360-0300},
-	url = {http://doi.acm.org/10.1145/1380584.1380588},
-	doi = {10.1145/1380584.1380588},
-	number = {3},
-	journal = {ACM Comput. Surv.},
-	author = {Miltchev, Stefan and Smith, Jonathan M. and Prevelakis, Vassilis and Keromytis, Angelos and Ioannidis, Sotiris},
-	month = aug,
-	year = {2008},
-	note = {00049},
-	keywords = {Master's, Authentication, authorization, certificates, credentials, decentralized access control, networked file systems, trust management, IGI Global},
-	pages = {10:1--10:30},
-	file = {Miltchev et al_2008_Decentralized Access Control in Distributed File Systems.pdf:/home/hmartins/Dropbox/Papers/Miltchev et al_2008_Decentralized Access Control in Distributed File Systems.pdf:application/pdf}
-}
-
 
 @inproceedings{park_smart_1999,
-address = {Arlington, Virginia, United States},
-title = {Smart certificates: {Extending} {X}. 509 for secure attribute services on the {Web}},
-shorttitle = {Smart certificates},
-url = {http://www.profsandhu.com/confrnc/nissc/nissc99.pdf},
-urldate = {2017-09-30},
-booktitle = {Proceedings of 22nd {National} {Information} {Systems} {Security} {Conference}},
-author = {Park, Joon S. and Sandhu, Ravi},
-month = oct,
-year = {1999},
-note = {00064},
-keywords = {Master's, IGI Global},
-pages = {1--12},
-annote = {Extracted Annotations (10/8/2017, 7:50:27 PM)
+	address = {Arlington, Virginia, United States},
+	title = {Smart certificates: {Extending} {X}. 509 for secure attribute services on the {Web}},
+	shorttitle = {Smart certificates},
+	url = {http://www.profsandhu.com/confrnc/nissc/nissc99.pdf},
+	urldate = {2017-09-30},
+	booktitle = {Proceedings of 22nd {National} {Information} {Systems} {Security} {Conference}},
+	author = {Park, Joon S. and Sandhu, Ravi},
+	month = oct,
+	year = {1999},
+	note = {00064},
+	keywords = {Master's, IGI Global},
+	pages = {1--12},
+	annote = {Extracted Annotations (10/8/2017, 7:50:27 PM)
 "Wid ty th u an sev ep m an an th ad an ta an d an ta ToumW ebw exnX a ad in w cu t u W nm th exn X c ca sm ce a ." (Park et al 1999:1)
 "H wev e th h ve b a b rahm vd ean tronW eb vnm ts C ren t ap h to a con tro on Wb sev e a m b on in u th tepwm" (Park et al 1999:1)
 "Om hXm seuW eb TXm b ey E enX yb ohX en In th p we id ty th u an sev ep m in w h ea h m h u an h m fo a com e ap h to seu ab sev on th Wb" (Park et al 1999:2)
@@ -1705,5 +1331,107 @@ annote = {Extracted Annotations (10/8/2017, 7:50:27 PM)
 "[ P Jn S Pak an R v S u RA C on th web by s m c In P oceednA CMW oB dA cceC o . A CM ax VAO 1" (Park et al 1999:12)
 "[ PG JnP akR vS uLG taRA CW eb yu cok In P oceedn o th IFP W W on D a S cu . Cm ,1" (Park et al 1999:12)
 "[S R vS u R tro Adn e in Cm ,4" (Park et al 1999:12)},
-file = {Park_Sandhu_1999_Smart certificates.pdf:/home/hmartins/Dropbox/Papers/Park_Sandhu_1999_Smart certificates.pdf:application/pdf}
+	file = {Park_Sandhu_1999_Smart certificates.pdf:/home/hmartins/Dropbox/Papers/Park_Sandhu_1999_Smart certificates.pdf:application/pdf}
+}
+
+@article{park_role-based_2001,
+	title = {Role-based {Access} {Control} on the {Web}},
+	volume = {4},
+	issn = {1094-9224},
+	url = {http://doi.acm.org/10.1145/383775.383777},
+	doi = {10.1145/383775.383777},
+	number = {1},
+	journal = {ACM Trans. Inf. Syst. Secur.},
+	author = {Park, Joon S. and Sandhu, Ravi and Ahn, Gail-Joon},
+	month = feb,
+	year = {2001},
+	note = {00364},
+	keywords = {Master's, role-based access control, IGI Global, cookies, digital certificates, WWW security},
+	pages = {37--71},
+	annote = {Extracted Annotations (10/8/2017, 7:59:57 PM)
+"AHN, G.-J., SANDHU, R. S., KANG, M., AND PARK, J. 2000. Injecting RBAC to secure a Web-based workflow system. In Proceedings of 5th ACM Workshop on Role-Based Access Control (RBAC '00, Berlin, Germany, July 26 - 27). ACM, New York, NY." (Park et al 2001:69)},
+	file = {Park et al_2001_Role-based Access Control on the Web.pdf:/home/hmartins/Dropbox/Zotero/Park et al_2001_Role-based Access Control on the Web.pdf:application/pdf}
+}
+
+@inproceedings{park_role-based_2003,
+	address = {New York, NY, USA},
+	series = {{SACMAT} '03},
+	title = {Role-based {Access} {Control} for {Collaborative} {Enterprise} in {Peer}-to-peer {Computing} {Environments}},
+	isbn = {1-58113-681-1},
+	url = {http://doi.acm.org/10.1145/775412.775424},
+	doi = {10.1145/775412.775424},
+	booktitle = {Proceedings of the {Eighth} {ACM} {Symposium} on {Access} {Control} {Models} and {Technologies}},
+	publisher = {ACM},
+	author = {Park, Joon S. and Hwang, Junseok},
+	year = {2003},
+	note = {00107},
+	keywords = {Master's, security, peer-to-peer computing, role-based access control, IGI Global},
+	pages = {93--99},
+	file = {Park_Hwang_2003_Role-based Access Control for Collaborative Enterprise in Peer-to-peer.pdf:/home/hmartins/Dropbox/Zotero/Park_Hwang_2003_Role-based Access Control for Collaborative Enterprise in Peer-to-peer.pdf:application/pdf}
+}
+
+@inproceedings{abiteboul_electronic_2004,
+	address = {Toronto, Canada},
+	series = {{VLDB} '04},
+	title = {An {Electronic} {Patient} {Record} "on {Steroids}": {Distributed}, {Peer}-to-peer, {Secure} and {Privacy}-conscious},
+	volume = {30},
+	isbn = {0-12-088469-0},
+	url = {http://dl.acm.org/citation.cfm?id=1316689.1316812},
+	booktitle = {Proceedings of the {Thirtieth} {International} {Conference} on {Very} {Large} {Data} {Bases}},
+	publisher = {VLDB Endowment},
+	author = {Abiteboul, Serge and Alexe, Bogdan and Benjelloun, Omar and Cautis, Bogdan and Fundulaki, Irini and Milo, Tova and Sahuguet, Arnaud},
+	year = {2004},
+	note = {00000},
+	keywords = {Master's, IGI Global},
+	pages = {1273--1276},
+	file = {Abiteboul et al_2004_An Electronic Patient Record on Steroids.pdf:/home/hmartins/Dropbox/Zotero/Abiteboul et al_2004_An Electronic Patient Record on Steroids.pdf:application/pdf}
+}
+
+@article{damiani_fine-grained_2002,
+	title = {A fine-grained access control system for {XML} documents},
+	volume = {5},
+	url = {http://dl.acm.org/citation.cfm?id=505590},
+	number = {2},
+	urldate = {2017-10-08},
+	journal = {ACM Transactions on Information and System Security (TISSEC)},
+	author = {Damiani, Ernesto and De Capitani di Vimercati, Sabrina and Paraboschi, Stefano and Samarati, Pierangela},
+	year = {2002},
+	note = {00724},
+	keywords = {Master's},
+	pages = {169--202},
+	file = {Damiani et al_2002_A fine-grained access control system for XML documents.pdf:/home/hmartins/Dropbox/Papers/Damiani et al_2002_A fine-grained access control system for XML documents.pdf:application/pdf}
+}
+
+@inproceedings{bhatti_x-gtrbac_2004,
+	address = {New York, NY, USA},
+	series = {{SACMAT} '04},
+	title = {X-{GTRBAC} {Admin}: {A} {Decentralized} {Administration} {Model} for {Enterprise} {Wide} {Access} {Control}},
+	isbn = {1-58113-872-5},
+	url = {http://doi.acm.org/10.1145/990036.990049},
+	doi = {10.1145/990036.990049},
+	booktitle = {Proceedings of the {Ninth} {ACM} {Symposium} on {Access} {Control} {Models} and {Technologies}},
+	publisher = {ACM},
+	author = {Bhatti, Rafae and Joshi, James and Bertino, Elisa and Ghafoor, Arif},
+	year = {2004},
+	note = {00067},
+	keywords = {Master's, temporal constraints, decentralized administration, role based access control, XML, IGI Global},
+	pages = {78--86},
+	file = {Bhatti et al_2004_X-GTRBAC Admin.pdf:/home/hmartins/Dropbox/Papers/Bhatti et al_2004_X-GTRBAC Admin.pdf:application/pdf}
+}
+
+@article{joshi_generalized_2005,
+	title = {A {Generalized} {Temporal} {Role}-{Based} {Access} {Control} {Model}},
+	volume = {17},
+	issn = {1041-4347},
+	url = {http://dx.doi.org/10.1109/TKDE.2005.1},
+	doi = {10.1109/TKDE.2005.1},
+	number = {1},
+	journal = {IEEE Trans. on Knowl. and Data Eng.},
+	author = {Joshi, James B. D. and Bertino, Elisa and Latif, Usman and Ghafoor, Arif},
+	month = jan,
+	year = {2005},
+	note = {00721},
+	keywords = {Master's, temporal constraints, 65, Index Terms- Access control, role hierarchy, role-based, separation of duty., IGI Global},
+	pages = {4--23},
+	file = {Joshi et al_2005_A Generalized Temporal Role-Based Access Control Model.pdf:/home/hmartins/Dropbox/Zotero/Joshi et al_2005_A Generalized Temporal Role-Based Access Control Model.pdf:application/pdf}
 }
