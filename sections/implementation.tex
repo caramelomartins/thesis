@@ -97,15 +97,296 @@ Apart from the core components, described above, we've implemented that are nece
 \section{Proof-of-Concept}
 \label{sec:implementation-poc}
 
+We have described the design and architecture of \texttt{Protego} (Chapter \ref{chap:design}) and the existing implementation of the system. This section provides a proof-of-concept for our core this, that uses our implementation of the system to demonstrate its applicability in a real world scenario. We review issuing a certificate (Section \ref{sec:impl-issue}), viewing an existing certificate (Section \ref{sec:impl-view}), revoking an existing certificate (Section \ref{sec:impl-revoke}) and managing permissions for an existing certificate (Section \ref{sec:impl-grant-ac} and Section \ref{sec:impl-revoke-ac}). With this section we aim at providing a concrete example of the working \texttt{Protego} system, as well as realize that initial idea proposed by this thesis. All examples on this section have been run with a single-node network.
+
 \subsection{Issuing a Certificate}
+\label{sec:impl-issue}
+
+As explained in Section \ref{sec:design-interaction}, issuing a certificate can be achieved by completing 4 steps. Let us assume that: \emph{(i)} a network is already set up and \emph{(ii)} public keys have been exchanged, such that the issuer knows the public keys of the recipient.
+
+We then proceed by executing the \texttt{cert-issuer} script in the \texttt{Protego} system. This activity is represented in Listing \ref{listing:issue-results}. In this example, we submit a new transactions to the network to generate a certificate, with ID "2136718e-d4cb-4cb2-b324-936444cf33bd". The "Status" element in the results refers to an URL, where the user is able to check out whether the transaction has been accepted or rejected.
+
+\begin{listing}[ht]
+	\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos,
+breaklines
+]{sh}
+$ ./cert-issuer --recipient 03a1b6863f84cd6b17597e99a09d818a6cd992007136fceed9d3ad93fa7180d32c --secret 396b644103a8fbdebcd17aff319e7b7fc60d879282b54a7a56d8ca53c61d3876 --recipient-rsa ../keys/recipient.keys/rsa/recipient.pub --issuer-rsa ../keys/issuer.keys/rsa/issuer.pub
+
+Generating Addresses...[OK]
+Generating Payload...[OK]
+Creating Transaction...[OK]
+Creating Batch...[OK]
+Submitting Request...[OK]
+identifier: 2136718e-d4cb-4cb2-b324-936444cf33bd
+
+Status:
+http://localhost:8008/batch_statuses?id=47efa0f5a9c1e611fde48a25af45e460e7093c49804d0d3ebcbe972c43c278fe3c
+b3c37dfe5db87ff3f787547eb36ede753c6cf79f09e02dd52ebd5b61110ba4
+
+\end{minted}
+	\caption{Results of Executing \texttt{cert-issuer}.}
+	\label{listing:issue-results}
+\end{listing}
+
+By accessing the URL that has been returned by running the script, we are able to confirm that the transaction has been \texttt{COMMITTED}, which represents that the network accepted the transaction and the new certificate has successfully been issued. We demonstrate this in Figure \ref{fig:issue-certificate-status}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{Issue-Certificate-Status}
+	\caption{Status of Transaction \#1.}
+	\label{fig:issue-certificate-status}
+\end{figure}
 
 \subsection{Viewing a Certificate}
+\label{sec:impl-view}
+
+Furthermore, now that our certificate has been issued, we want to be able to see the contents of it. Let's assume we are now impersonating the recipient of the certificate. We would run the \texttt{cert-viewer} script with our secret keys, in able to view the certificate's contents. We demonstrate this in Listing \ref{listing:view-results}.
+
+\begin{listing}[ht]
+	\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos,
+breaklines
+]{sh}
+$ ./cert-viewer --certificate 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --sec
+ret-rsa ../keys/recipient.keys/rsa/recipient
+Generating Addresses...[OK]
+Fetching Data...[OK]
+Attempt 1...[Error]
+Attempt 2...[OK]
+
+ID: 2136718e-d4cb-4cb2-b324-936444cf33bd
+Issuer: 03112e85ea835a6f445c8195f99e64f9677127d12dabcdf43422c9f3cb52aeeb8f
+Recipient: 03a1b6863f84cd6b17597e99a09d818a6cd992007136fceed9d3ad93fa7180d32c
+Issued @ 2018-10-01 19:32:07.554541
+Status: Active
+
+
+\end{minted}
+	\caption{Results of Executing \texttt{cert-viewer} \#1.}
+	\label{listing:view-results}
+\end{listing}
+
+As we demonstrate in Listing \ref{listing:view-results}, and present in Chapter \ref{chap:design}, a user of \texttt{Protego}, with the appropriate permissions is able to see in full the contents of the certificate. In this case, since we are impersonating the recipient of the certificate it only makes sense that we are able to view its contents. In the results, \emph{Attempt 1} and \emph{Attempt 2} represent the attempts at decrypting the symmetric key with the RSA secret key. No transaction is submitted in this activity such that there's no need to make any validation within the blockchain.
 
 \subsection{Granting Access}
+\label{sec:impl-grant-ac}
+
+Let us now assume the following scenario: a recruiter approaches the recipient of the certificate, in the hopes of hiring the recipient. The recruiter wishes to verify the qualifications that the recipient claims to have. In that context, the recruiter will share the public keys, both for RSA and DSA, so that the recipient can provide the recruiter with access to the certificate stored in the blockchain. We demonstrate the results of this in Listing \ref{listing:grant-ac-results}. We achieve the desired results by running the `manager' script with the appropriate parameters.
+
+\begin{listing}[ht]
+	\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos,
+breaklines
+]{sh}
+$ ./manager -c 2136718e-d4cb-4cb2-b324-936444cf33bd  --subject-dsa 036933186998989510747d4f75860e163f7e00454a33bef557ec0c96bd4b4ce389 --subject-rsa ..
+/keys/recruiter.keys/rsa/recruiter.pub --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --secret-rsa ../keys/recipient.ke
+ys/rsa/recipient
+
+Generating Addresses...[OK]
+Fetching Data...[OK]
+Attempt 1...[Error]
+Attempt 2...[OK]
+Generating Payload...[OK]
+Creating Transaction...[OK]
+Creating Batch...[OK]
+Submitting Request...[OK]
+
+Status:
+http://localhost:8008/batch_statuses?id=046d0e13fb5bacafbeed3b8b353e44d6b6a9f1c4a6e9210d934870dee6c5c228474
+7fd62cb8035317bc98eb3a9b3067a8eb00558b5d6e69de7360494357a8bf3
+\end{minted}
+	\caption{Results of Granting Access with \texttt{manager}.}
+	\label{listing:grant-ac-results}
+\end{listing}
+
+Similary to what happens when issuing a certificate, the user must confirm that the transaction has been accepted. We demonstrate this in Figure \ref{fig:grant-ac-status}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{Grant-AC-Status}
+	\caption{Status of Transaction \#2.}
+	\label{fig:grant-ac-status}
+\end{figure}
+
+After confirming that the permission has been granted, the recipient can now inform the recruiter what certificate address it should query for - in this case "2136718e-d4cb-4cb2-b324-936444cf33bd". We demonstrate this in Listing \ref{listing:view-recruiter-grant-results}, which uses the same components of the previous example, where we viewed the contents of the certificate. It is interesting to confirm that the certificate in question has, now, an additional iteration at decrypting the certificate - \emph{Attempt 3}. 
+
+\begin{listing}[ht]
+	\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos,
+breaklines
+]{sh}
+$ ./cert-viewer --certificate 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa 964fb14dad3764286e0620710d02eaea59aa04529bde19447f6ad3d6485a773c --sec
+ret-rsa ../keys/recruiter.keys/rsa/recruiter
+Generating Addresses...[OK]
+Fetching Data...[OK]
+Attempt 1...[Error]
+Attempt 2...[Error]
+Attempt 3...[OK]
+
+ID: 2136718e-d4cb-4cb2-b324-936444cf33bd
+Issuer: 03112e85ea835a6f445c8195f99e64f9677127d12dabcdf43422c9f3cb52aeeb8f
+Recipient: 03a1b6863f84cd6b17597e99a09d818a6cd992007136fceed9d3ad93fa7180d32c
+Issued @ 2018-10-01 19:32:07.554541
+Status: Active
+
+\end{minted}
+	\caption{Results of Executing \texttt{cert-viewer} \#2.}
+	\label{listing:view-recruiter-grant-results}
+\end{listing}
 
 \subsection{Revoking Access}
+\label{sec:impl-revoke-ac}
+
+Let us now assume that, for some reason, the recruiter shall no longer have access to this certificate. The recipient is able to remove such permission from the certificate's permission list. To do this, it must submit a transaction through \texttt{Protego} in order to remove the permission. We demonstrate this activity in Listing \ref{listing:revoke-ac-results}, in which we run \texttt{manager} with the appropriate \texttt{-r} flag.
+
+\begin{listing}[ht]
+	\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos,
+breaklines
+]{sh}
+$ ./manager -r -c 2136718e-d4cb-4cb2-b324-936444cf33bd  --subject-dsa 036933186998989510747d4f75860e163f7e00454a33bef557ec0c96bd4b4ce389 --subject-rsa
+../keys/recruiter.keys/rsa/recruiter.pub --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --secret-rsa ../keys/recipient
+.keys/rsa/recipient
+
+Generating Addresses...[OK]
+Fetching Data...[OK]
+Attempt 1...[Error]
+Attempt 2...[OK]
+Generating Payload...[OK]
+Creating Transaction...[OK]
+Creating Batch...[OK]
+Submitting Request...[OK]
+
+Status:
+http://localhost:8008/batch_statuses?id=230706d8ad7897c563166ef3bf3853018bb4cf6f3e73dc5d681cbb227cf3644224d
+e247aee8c8173126aa9bef1dc56e1abbbd0174d56d1080bc412f0573be4dc
+\end{minted}
+	\caption{Results of Revoking Access with \texttt{manager}.}
+	\label{listing:revoke-ac-results}
+\end{listing}
+
+As previously, the recipient can confirm the revokation of the access by checking, through a browser that the transaction has been committed. We demonstrate this in Figure \ref{fig:revoke-ac-status}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{Revoke-AC-Status}
+	\caption{Status of Transaction \#3.}
+	\label{fig:revoke-ac-status}
+\end{figure}
+
+In this case, contrary to what occurs in Listing \ref{listing:view-recruiter-grant-results}, if the recruiter tries to access the data, after access has been revoked, he will be met with an error. We demonstrate this in Listing \ref{listing:view-recruiter-revoke-results}. It is interesting to note, once again, that the \emph{number} of permissions has decreased, due to the revocation of the recruiter's permission.
+
+\begin{listing}[ht]
+	\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos,
+breaklines
+]{sh}
+$ ./cert-viewer --certificate 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa 964fb14dad3764286e0620710d02eaea59aa04529bde19447f6ad3d6485a773c --secret-rsa ../keys/recruiter.keys/rsa/recruiter
+Generating Addresses...[OK]
+Fetching Data...[OK]
+Attempt 1...[Error]
+Attempt 2...[Error]
+error: you do not have permission to access this certificate
+\end{minted}
+	\caption{Results of Executing \texttt{cert-viewer} \#2.}
+	\label{listing:view-recruiter-revoke-results}
+\end{listing}
 
 \subsection{Revoking a Certificate}
+\label{sec:impl-revoke}
+
+Finally, to conclude our proof-of-concept, let us imagine that the issuer wishes to revoke the certificate it has granted to the recipient, due to, for example, a misconduct condemnation. The recruiter would do this by executing the \texttt{cert-revoker} script which would submit a transaction to the blockchain, revoking the certificate. We demonstrate this in Listing \ref{listing:revoke-results}.
+
+\begin{listing}[ht]
+	\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos,
+breaklines
+]{sh}
+$ ./cert-revoker -c 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa 396b644103a8fbdebcd17aff319e7b7fc60d879282b54a7a56d8ca53c61d3876 --secret-rsa ..
+/keys/issuer.keys/rsa/issuer
+
+Generating Addresses...[OK]
+Fetching Data...[OK]
+Attempt 1...[OK]
+Generating Payload...[OK]
+Creating Transaction...[OK]
+Creating Batch...[OK]
+Submitting Request...[OK]
+
+Status:
+http://localhost:8008/batch_statuses?id=cbec918ba2b42601e8d8b25158bde676150ce4e0553897b5c21324f34200200b4c4
+2f74c2a1833d96eae1401330f3406766b41eb950e61bc1aeb6e852c11d28b
+
+\end{minted}
+	\caption{Results of Executing \texttt{cert-revoker}.}
+	\label{listing:revoke-results}
+\end{listing}
+
+As with previous submission of transactions, the user should confirm that the transaction has been committed, by accessing the returned URL. We demonstrate this in Figure \ref{fig:revoke-status}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\textwidth]{Revoke-Certificate-Status}
+	\caption{Status of Transaction \#4.}
+	\label{fig:revoke-status}
+\end{figure}
+
+Nonetheless, as explained previously, the certificate is not deleted. If the recipient wishes to view the certificate's contents, it would be able to. The only difference is that the certificate is now irrevocably revoked and will return as such. We demonstrate this in Listing \ref{listing:view-revoke-results}, produced by executing the \texttt{cert-viewer} script, which displays the \texttt{Status} as "Revoked".
+
+\begin{listing}[ht]
+	\begin{minted}[
+frame=lines,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos,
+breaklines
+]{sh}
+$ ./cert-viewer --certificate 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --secret-rsa ../keys/recipient.keys/rsa/recipient
+Generating Addresses...[OK]
+Fetching Data...[OK]
+Attempt 1...[Error]
+Attempt 2...[OK]
+
+ID: 2136718e-d4cb-4cb2-b324-936444cf33bd
+Issuer: 03112e85ea835a6f445c8195f99e64f9677127d12dabcdf43422c9f3cb52aeeb8f
+Recipient: 03a1b6863f84cd6b17597e99a09d818a6cd992007136fceed9d3ad93fa7180d32c
+Issued @ 2018-10-01 19:32:07.554541
+Status: Revoked
+
+\end{minted}
+	\caption{Results of Executing \texttt{cert-viewer} \#3.}
+	\label{listing:view-revoke-results}
+\end{listing}
 
 \section{Summary}
 

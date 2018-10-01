@@ -17,3 +17,6 @@
 *.lof
 *.lot
 *.toc
+
+# minted package
+_minted-main/
