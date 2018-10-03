@@ -22,10 +22,12 @@ Going back to one of the problems briefly described previously, in most cases, i
 
 This problem intersects with the three aspects we have mentioned in the beginning of this section. It intersects with privacy, as we have described, because a \textit{Student}, or any given recipient of a credential might not want that information, or its personal information, to be described publicly. Currently, there are few solutions for that situation. It intersects with the concept of \textit{information verification}, as we have explored before, because verifying that a certificate is legitimate is getting increasingly relevant, and increasingly difficult at the same time. It intersects with access control to information because, as we have seen, most solutions existing currently are either centralized or focus the responsibility of managing access control on the institutions rather than the individuals.
 
+\section{Problem Statement}
+
+The objective of this thesis is to perform research in order to be able to answer the following question: \textit{Can permissoned blockchains be a solution for decentralizing access control, in the context of educational certificate issuance, sharing and verification?} In order to achieve that, in alignment with what has been described in the previous section, it is important to the analyze technological aspects of the problem and the human aspects. In this thesis, we perform an exploration on both aspects. We describe a statistical study and analysis of a specific edge case of the human aspects, provide a theoretical base in which future research can be implemented on, as well as a proof-of-concept prototype that applies a blockchain-based solution to this problem.
+
 \section{Contributions}
 \label{sec:contributions}
-
-The objective of this thesis is to perform research in order to be able to answer the following question: \textit{Can permissoned blockchains be a viable solution for decentralizing access control and enhancing data ownership, in the context of educational certificate issuance, sharing and verification?} In order to achieve that, in alignment with what has been described in the previous section, it is important to the analyze technological aspects of the problem and the human aspects. In this thesis, we perform an exploration on both aspects. We describe a statistical study and analysis of a specific edge case of the human aspects, provide a theoretical base in which future research can be implemented on, as well as a proof-of-concept prototype that applies a blockchain-based solution to this problem.
 
 It is relevant to notice that our approach is not merely to apply blockchain technology as a solution to the problem. Blockchain is merely the backbone technology and, in fact, we have focused our efforts on a specific type of blockchains - \textit{permissioned blockchains}. Permissioned blockchains set themselves apart from permissionless blockchains by having access control in place for the actual ledger, for reading from and writing to the ledger \cite{pilkington_blockchain_2016}. Thus private blockchains are suitable for enterprise-level decentralized access control because they offer most of the benefits of blockchains with less security and privacy risks.
 
@@ -34,14 +36,13 @@ With the approach taken in this thesis, we have introduced knowledge regarding t
 Concretely, this thesis makes the following contributions:
 
 \begin{itemize}
-	\item a chapter in an edited book, describing access control challenges in enterprise ecosystems and possible solutions through blockchain-based technologies \cite{bryan_christiansen_access_2018}, whose main content was derived from the extensive analysis of the state-of-art presented in this thesis, description and motivation of the problem;
 	\item an access control model based on ACLs and cryptography, to be used on enhancing access control on data stored inside a blockchain, as well as, a baseline framework for storing data and access control policies inside a blockchain, specifically on a permissioned blockchain built with Hyperledger Sawtooth;
 	\item a proof-of-concept implementation for storing and managing Educational Certificates, and access control policies, based on the proposed models and framework, including a Transaction Processor that can be used, or extended, for Hyperledger Sawtooth, on different configurations and implementations, to process transactions, relevant to this domain;
 	\item an exploratory statistical study, based on an online questionnaire, of user's perception of blockchain in terms of security and complexity, applied to an Educational Certificates use case;
 	\item an evaluation on the viability of permissioned blockchains for decentralizing access control and enhancing data ownership, in the context of Educational Certificates issuance, sharing and verification.
 \end{itemize}
 
-Apart from these concrete contributions, components of the research presented in this thesis have been submitted as conference research papers for \emph{(i)} \textit{\gls{acmsac19}} and \emph{(ii)} \textcolor{red}{SECOND CONFERENCE PAPER}. The submission for \gls{acmsac19} focused on the work conducted throughout Chapter \ref{chap:study}, while the submission for \textcolor{red}{SECOND CONFERENCE PAPER} focused on the work conducted throughout Chapter \ref{chap:implementation} and Chapter \ref{chap:evaluation}. As a related achievement, due to the work conducted during this thesis, the author has been invited to peer-review research for \textit{\glsdesc{hicss52}}, on the topic of the \textit{Transformationl Impact of Blockchain}.
+As a related achievement, due to the work conducted during this thesis, the author has been invited to peer-review research for \textit{\glsdesc{hicss52}}, on the topic of the \textit{Transformationl Impact of Blockchain}.
 
 \section{Document Outline}
 
