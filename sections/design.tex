@@ -1,17 +1,17 @@
 \chapter{Design and Architecture}
 \label{chap:design}
 
-As we have exposed in Chapter \ref{chap:intro}, the purpose of this dissertation is to assess whether permissioned blockchains can be a solution for decentralizing access control in the context of educational certificate issuance, sharing and verification. We have taken a very small step towards by studying how users perceive blockchain, both in terms of security and complexity. To build upon that, we have to design and architecture a system, which we implement in Chapter \ref{chap:implementation}, to prove our hypothesis. After all, it will be impossible to evaluate our initial research question if there are no tangible artifacts, as per the \gls{dsrm}, that we can use to evaluate our approach. We've envisioned this system being applied to an educational context, in which Universities, or Educational Institutions, are able to \textit{initially} deploy a network of nodes, as the blockchain genesis, that will be maintained and run by other nodes - Students - that join the network as time passes.
+We expose, in Chapter \ref{chap:intro},that the purpose of this dissertation is to assess whether permissioned blockchains can be a solution for decentralizing access control in the context of educational certificate issuance, sharing and verification. We have taken a very small step towards thatobjective, by studying how users perceive blockchain, both in terms of security and complexity. To build upon that, we design and architect a system, which we implement in Chapter \ref{chap:implementation}, to prove our hypothesis. After all, it will be impossible to evaluate our initial research question if there are no artifacts, as per the \gls{dsrm}, that we can use to evaluate our approach. We've envisioned this system being applied to an educational context, in which Universities, or Educational Institutions, are able to \textit{initially} deploy a network of nodes, as the blockchain \textit{genesis}, that will be maintained and run by other nodes - Students - that join the network as time passes.
 
-In this chapter, we describe the concept design and architecture behind \texttt{Protego}. Intitially, we review the \textit{entities} that will interact with the system, in Section \ref{sec:design-entities}. Section \ref{sec:design-architecture}, explains the system's architecture that guided the implementation of the system and it relates to the context in which we are working. Section \ref{sec:design-ac} revises the decisions made with regards to modelling of access control in the system. Finally, Section \ref{sec:design-interaction} explains the operations designed around the system and how users are expected to interact with it.
+In this chapter, we describe the conceptual design and architecture behind \texttt{Blocked}. Intitially, we review the \textit{stakeholders} that will interact with the system, in Section \ref{sec:design-entities}. Section \ref{sec:design-architecture} explains the system's architecture that guided the implementation of the system and it relates to the context in which we are working. Section \ref{sec:design-ac} revises the decisions made with regards to modelling of access control in the system. Finally, Section \ref{sec:design-interaction} explains the operations permitted in the system and how users are expected to interact with it.
 
-\section{Entities}
+\section{Stakeholders}
 \label{sec:design-entities}
 
-\texttt{Protego} is thought out in such as way as to be used by the following actors: \textit{students}, \textit{educational institutions} and a third entity which we will establish as being \textit{verifiers}. This is in accordance in what has been used in our study, presented in Chapter \ref{chap:study}, in which we presented the same high-level entities, with \textit{Recruiter} being a \textit{verifier}. In this case, \textit{students} are the entities that will be issued certificates and that manage the access control for those certificates. \textit{Students} are also expected to be an active part of the network, maintaining one node inside the network - being a peer. Eventually, \textit{students} will also share the certificates for verification by another entity. \textit{Educational Institutions} are the entities responsible for issuing the certificates and, if needed, dealing with revocations of certificates. They are expected to only need to interact with the \textit{students} and not necessarily with any other part. Finally, the last entity, which we have generalized as \textit{verifiers}, are the entities with which certificates are shared, by the \textit{students}, and whose role in the system is that they want to verify a given certificate, shared by another entity is truthful.
+\texttt{Blocked} is thought out in such as way as to be used by the following actors: \textit{students}, \textit{educational institutions} and a third entity which we establish as being \textit{verifiers}. This is in accordance with what has been used in our study, presented in Chapter \ref{chap:study}, in which we presented the same high-level entities, with \textit{verifier} being the \textit{"Recruiter"}. In this case, \textit{students} are the entities that will be issued certificates and that manage the access control for those certificates. \textit{Students} are also expected to be an active part of the network, maintaining one node inside the network - being a peer. Ultimately, \textit{students} will also share the certificates for verification by another entity. \textit{Educational Institutions} are the entities responsible for issuing the certificates and, if needed, dealing with revocations of certificates. They are expected to only need to interact with the \textit{students}. Finally, the last entity, which we have generalized as \textit{verifiers}, are the entities with which certificates are shared, by the \textit{students}, and whose role in the system is that they want to verify a given certificate, shared by another entity is truthful.
 
 
-\section{Architecture}
+\section{Technological Architecture}
 \label{sec:design-architecture}
 
 In order to understand the architecture of the system, we explain the inner working of the network (Section \ref{sec:design-network}), how state is maintained throughout the network (Section \ref{sec:design-state}), how transactions are defined, processed and validated (Section \ref{sec:design-transactions}).
@@ -19,14 +19,14 @@ In order to understand the architecture of the system, we explain the inner work
 \subsection{Network}
 \label{sec:design-network}
 
-In \texttt{Protego}, each actor is expected to be a node in the network, at least, for a given period of time. There are two reasons for this: \emph{(i)} each node maintains its own copy of the global state of the network, which means at least two nodes \textbf{must} exist at any given time; and \emph{(ii)} in order to manage certificates, one must be connected to the network. At the same time, each peer is both a producer - issuing new transactions - and a validator - because it is a component of the validator network. The network is composed of a collection of nodes. The nodes interact with each other through a peer-to-peer protocol and maintain the global state by using a consensus protocol - namely, \gls{poet} \cite{intel_poet}.
+In \texttt{Blocked}, each actor is expected to be a node in the network, at least, for a given period of time. There are two reasons for this: \emph{(i)} each node maintains its own copy of the global state of the network, which means, at least, two nodes \textbf{must} exist at any given time; and \emph{(ii)} in order to manage certificates, one must be connected to the network. At the same time, each peer is both a producer - issuing new transactions - and a validator - because it is a component of the validator network. The network is composed of a collection of nodes. The nodes interact with each other through a peer-to-peer protocol and maintain the global state by using a consensus protocol - namely, \gls{poet} \cite{intel_poet}.
 
 \subsection{State}
 \label{sec:design-state}
 
-Each node that is also a validator, in the network, maintains a copy of a Radix Merkle tree. Only validator nodes need to store a copy of the state because they are the ones that validate operations under the current state.
+Each node, that is also a validator in the network, maintains a copy of a Radix Merkle tree. Only validator nodes need to store a copy of the state because they are the ones that validate operations under the current state.
 
-In \texttt{Protego}, a state entry consists of the following elements:
+In \texttt{Blocked}, a state entry consists of the following elements:
 
 \begin{itemize}
 	\item \texttt{id}: Represents the identifier of a given educational certificate. A version 4 \gls{uuid} generated for each certificate issuance.
@@ -38,49 +38,49 @@ In \texttt{Protego}, a state entry consists of the following elements:
 \subsection{Transactions}
 \label{sec:design-transactions}
 
-Transactions allow nodes to modify the global state of the system. These are submitted to the validators and processed. If valid, the state is modified, if invalid, the new blocks will be rejected. Transactions are created by the clients in each node. In \texttt{Protego}, transactions are wrapped in batchs and each batch is assumed to have one and only one transaction. Transactions in \texttt{Protego} allow clients to issue, share and revoke educational certificates.
+Transactions allow nodes to modify the global state of the system. These are submitted to the validators and processed. If valid, the state is modified. If invalid, the new blocks will be rejected. Transactions are created by the clients in each node. In \texttt{Blocked}, transactions are wrapped in batchs, with each batch assumed to have one and only one transaction. Transactions in \texttt{Blocked} allow clients to issue, share and revoke educational certificates.
 
-Addressing is done through a deterministic address generation process. An address consists of 70 characters. The first 6 characters should be, always, "8bc00e". "8bc00e" represents the first 6 characters of the SHA-512 hash of the UTF-8 encoding of the lowercase name of our system - \texttt{protego}. The remaining 64 characters of the address are expected to be the first 64 characters of the SHA-512 hash of the certificate identifier, represented by the \texttt{id} property in the global state. This addressing scheme permits a client node, and validators, to always generate the correct address for a given certificate.
+Addressing is done through a deterministic address generation process. An address consists of 70 characters. The first 6 characters should be, always, "8bc00e". "8bc00e" represents the first 6 characters of the SHA-512 hash of the UTF-8 encoding of the lowercase name of our system - \texttt{Blocked}. The remaining 64 characters of the address are expected to be the first 64 characters of the SHA-512 hash of the certificate identifier, represented by the \texttt{id} property in the global state. This addressing scheme permits a client node, and validators, to always generate the correct address for a given certificate, thus being able to access blockchain's state at that address.
 
-The structure for the transaction when it is being submitted is different from what has been presented in the global state, being dependent on the operation. Detail about the operations is presented in Section \ref{sec:design-interaction}. Each transaction payload should include the operation it is trying to perform. Allowed operations are \texttt{issue}, \texttt{revoke}, \texttt{grant\_access} and \texttt{revoke\_access}. Each transaction payload should also include a \texttt{data} property, variying from operation to operation. When performing \texttt{issue}, a client should send the \texttt{data} with the same structure as the global state structure. When performing \texttt{revoke}, a client should send an \texttt{id} and \texttt{certificate} inside \texttt{data}. When performing either \texttt{grant\_access} or \texttt{revoke\_access}, a client should send the permission object to grant or the identifier of the subject whose permissions shall be removed.
+The structure for the transaction when it is being submitted is different from what has been presented in the global state, being dependent on the operations, presented in Section \ref{sec:design-interaction}. Each transaction payload should include the operation it is trying to perform. Allowed operations are \texttt{issue}, \texttt{revoke}, \texttt{grant\_access} and \texttt{revoke\_access}. Each transaction payload should also include a \texttt{data} property, variying from operation to operation. When performing an \texttt{issue}, a client should send the \texttt{data} with the same structure as the global state structure. When performing \texttt{revoke}, a client should send an \texttt{id} and \texttt{certificate} inside \texttt{data}. When performing either \texttt{grant\_access} or \texttt{revoke\_access}, a client should send the permission object to grant or the identifier of the subject whose permissions shall be removed.
 
-\section{Access Control}
+\subsection{Access Control}
 \label{sec:design-ac}
 
-Controlling access to the information, in \texttt{Protego} can be achieved in two separate layers. Due to the permissioning nature of the system, we can configure what validators are allowed to modify state in the network. At the same time, there's an access control mechanism above the network layer that is used to guarantee that, even though each node has its own copy of the information, data cannot be correctly read without the relevant permissions.
+Controlling access to the information, in \texttt{Blocked} can be achieved in two separate layers. Due to the permissioning nature of the system, we can configure what validators are allowed to modify state in the network. At the same time, there's an access control mechanism above the network layer that is used to guarantee that, even though each node has its own copy of the information, data cannot be correctly read without the relevant permissions.
 
-\subsection{Network Permissioning}
+\subsubsection{Network Permissioning}
 
-At the level of the validator nodes, we can define two separate ways of controlling modification to state: \emph{Transactor Key Permissioning} and \textit{Validator Key Permissioning}. \emph{Transactor Key Permissioning} allows control over what public keys are allowed to submit batches and transactions. This type of permissioning, allows control over what subjects are allowed to modify the state of the network, which can be relevant, for example, if a malicious node tries to submit new malicious information to the system. The latter type of permissioning, \textit{Validator Key Permissioning}, allows the configuration of given public keys as the only keys that are able to participate in the validators' network, therefore controlling the actors that are able to perform consensus and validate blocks.
+At the level of the validator nodes, we can define two separate ways of controlling modification to state: \emph{Transactor Key Permissioning} and \textit{Validator Key Permissioning}. \emph{Transactor Key Permissioning} allows control over what public keys are allowed to submit batches and transactions. This type of permissioning, allows control over what subjects are allowed to modify the state of the network, which can be relevant, for example, if a malicious node tries to submit new malicious information to the system. The latter type of permissioning, \textit{Validator Key Permissioning}, allows the configuration of public keys as the only keys that are able to participate in the validators' network, therefore controlling the actors that are able to perform consensus and validate blocks.
 
-\subsection{Cryptography-based Permissions}
+\subsubsection{Cryptography-based Permissions}
 
-Apart from the network-based access control the system supports, the system puts forward some safeguards with regards to protection of the information being stored in the network. Initially, when a certificate is submitted for issuance, the certificate data is encrypted with a AES symmetric key that was generated with the submission of the certificate. The AES symmetric key consists of 32 random bytes. This means that the certificate is already submitted in an encrypted state to the blockchain, avoiding a \gls{mitm} that would allow a third-party to read the information. At the same time, permissions to access the data are created through encrypting the generated symmetric key with an RSA public key, corresponding to the subject that shall be allowed access. A list of permissions of this type is kept along with the encrypted information stored. This method effectively avoids any access to any subject that is unable to decrypt the symmetric key and, therefore, unable to decrypt the encrypted data, while at the same time avoiding that anyone with a copy of the state reads the information.
+Apart from the network-based access control, the system supports some safeguards with regards to protection of the information being stored in the network. Initially, when a certificate is submitted for issuance, the certificate data is encrypted with a AES symmetric key that was generated with the submission of the certificate. The AES symmetric key consists of 32 random bytes. This means that the certificate is already submitted in an encrypted state to the blockchain, avoiding a \gls{mitm} that would allow a third-party to read the information. At the same time, permissions to access the data are created through encrypting the generated symmetric key with an RSA public key, corresponding to the subject that shall be allowed access. A list of permissions of this type is kept along with the encrypted information stored. This method effectively avoids any access by any subject that is unable to decrypt the symmetric key and, therefore, unable to decrypt the encrypted information, while at the same time avoiding that anyone with a copy of the state reads the information.
 
-\section{Interaction Protocol and Operations}
+\section{Functional Architecture}
 \label{sec:design-interaction}
 
-In order to be able to use \texttt{Protego}, an actor needs to comply with the minimum requirements for setting up a node (Section \ref{sec:design-setup}), and be part of the network. The remaining sections describe the actions that can be performed with \texttt{Protego}.
+In order to be able to use \texttt{Blocked}, an actor needs to comply with the minimum requirements for setting up a node (Section \ref{sec:design-setup}), and be part of the network. The remaining sections describe the actions that can be performed with \texttt{Blocked}.
 
 \subsection{Setting Up}
 \label{sec:design-setup}
 
 For an actor to use \texttt{Protector}, it needs to have an identity. Identities are defined in two ways: a DSA-based identity and an RSA-based identity. DSA is used for signing the batches and transactions while RSA is used to encrypt the symmetric key, that encrypted the information. While RSA can be used for both encryption and decryption, some studies have shown that DSA can be faster and lighter than its RSA counter-part when signing. DSA is also supported by most blockchain platforms for signing batches and transactions, which makes it easier for the system to be implemented.
 
-Actors should generate their own keys before trying to join the network. They should generate an ECDSA key pair with secp256k1 as the parameters of the elliptic curve and store an hexadecimal representation of those keys, in order for them to be used in \texttt{Protego}. The same should be done for the RSA, the actors should generate an RSA key pair according to PKCS\#1 OAEP and store those keys for future use in \texttt{Protego}. After these steps are complete, users are able to identify themselves within the system thus are in a position to start using it.
+Actors should generate their own keys before trying to join the network. They should generate an ECDSA key pair with secp256k1 as the parameters of the elliptic curve and store an hexadecimal representation of those keys, in order for them to be used in \texttt{Blocked}. The same should be done for the RSA, the actors should generate an RSA key pair according to PKCS\#1 OAEP and store those keys for future use in \texttt{Blocked}. After these steps are complete, users are able to identify themselves within the system thus are in a position to start using it.
 
-In order to run a network, one of the ones, and only one, should generate a genesis block on the blockchain. This means that, in broda terms, one of the nodes would have to be responsible for starting the actual network. From that moment on, after other nodes connect, that node will have the same relevance as the remaining nodes.
+In order to run a network, one of the nodes, and only one, should generate a genesis block on the blockchain. This means that, in broad terms, one of the nodes would have to be responsible for starting the actual network. From that moment on, after other nodes connect, that node will have the same relevance as the remaining nodes.
 
-To join an existing network, an actor should start a new node in the \texttt{Protego} system and point it towards another known peer or seed - a point of entry to the validation network. To exit the node, an actor needs only to stop the running node.
+To join an existing network, an actor should start a new node in the \texttt{Blocked} system and point it towards another known peer or seed - a point of entry to the validation network. To exit the node, an actor needs only to stop the running node.
 
 \subsection{Issuing a Certificate}
 
-In \texttt{Protego}, the actors any user with permission is able to generate a new certificate. For the sake of simplicity, let us call that actor an issuer. The following steps should be accomplished:
+In \texttt{Blocked}, any user with permission is able to generate a new certificate. For the sake of simplicity, let us call that actor an issuer. The following steps should be executed:
 
 \begin{enumerate}
-	\item Either the issuer should ask for, or the recipient should share, the public keys for both the RSA and DSA identities. This will be needed to encrypt the information and identify who's receiving the certificate.
-	\item The issuer should then proceed to generate and submit a transaction, wrapped in a batch, that will be submitted to the validaton network.
-	\item The transaction is processed and one of the following this should happen: \emph{(i)} the transaction is accepted and the state is updated or \emph{(ii)} the transaction is rejected and the state remains the same.
+	\item The issuer should ask for, or the recipient should share, the public keys for both the RSA-based and DSA-based identities. This will be needed to encrypt the information and identify who's receiving the certificate, and who's issuing it.
+	\item The issuer should then proceed to generate and submit a transaction, wrapped in a batch, that will be submitted to the network.
+	\item The transaction is processed and one of the following outcomes should happen: \emph{(i)} the transaction is accepted and the state is updated or \emph{(ii)} the transaction is rejected and the state remains the same.
 	\item After that, the issuer should either communicate the identifier of the newly generated certificate to the recipient. If the transaction was rejected, and the issuance cannot be completed, the recipient should also be advised of that.
 \end{enumerate}
 
@@ -91,32 +91,32 @@ It is important to mention that the certificate, and consequently the state's ad
 Revoking a certificate can be accomplished by both the issuer or recipient of a certificate. Both have control to revoke a given certificate. The following steps should be accomplished:
 
 \begin{enumerate}
-	\item A transaction should be submitted to the validation network with the identifier of the certificate to revoke.
-	\item The network validates that the transaction has been submitted by either the issuer or receiver of the certificate and modifies the state, revoking the certificate.
+	\item A transaction should be submitted to the network with the identifier of the certificate to revoke.
+	\item The network validates that the transaction has been submitted by either the issuer or receiver of the certificate and modifies the state, revoking the certificate. Otherwise it will reject the transaction.
 \end{enumerate}
 
 \subsection{Granting/Revoking Access}
 
-One of the main purposes of \texttt{Protego} is to enable the control of acess to the certificates stored in the network. Only the recipient of the certificate has the ability to control the access to certificates and change it. To do that, the following steps should be accomplished.
+One of the main purposes of \texttt{Blocked} is to enable the control of acess to the certificates stored in the network. Only the recipient of the certificate has the ability to control the access to certificates and change it. To do that, the following steps should be executed.
 
 \subsubsection{Granting}
 
 \begin{enumerate}
-    \item The recipient should request, and the subject to be grant access to should provide, both public keys for the DSA and RSA identity.
-    \item The recipient will submit a new transaction to the network, with the symmetric key encrypted with the RSA public key shared by the subject.
-    \item The network validates that the transaction is valid, including validating the transaction signer as being the recipient, and modifies the state, appending the permission to existing permissions.
+    \item The recipient should request, and the subject, to be granted access, should provide, both public keys for the DSA-based and RSA-based identity.
+    \item The recipient will submit a new transaction to the network, containing the symmetric key encrypted with the RSA public key shared by the subject.
+    \item The network validates that the transaction is valid, including validating the transaction signer as being the recipient, and modifies the state, appending the permission to existing permissions. Otherwise it will reject the transaction.
 \end{enumerate}
 
 \subsubsection{Revoking}
 
 \begin{enumerate}
-    \item The recipient will submit a new transaction to the network, with the DSA identity shared by the subject, when the access was granted.
-    \item The network validates that the transaction is valid, including validating the transaction signer as being the recipient, and modifies the state, removing the permission from existing permissions.
+    \item The recipient will submit a new transaction to the network, with the DSA-based identity shared by the subject, when the access was granted.
+    \item The network validates that the transaction is valid, including validating the transaction signer as being the recipient, and modifies the state, removing the permission from existing permissions. Otherwise it will reject the transaction.
 \end{enumerate}
 
 \subsection{Viewing a Certificate}
 
-Contrary to what has been presented thus far, viewing a certificate does not require the submission of a new transaction to the network but it is not enough to just look at the current state either because the information is encrypted. For an actor to view information pertaining to a given certificate, it should identify which address in the network stores the data for that certificate (through the certificate's identifier). It should then proceed to decrypt the existing permissions' list until it can decrypt on of those permissions and obtain the symmetric key. With the symmetric key available, the actor should decrypt the certificate's information and will be able to view the certificate. This operation will only be available if access has been granted to that specific actor and is independent on the certificate being active or revoked.
+Contrary to what has been presented thus far, viewing a certificate does not require the submission of a new transaction to the network. It is not enough to just look at the current state either because the information is encrypted. For an actor to view information pertaining to a given certificate, it should identify which address in the network stores the data for that certificate (through the certificate's identifier). It should then proceed to decrypt the existing permissions' list until it can decrypt one of those permissions and obtain the symmetric key. With the symmetric key decrypted, the actor should decrypt the certificate's information and will be able to view the certificate. This operation will only be available if access has been granted to that specific actor and is independent on the certificate being active or revoked.
 
 \section{Summary}
 

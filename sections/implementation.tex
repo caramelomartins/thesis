@@ -1,38 +1,38 @@
 \chapter{Implementation}
 \label{chap:implementation}
 
-After introducing the conceptual design and architecture of \texttt{Protego}, this chapter introduces an implementation of the system. Section \ref{sec:implementation-technology} discusses the main technological components used for the implementation. Section \ref{sec:implementation-core} presents the internals of the implementation of \texttt{Protego}. Finally, Section \ref{sec:implementation-poc} shows how to perform the activies needed with this implementation.
+After introducing the conceptual design and architecture of \texttt{Blocked}, this chapter introduces an implementation of the system. Section \ref{sec:implementation-technology} discusses the main technological components used for the implementation. Section \ref{sec:implementation-core} presents the internals of the implementation of \texttt{Blocked}. Finally, Section \ref{sec:implementation-poc} shows how to perform the activies needed with this implementation.
 
 \section{Selected Technologies}
 \label{sec:implementation-technology}
 
 \subsection{Hyperledger Sawtooth}
 
-The basis of the implementation will be a project named Hyperledger Sawtooth. Hyperledger Sawtooth is an open-source effort from The Linux Foundation \footnote{https://www.linuxfoundation.org/}, that introduces a modular platform for implementation of applications on top of permissioned distributed ledgers. We use it as the backbone of our implementation. As explained earlier, our approach needs to have a permissioned decentralized ledger, which needs to be customized, to be suitable for our purposes. Hyperledger Sawtooth offers a complete set of tools to build applications on top of a distributed ledger that include: REST API, a validator network infrastructure, permissioning capabilities, events, a consensus protocol - \gls{poet} - and, of course, a distributed ledger. To connect all the pieces together it offers \gls{sdk}, in a variety of languages such as Go, Python or Javascript, easing the development of the implementation. Other projects exist, such as Hyperledger Fabric, offering a wide array of different features, which don't quite suit our approach - such as \textit{smart contracts}.
+The basis of the implementation i Hyperledger Sawtooth. Hyperledger Sawtooth is an open-source effort from The Linux Foundation \footnote{https://www.linuxfoundation.org/}, that introduces a modular platform for implementation of applications on top of permissioned distributed ledgers. We use it as the backbone of our implementation. As explained earlier, our approach needs to have a permissioned blockchain, which needs to be customized, to be suitable for our purposes. Hyperledger Sawtooth offers a complete set of tools to build applications on top of a distributed ledger that include: REST API, a validator network infrastructure, permissioning capabilities, events, a consensus protocol - \gls{poet} \cite{intel_poet} - and, of course, a blockchain. To connect all the pieces together it offers \gls{sdk}, in a variety of languages such as Go, Python or Javascript, easing the development of the implementation. Other projects exist, such as Hyperledger Fabric, offering a wide array of different features, which don't quite suit our approach - such as \textit{smart contracts}.
 
 \subsection{Python}
 
-The implementation of \texttt{Protego} has been developed with the Python\footnote{https://www.python.org/} programming language. Specifically, the implementation only supports Python 3. Python is a dynamically typed, general-purpose programming language widely popular in software development. It has an established mature community, with a lot of resources available. Furthermore, Hyperledger Sawtooth provides 3 mature \gls{sdk} - Python, Go\footnote{https://golang.org/} and Javascript\footnote{https://nodejs.org/en/}. From those 3, only Python and Go had a mature Transaction Processor API. Given that situation, Python gives us more flexibility during development, being interpreted rather than compiled, while also providing us with a mature standard library, given it has a leaf of almost 20 years in development when compared with Go.
+The implementation of \texttt{Blocked} has been developed with the Python\footnote{https://www.python.org/} programming language. Specifically, the implementation only supports Python 3. Python is a dynamically typed, general-purpose programming language widely popular in software development. It has an established and mature community, with a lot of resources available. Furthermore, Hyperledger Sawtooth provides 3 mature \gls{sdk} - Python, Go\footnote{https://golang.org/} and Javascript\footnote{https://nodejs.org/en/}. From those 3, only Python and Go had a mature Transaction Processor API. Given that situation, Python gives us more flexibility during development, being interpreted rather than compiled, while also providing us with a mature standard library, given it has almost 20 more years of development when compared with Go.
 
 \subsection{Docker}
 
-Docker is a platform for container execution. Setting up all the components that are needed to run the system can be complex. Hyperledger Sawtooth supports Docker files to help with configuration and execution of all the components at the same time. With that context, we used Docker in order to run containers of the Hyperledger Sawtooth infrastructure, in which we could our implementation against. This also eases setting up because it doesn't modify any part of the user's system.
+Docker is a platform for container execution. Setting up all the components that are needed to run the system can be complex. Hyperledger Sawtooth supports Docker files to help with configuration and execution of all the components at the same time. With that context, we used Docker in order to run containers of the Hyperledger Sawtooth infrastructure, in which we could execute our implementation against. This also eases setting up because it doesn't modify any part of the user's system.
 
 \section{Implementation}
 \label{sec:implementation-core}
 
-We will briefly described the key components of our implementation. All code can be found on Github\footnote{https://github.com/caramelomartins/protego}, with this section listing only small amounts of the code developed. The several pieces of this implementation, together, fully implemented what has been proposed with the  \texttt{Protego} system, described previously.
+We briefly describe the key components of our implementation. All code can be found on Github\footnote{https://github.com/caramelomartins/Blocked}. The several pieces of this implementation, together, fully implement what we propose proposed with the  \texttt{Blocked} system, described previously.
 
-Our implementation consists of two main components: \textit{processor} and \textit{protego}. Both are Python packages, with several models inside. Apart from that, a collection of executable scripts are provided, with which one could use the packages thus interacting with the blockchain. The Transaction Processor (Section \ref{sec:implementation-tp}) is the component executed along with the validator. This component is the one that processes and validates transactions, and modifies the state of the network. Remaining sections cover the several Python modules developed to perform the activities described in Chapter \ref{chap:design}.
+Our implementation consists of two main components: \textit{processor} and \textit{Blocked}. Both are Python packages, with several modules inside. Apart from that, a collection of executable scripts are provided, with which one could use the packages thus interacting with the blockchain. The Transaction Processor (Section \ref{sec:implementation-tp}) is the component executed along with the validators. This component processes and validates transactions, and modifies the state of the network. Remaining sections cover the several Python modules developed to perform the activities described in Chapter \ref{chap:design}.
 
 \subsection{Transaction Processor}
 \label{sec:implementation-tp}
 
-As previously explained, the Transaction Processor component connects to the validator running on the user's machine. The component has two modules: \texttt{processor.main.py} and \texttt{processor.handler.py}. \texttt{main.py} acts as an interface to starts and stop the actual Transaction Processor, whose business logic is written in \texttt{handler.py}. The Transaction Processor will start by verifying an operation has been submitted, followed by determining the certificate address and fetching the existing certificate from state. It will then process the transaction according to what operation has been requested and modify state accordingly.
+As previously explained, the Transaction Processor component connects to the validator running on the user's machine, or running somewhere else. The component has two modules: \texttt{main} and \texttt{handler}. \texttt{mainy} acts as an interface to start and stop the actual Transaction Processor, whose business logic is written in \texttt{handler}. When running, Transaction Processor will start by verifying an operation has been submitted, followed by determining the certificate address and fetching the existing certificate from state. It will then process the transaction according to what operation has been requested and modify state accordingly.
 
 \subsection{Certificate Issuer}
 
-The Certificate Issuer component is responsible for submitting a new transaction to the validator networks. This component can be found in \texttt{protego.cert\_issuer.py} and can be executed by running the Python script in \texttt{bin/cert-issuer}. To perform its responsabilities, the script receives the parameters:
+The Certificate Issuer component is responsible for submitting a new transaction to the validator networks. This component can be found in \texttt{cert\_issuer} and can be executed by running the Python script in \texttt{bin/cert-issuer}. To perform its responsabilities, the script receives the following parameters:
 
 \begin{itemize}
 	\item Recipient: Recipient's DSA Public Key.
@@ -41,15 +41,15 @@ The Certificate Issuer component is responsible for submitting a new transaction
 	\item Issuer RSA: Path to Issuer's RSA Public Key.
 \end{itemize}
 
-With these parameteres, the Certificate Issuer will start by generating a new symmetric key to encrypt the data, as well as a new certificate identifier. It will then proceed by generating the payload that will be embbeded in the transaction, and batch, to be submited. It will submit the new transaction and print out both the certificate's identifier and where to check for status of the transaction submission. A user can now validate if the transaction has been accepted. After this point, a certificate with the provided identifier has been generated.
+With these parameters, the Certificate Issuer will start by generating a new symmetric key to encrypt the data, as well as a new certificate identifier. It will then proceed by generating the payload that will be embbeded in the transaction, and batch, to be submited. It will submit the new transaction and print out both the certificate's identifier and where to check for status of the transaction submission. A user can now validate if the transaction has been accepted. After this point, a certificate with the provided identifier has been generated.
 
 \subsection{Certificate Revoker}
 
-The Certificate Revoker component is responsible for executing the revocation protocol mentioned in Chapter \ref{chap:design}. This component is implemented in module \texttt{protego.cert\_revoker} and can be executed by running the script \texttt{bin/cert-revoker}. It can be executed by passing the following parameters, referencing the actor who is executing it:
+The Certificate Revoker component is responsible for executing the revocation protocol mentioned in Chapter \ref{chap:design}. This component is implemented in module \texttt{cert\_revoker} and can be executed by running the script \texttt{bin/cert-revoker}. It can be executed by passing the following parameters, referencing the actor who is executing it:
 
 \begin{itemize}
 	\item Certificate: Identifier of the certificate to revoke.
-	\item Secret DSA: DSA Private Key to validate identity.
+	\item Secret DSA: DSA Private Key to validate blockchain identity.
 	\item Secret RSA: RSA Private Key to decrypt the information.
 \end{itemize}
 
@@ -57,7 +57,7 @@ The component starts its execution by fetching the relevant certificate from the
 
 \subsection{Certificate Manager}
 
-The Certificate Manager component is responsible for performing the activities of granting and revoking access to a certificate by a particular subject. It can be executed by any user but the transactions will solely be approved if signed by the certificate's recipient. This component can be found in \texttt{protego.manager} and can be executed by running the Python script in \texttt{bin/manager}. To perform its responsabilities, the script receives the parameters:
+The Certificate Manager component is responsible for performing the activities of granting and revoking access to a certificate by a particular subject. It can be executed by any user but the transactions will solely be approved if signed by the certificate's recipient. This component can be found in \texttt{manager} and can be executed by running the Python script in \texttt{bin/manager}. To perform its responsabilities, the script receives the following parameters:
 
 \begin{itemize}
 	\item Certificate: Identifier of the certificate to revoke.
@@ -68,11 +68,11 @@ The Certificate Manager component is responsible for performing the activities o
 	\item Remove: If the action to perform is revoking access, instead of granting.
 \end{itemize}
 
-The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, it creates a payload with the access modification operation, submits a new transaction and batch, and prints out where to check for status of the transaction submission. If the transactions is accepted, the permissions are updated, otherwise they will stay the same.
+The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, it creates a payload with the access modification operation, submits a new transaction and batch, and prints out where to check for status of the transaction submission. If the transaction is accepted, the permissions are updated, otherwise they will stay the same.
 
 \subsection{Certificate Viewer}
 
-The Certificate Viewer component is responsible solely for displaying certificate information to the user, pending on the correct decryption of the data.  This component can be found in \texttt{protego.cert\_viewer} and can be executed by running the Python script in \texttt{bin/cert-viewer}. To perform its responsabilities, the script receives the parameters:
+The Certificate Viewer component is responsible solely for displaying certificate information to the user, depending on the correct decryption of the data.  This component can be found in \texttt{cert\_viewer} and can be executed by running the Python script in \texttt{bin/cert-viewer}. To perform its responsabilities, the script receives the following parameters:
 
 \begin{itemize}
 	\item Certificate: Identifier of the certificate to revoke.
@@ -92,19 +92,19 @@ The script works by determining the certificate's address and fetching the certi
 
 \subsection{Other Utilities}
 
-Apart from the core components, described above, we've implemented that are necessary in order for the system to be functional. The package \texttt{addressing}, with its module \texttt{addresser.py}, is shared throughout the other components and contains  information about the transaction definition, such as: \emph{(i)} family name to use with Hyperledger Sawtooth, \emph{(ii)} family version that is currently being used and \emph{(iii)} prefix of the addressing scheme. It also contains a shared method \texttt{make\_certificate\_address(identifier)}, which is used across components to determine the address for a given certificate. Furthermore, in the module \texttt{protego.utils}, we can find auxiliary methods for submitting a batch (\texttt{submit\_batch(data)}), fetching certificate information (\texttt{fetch\_state(certificate\_address)}), creating batches (\texttt{make\_batch(txn, signer)}), creating transactions (\texttt{make\_transaction(payload, signer, inputs, outputs)}), encrypting and decrypting, with both AES and RSA.
+Apart from the core components, described above, we've implemented other utilities that are necessary in order for the system to be functional. The package \texttt{addressing}, with its module \texttt{addresser.py}, is shared throughout the other components and contains  information about the transaction definition (see Chapter \ref{chap:design}), such as: \emph{(i)} family name to use with Hyperledger Sawtooth, \emph{(ii)} family version that is currently being used and \emph{(iii)} prefix of the addressing scheme. It also contains a shared method \texttt{make\_certificate\_address(identifier)}, which is used across components to determine the address for a given certificate. Furthermore, in the module \texttt{utils}, we can find auxiliary methods for submitting a batch (\texttt{submit\_batch(data)}), fetching certificate information (\texttt{fetch\_state(certificate\_address)}), creating batches (\texttt{make\_batch(txn, signer)}), creating transactions (\texttt{make\_transaction(payload, signer, inputs, outputs)}), encrypting and decrypting, with both AES and RSA.
 
 \section{Proof-of-Concept}
 \label{sec:implementation-poc}
 
-We have described the design and architecture of \texttt{Protego} (Chapter \ref{chap:design}) and the existing implementation of the system. This section provides a proof-of-concept for our core this, that uses our implementation of the system to demonstrate its applicability in a real world scenario. We review issuing a certificate (Section \ref{sec:impl-issue}), viewing an existing certificate (Section \ref{sec:impl-view}), revoking an existing certificate (Section \ref{sec:impl-revoke}) and managing permissions for an existing certificate (Section \ref{sec:impl-grant-ac} and Section \ref{sec:impl-revoke-ac}). With this section we aim at providing a concrete example of the working \texttt{Protego} system, as well as realize that initial idea proposed by this thesis. All examples on this section have been run with a single-node network.
+We have described the design and architecture of \texttt{Blocked} (Chapter \ref{chap:design}) and an existing implementation of the system. This section provides a proof-of-concept, that uses our implementation of the system to demonstrate its applicability, in a real world scenario. We review issuing a certificate (Section \ref{sec:impl-issue}), viewing an existing certificate (Section \ref{sec:impl-view}), revoking an existing certificate (Section \ref{sec:impl-revoke}) and managing permissions for an existing certificate (Section \ref{sec:impl-grant-ac} and Section \ref{sec:impl-revoke-ac}). With this section we aim at providing a concrete example of the working \texttt{Blocked} system, as well as realize the initial idea proposed by this thesis. All examples on this section have been run with a single-node network.
 
 \subsection{Issuing a Certificate}
 \label{sec:impl-issue}
 
 As explained in Section \ref{sec:design-interaction}, issuing a certificate can be achieved by completing 4 steps. Let us assume that: \emph{(i)} a network is already set up and \emph{(ii)} public keys have been exchanged, such that the issuer knows the public keys of the recipient.
 
-We then proceed by executing the \texttt{cert-issuer} script in the \texttt{Protego} system. This activity is represented in Listing \ref{listing:issue-results}. In this example, we submit a new transactions to the network to generate a certificate, with ID "2136718e-d4cb-4cb2-b324-936444cf33bd". The "Status" element in the results refers to an URL, where the user is able to check out whether the transaction has been accepted or rejected.
+We then proceed by executing the \texttt{cert-issuer} script in the \texttt{Blocked} system. This activity is represented in Listing \ref{listing:issue-results}. In this example, we submit a new transactions to the network to generate a certificate, with ID "2136718e-d4cb-4cb2-b324-936444cf33bd". The "Status" element in the results refers to an URL, where the user is able to check out whether the transaction has been accepted or rejected.
 
 \begin{listing}[ht]
 	\begin{minted}[
@@ -145,7 +145,7 @@ By accessing the URL that has been returned by running the script, we are able t
 \subsection{Viewing a Certificate}
 \label{sec:impl-view}
 
-Furthermore, now that our certificate has been issued, we want to be able to see the contents of it. Let's assume we are now impersonating the recipient of the certificate. We would run the \texttt{cert-viewer} script with our secret keys, in able to view the certificate's contents. We demonstrate this in Listing \ref{listing:view-results}.
+Furthermore, now that our certificate has been issued, we want to be able to see the contents of it. Let's assume we are now impersonating the recipient of the certificate. We would run the \texttt{cert-viewer} script with our secret keys, in order to be  able to view the certificate's contents. We demonstrate this in Listing \ref{listing:view-results}.
 
 \begin{listing}[ht]
 	\begin{minted}[
@@ -175,12 +175,12 @@ Status: Active
 	\label{listing:view-results}
 \end{listing}
 
-As we demonstrate in Listing \ref{listing:view-results}, and present in Chapter \ref{chap:design}, a user of \texttt{Protego}, with the appropriate permissions is able to see in full the contents of the certificate. In this case, since we are impersonating the recipient of the certificate it only makes sense that we are able to view its contents. In the results, \emph{Attempt 1} and \emph{Attempt 2} represent the attempts at decrypting the symmetric key with the RSA secret key. No transaction is submitted in this activity such that there's no need to make any validation within the blockchain.
+As we demonstrate in Listing \ref{listing:view-results}, and present in Chapter \ref{chap:design}, a user of \texttt{Blocked}, with the appropriate permissions is able to see in full the contents of the certificate. In this case, since we are impersonating the recipient of the certificate it only makes sense that we are able to view its contents. In the results, \emph{Attempt 1} and \emph{Attempt 2} represent the attempts at decrypting the symmetric key with the RSA secret key. No transaction is submitted in this activity such that there's no need to make any validation within the blockchain.
 
 \subsection{Granting Access}
 \label{sec:impl-grant-ac}
 
-Let us now assume the following scenario: a recruiter approaches the recipient of the certificate, in the hopes of hiring the recipient. The recruiter wishes to verify the qualifications that the recipient claims to have. In that context, the recruiter will share the public keys, both for RSA and DSA, so that the recipient can provide the recruiter with access to the certificate stored in the blockchain. We demonstrate the results of this in Listing \ref{listing:grant-ac-results}. We achieve the desired results by running the `manager' script with the appropriate parameters.
+Let us now assume the following scenario: a recruiter approaches the recipient of the certificate, in the hopes of hiring the recipient. The recruiter wishes to verify the qualifications that the recipient claims to have. In that context, the recruiter will share the public keys, both for RSA and DSA, so that the recipient can provide the recruiter with access to the certificate stored in the blockchain. We demonstrate the results of this in Listing \ref{listing:grant-ac-results}. We achieve the desired results by running the \texttt{bin/manager} script with the appropriate parameters.
 
 \begin{listing}[ht]
 	\begin{minted}[
@@ -254,7 +254,7 @@ Status: Active
 \subsection{Revoking Access}
 \label{sec:impl-revoke-ac}
 
-Let us now assume that, for some reason, the recruiter shall no longer have access to this certificate. The recipient is able to remove such permission from the certificate's permission list. To do this, it must submit a transaction through \texttt{Protego} in order to remove the permission. We demonstrate this activity in Listing \ref{listing:revoke-ac-results}, in which we run \texttt{manager} with the appropriate \texttt{-r} flag.
+Let us now assume that, for some reason, the recruiter shall no longer have access to this certificate. The recipient is able to remove such permission from the certificate's permission list. To do this, it must submit a transaction through \texttt{Blocked} in order to remove the permission. We demonstrate this activity in Listing \ref{listing:revoke-ac-results}, in which we run \texttt{manager} with the appropriate \texttt{-r} flag.
 
 \begin{listing}[ht]
 	\begin{minted}[
@@ -360,7 +360,7 @@ As with previous submission of transactions, the user should confirm that the tr
 	\label{fig:revoke-status}
 \end{figure}
 
-Nonetheless, as explained previously, the certificate is not deleted. If the recipient wishes to view the certificate's contents, it would be able to. The only difference is that the certificate is now irrevocably revoked and will return as such. We demonstrate this in Listing \ref{listing:view-revoke-results}, produced by executing the \texttt{cert-viewer} script, which displays the \texttt{Status} as "Revoked".
+Nonetheless, as explained previously, the certificate is not deleted. If the recipient wishes to view the certificate's contents, it would be able to. The only difference is that the certificate is now irrevocably revoked and will display as such. We demonstrate this in Listing \ref{listing:view-revoke-results}, produced by executing the \texttt{cert-viewer} script, which displays the \texttt{Status} as "Revoked".
 
 \begin{listing}[ht]
 	\begin{minted}[
