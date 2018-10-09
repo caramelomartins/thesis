@@ -7,9 +7,11 @@
 *.fdb_latexmk
 *.fls
 *.log
+*.lol
 *.out
 *.pdf
 *.run.xml
+*.synctex
 *.synctex.gz
 *.acn
 *.glo
@@ -20,3 +22,4 @@
 
 # minted package
 _minted-main/
+
