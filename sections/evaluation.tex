@@ -12,76 +12,76 @@
 
 In this section, we evaluate our system through the metrics proposed in \cite{hu_guidelines_2012} which is a continuation on what has been presented in \cite{hu_assessment_2006}. Leveraging these metrics allows us to have an understanding of what the access control system is capable of executing, against some known organizational metrics. As \citeauthor{hu_guidelines_2012} \cite{hu_guidelines_2012} establish, \emph{"the quality metric should be evaluated based on the specific needs for the AC policy"} \cite[25]{hu_guidelines_2012}. In our context, what this means is that rather than evaluating every single metric, with several of them being clearly inadequate, we should evaluate the subset of policies that seems adequate to our use case. We have provided a summary of all the metrics we are evaluating in Table \ref{tab:qualityMetrics}. Questions in 4.1.7 and 4.1.9, in Table \ref{tab:qualityMetrics}, have been rephrased to aggregate the existing section's questions into one question.
 
-{   
-    \renewcommand{\arraystretch}{1.5}%
-    \begin{table}[htb]
-        \centering
-        \small
-        
-        \caption{Quality Metrics for Evaluation}
-        \label{tab:qualityMetrics}
-        \begin{tabular}{l|l}
-            \hline \bf Section & \bf Metric Items \\ \hline
-            \rowcolor{lightgray} \multicolumn{2}{l}{Administration Properties} \\ \hline 
-            4.1.1            & \llap{\textbullet} Does the AC system log denied access requests?  \\
-                & \llap{\textbullet} Does the AC system log granted access requests? \\ \hline
-            4.1.2 & \llap{\textbullet} Does the system provide query/display for privileges discovery? \\
-                & \llap{\textbullet} Does the system provide graphic display? \\ \hline
-            4.1.3 & \llap{\textbullet} How many steps are required for assigning a privilege? \\
-                & \llap{\textbullet} How many steps are required for removing a privilege? \\ \hline
-            4.1.4 & \llap{\textbullet} Is the AC system capable of logical expression for rule specification? \\ \hline
-            4.1.5 & \llap{\textbullet} Does the AC system allow policy expiration assignment? \\ 
-                & \llap{\textbullet} Does the AC system provide policy deployment or activation verification? \\
-                & \llap{\textbullet} Does the AC system allow runtime policy rule change? \\ \hline
-            4.1.7 & \llap{\textbullet} How is the AC enforced? \\ \hline
-            4.1.8 & \llap{\textbullet} Does the AC system support multiple hosts via network? \\ \hline
-            4.1.9 & \llap{\textbullet} What is the scope of data control? \\
-            \hline \rowcolor{lightgray} \multicolumn{2}{l}{Enforcement Properties} \\ \hline
-            4.2.2 & \llap{\textbullet} Is the AC system capable of bypassing policy rules for critical AC decisions? \\ \hline
-            4.2.3 & \llap{\textbullet} Is the AC system capable of enforcing the least privilege principle? \\ \hline
-            4.2.4 & \llap{\textbullet} Is the AC system capable of specifying Static SoD rules? \\ \hline
-            4.2.5 & \llap{\textbullet} Does the AC system provide safety check capabilities to prevent leaking of permissions? \\ \hline
-            4.2.6 & \llap{\textbullet} Does the AC system allow configuring the granularity of controlled objects? \\ \hline
-            4.2.7 & \llap{\textbullet} Does the AC system support existing AC standards? \\ 
-            \hline \rowcolor{lightgray} \multicolumn{2}{l}{Performance Properties} \\ \hline
-            4.3.1 & \llap{\textbullet} Does the response time of granting an access request meet the organization’s requirement? \\ \hline
-            4.3.2 & \llap{\textbullet} Does the AC policy retrieval and deposit meet the organization’s requirements? \\ \hline
-            4.3.3 & \llap{\textbullet} Does the AC system provide an AC policy distribution mechanism? \\ \hline
-            4.3.4 & \llap{\textbullet} Can the AC system be integrated with or support identification authentication systems? \\
-            \hline \rowcolor{lightgray} \multicolumn{2}{l}{Support Properties} \\ \hline
-            4.4.2 & \llap{\textbullet} Is the AC system capable of supporting a different OS beside the one used by the intended host(s)? \\ \hline
-            4.4.4 & \llap{\textbullet} Does the AC system provide a GUI or an API for AC policy management and authoring? \\
-            \hline
-        \end{tabular}
-    \end{table}
+{
+\renewcommand{\arraystretch}{1.5}%
+\begin{table}[htb]
+	\centering
+	\small
+
+	\caption{Quality Metrics for Evaluation}
+	\label{tab:qualityMetrics}
+	\begin{tabular}{l|l}
+		\hline \bf Section & \bf Metric Items                                                                                                      \\ \hline
+		\rowcolor{lightgray} \multicolumn{2}{l}{Administration Properties}                                                                         \\ \hline
+		4.1.1              & \llap{\textbullet} Does the AC system log denied access requests?                                                     \\
+		                   & \llap{\textbullet} Does the AC system log granted access requests?                                                    \\ \hline
+		4.1.2              & \llap{\textbullet} Does the system provide query/display for privileges discovery?                                    \\
+		                   & \llap{\textbullet} Does the system provide graphic display?                                                           \\ \hline
+		4.1.3              & \llap{\textbullet} How many steps are required for assigning a privilege?                                             \\
+		                   & \llap{\textbullet} How many steps are required for removing a privilege?                                              \\ \hline
+		4.1.4              & \llap{\textbullet} Is the AC system capable of logical expression for rule specification?                             \\ \hline
+		4.1.5              & \llap{\textbullet} Does the AC system allow policy expiration assignment?                                             \\
+		                   & \llap{\textbullet} Does the AC system provide policy deployment or activation verification?                           \\
+		                   & \llap{\textbullet} Does the AC system allow runtime policy rule change?                                               \\ \hline
+		4.1.7              & \llap{\textbullet} How is the AC enforced?                                                                            \\ \hline
+		4.1.8              & \llap{\textbullet} Does the AC system support multiple hosts via network?                                             \\ \hline
+		4.1.9              & \llap{\textbullet} What is the scope of data control?                                                                 \\
+		\hline \rowcolor{lightgray} \multicolumn{2}{l}{Enforcement Properties}                                                                     \\ \hline
+		4.2.2              & \llap{\textbullet} Is the AC system capable of bypassing policy rules for critical AC decisions?                      \\ \hline
+		4.2.3              & \llap{\textbullet} Is the AC system capable of enforcing the least privilege principle?                               \\ \hline
+		4.2.4              & \llap{\textbullet} Is the AC system capable of specifying Static SoD rules?                                           \\ \hline
+		4.2.5              & \llap{\textbullet} Does the AC system provide safety check capabilities to prevent leaking of permissions?            \\ \hline
+		4.2.6              & \llap{\textbullet} Does the AC system allow configuring the granularity of controlled objects?                        \\ \hline
+		4.2.7              & \llap{\textbullet} Does the AC system support existing AC standards?                                                  \\
+		\hline \rowcolor{lightgray} \multicolumn{2}{l}{Performance Properties}                                                                     \\ \hline
+		4.3.1              & \llap{\textbullet} Does the response time of granting an access request meet the organization’s requirement?          \\ \hline
+		4.3.2              & \llap{\textbullet} Does the AC policy retrieval and deposit meet the organization’s requirements?                     \\ \hline
+		4.3.3              & \llap{\textbullet} Does the AC system provide an AC policy distribution mechanism?                                    \\ \hline
+		4.3.4              & \llap{\textbullet} Can the AC system be integrated with or support identification authentication systems?             \\
+		\hline \rowcolor{lightgray} \multicolumn{2}{l}{Support Properties}                                                                         \\ \hline
+		4.4.2              & \llap{\textbullet} Is the AC system capable of supporting a different OS beside the one used by the intended host(s)? \\ \hline
+		4.4.4              & \llap{\textbullet} Does the AC system provide a GUI or an API for AC policy management and authoring?                 \\
+		\hline
+	\end{tabular}
+\end{table}
 }
 
-\subsection{Administration Properties} 
+\subsection{Administration Properties}
 
-\texttt{Blocked} audits the granting of access through the processing that happens inside the Transaction Processor. If the transactions submitted are approved, these are then stored in the blockchain. If, in turn, the transactions are rejected, the nodes will have a log that a given transaction has been rejected, along with the reason. This occurs because each node will process the transaction thus storing whether the transaction has been rejected. At the same time, each client performs the needed validations for accessing a certificate, which means that denied read accesses won't be logged anywhere, except on the client node's system. 
+\texttt{Blocked} audits the granting of access through the processing that happens inside the Transaction Processor. If the transactions submitted are approved, these are then stored in the blockchain. If, in turn, the transactions are rejected, the nodes will have a log that a given transaction has been rejected, along with the reason. This occurs because each node will process the transaction thus storing whether the transaction has been rejected. At the same time, each client performs the needed validations for accessing a certificate, which means that denied read accesses won't be logged anywhere, except on the client node's system.
 
-The auditing that gets stored is only per transaction, apart from all the information that can be stored in a transaction (such as allowing or revoking a given access), there are no more logs available.  In terms of permissions' querying, users can query permissions only by iterating the blockchain. The system does not provide a way of querying permissions, neither from a terminal or GUI. Users may only iterate the transaction log, through the REST API, and reconstruct what permissions have been granted and revoked, reaching a final state of what permissions exist at a given point in time. 
+The auditing that gets stored is only per transaction, apart from all the information that can be stored in a transaction (such as allowing or revoking a given access), there are no more logs available.  In terms of permissions' querying, users can query permissions only by iterating the blockchain. The system does not provide a way of querying permissions, neither from a terminal or GUI. Users may only iterate the transaction log, through the REST API, and reconstruct what permissions have been granted and revoked, reaching a final state of what permissions exist at a given point in time.
 
-Assigning or removing a privilege is possible by executing the respective Python script, as described in Chapter \ref{chap:implementation}. In both cases - assigning and removing - it takes only one step to execute, apart from knowing the public identity of whomever is related to the permission. Nonetheless, updating a permission is impossible. 
+Assigning or removing a privilege is possible by executing the respective Python script, as described in Chapter \ref{chap:implementation}. In both cases - assigning and removing - it takes only one step to execute, apart from knowing the public identity of whomever is related to the permission. Nonetheless, updating a permission is impossible.
 
 The system does not support the specification of \gls{ac} rules nor can't it handle any rule specification logic - such as \texttt{AND} and \texttt{OR}. Nonetheless, this situation doesn't appear as a weakness, due to the fact that, in the context we have described, the system has been designed, and implemented, to be used in a 1-to-1 basis. What this means is the system is implemented to deal with a given subject allowing another subject access to reading specific information. In this situation, not being able to support specification of rules or handle any rule specification logic, doesn't seem to be something that is relevant.
 
-\texttt{Blocked} does not for policy expiration assignment, by which a subject would cease to have permissions to a given object by expiration of the policy. This feature would be useful in our context which makes it relevant enough to be considered a weakness, that could be improved in future time. It does allow for target assignments, given that the default policy is directly assigned to a given target - although there's no other way of executing policy assignment, unless targeting a specific subject. \texttt{Blocked} allows for runtime policy changes, in the sense that it allows a permission to be revoked during runtime. For example, policies can change interactively while the nodes are running the validator network and, immediately before, a user queries for the information on a certificate. 
+\texttt{Blocked} does not for policy expiration assignment, by which a subject would cease to have permissions to a given object by expiration of the policy. This feature would be useful in our context which makes it relevant enough to be considered a weakness, that could be improved in future time. It does allow for target assignments, given that the default policy is directly assigned to a given target - although there's no other way of executing policy assignment, unless targeting a specific subject. \texttt{Blocked} allows for runtime policy changes, in the sense that it allows a permission to be revoked during runtime. For example, policies can change interactively while the nodes are running the validation network and, immediately before, a user queries for the information on a certificate.
 
 In \texttt{Blocked}, the access control is enforced via a combination of application logic, consensus protocols and cryptography - as described in Chapter \ref{chap:design}. For viewing a certificate, a subject will need to possess the appropriate RSA secret key, otherwise it won't be able to decrypt the data. For granting a permission, a subject also needs to have appropriate secret keys but, at the same time, needs to be either the issuer or recipient of a given certificate, otherwise the transaction will be rejected by the Transaction Processor running in the nodes. Given that we are decentralizing access control, it makes sense to not have all enforcement as application logic. The reliance on consensus protocols is crucial, in order to maintain the integrity of the access. If all access control were to be enforce at the application logic, there would be no authority to validate a node's claim of being granted access to a specific subject.
 
-The system supports an array of hosts, theoretically with a high dimension of availability, each running its own Transaction Processor, that will connect via the network. Each node will have a copy of the entire blockchain, which makes it functional when the node is a party to validation of transactions and when it is not a party to that. 
+The system supports an array of hosts, theoretically with a high dimension of availability, each running its own Transaction Processor, that will connect via the network. Each node will have a copy of the entire blockchain, which makes it functional when the node is a party to validation of transactions and when it is not a party to that.
 
 The system covers application data that is store inside a blockchain. In a way, the system protects structured or unstructured information that is stored, encrypted, on a blockchain. The use case is that of educational certificates but it would not be hard to extend, or adapt, that information to being related to a different use case.
 
 \subsection{Enforcement Properties}
 
-In \texttt{Blocked}, it is currently theoretically possible to bypass the system by changing the code of the Transaction Processor and running a changed version on the network. Nonetheless, it would still have to bypass the consensus of the network because it would need to emit new policies - there's no way of bypassing the existing policies. This is difficult because several Transaction Processors running different versions of the code would result in rejected transactions. So, in practice, it is not possible to bypass the \gls{ac} system for crucial decisions. On the viewer, it would be extremely had to bypass the system due to the fact that all the data is encrypted and secret keys, only known to the subjects, would be needed to decrypt that information. Nonetheless, possessing those key would allow a user to bypass the system. 
+In \texttt{Blocked}, it is currently theoretically possible to bypass the system by changing the code of the Transaction Processor and running a changed version on the network. Nonetheless, it would still have to bypass the consensus of the network because it would need to emit new policies - there's no way of bypassing the existing policies. This is difficult because several Transaction Processors running different versions of the code would result in rejected transactions. So, in practice, it is not possible to bypass the \gls{ac} system for crucial decisions. On the viewer, it would be extremely had to bypass the system due to the fact that all the data is encrypted and secret keys, only known to the subjects, would be needed to decrypt that information. Nonetheless, possessing those key would allow a user to bypass the system.
 
 Every subject is considered as having no access, unless it can decrypt one of the permissions, which means they have been granted access to that certificate. Granting access to a certificate grants access to only that certificate and no other on the system. At the same time, decryption of a certificate's symmetric key will prove useless when decrypting any other certificate, due to the fact that every certificate is encrypted with a different, randomly generated, key. The same argument can be made for \gls{sod}. Given that, in our model, subjects are given access only to certificates they are working with - in this case, verifying - we confirm that \emph{"object accesses are only permitted to the subjects that are duty
--related to the objects"} \cite[17]{hu_guidelines_2012}.
+	-related to the objects"} \cite[17]{hu_guidelines_2012}.
 
-There's a universal constraint on the system that enforces that only subjects that have the secret keys, corresponding to the public keys, that were granted access to can access the information. This prevents leakage of permissions. In case a secret key is compromised, that permission should be revoked during runtime. At the same time, in the blockchain, no information is stored in plain-text which prevents the leakage of information through inspecting the blockchain. 
+There's a universal constraint on the system that enforces that only subjects that have the secret keys, corresponding to the public keys, that were granted access to can access the information. This prevents leakage of permissions. In case a secret key is compromised, that permission should be revoked during runtime. At the same time, in the blockchain, no information is stored in plain-text which prevents the leakage of information through inspecting the blockchain.
 
 The system granularity if statically configured to the certificate object, it doesn't support any other granularity. It would be a strength if, for example, recipients of several certificates were able to configure permissions for those certificate at a different granularity level.
 
@@ -89,11 +89,13 @@ Since the system was designed and implemented, for a very specific use case, and
 
 \subsection{Performance Properties}
 
-\emph{Response Time}: \textcolor{red}{EXPERIMENTAL EVALUATION}. \emph{Policy Repository and Retrieval}: \textcolor{red}{EXPERIMENTAL EVALUATION}. \emph{Policy Distribution}: Policy is distributed through a consensus protocol to all the nodes in the network, after each has validated the transaction, the data is updated accordingly in their blockchain. \emph{Authentication}: Authentication is performed on the basis of public key criptography, through the usage of public keys as identities.
+We have assessed response times, policy retrieval and deposit, experimentally, in Section \ref{sec:eval-benchmark}. Due to the fact that there are no quantitative requirements, these metrics are evaluated on the basis of their results rather than in a comparative fashion. The same approach can be taken, nonetheless, in future research to perform comparative assessments. In \texttt{Blocked}, policies are distributed through a peer-to-peer communication between the nodes. After each node has validated the transaction, and the transaction is deemed valid, the data is updated accordingly in its copy of the blockchain. Lastly, authentication is performed on the basis of public key cryptography, through the usage of public keys as identities. Currently, \texttt{Blocked} doesn't integrate or support any other authentication systems.
 
 \subsection{Support Properties}
 
-\emph{Policy Import and Export}: The system does not support import, export or convertion of access control policies. \emph{OS Compatibility}: The system supports only Ubuntu 18.04 LTS. \emph{Policy Source Management}: The system does not use authorative sources, given that one of the goals is descentralizing the system thus having no single authority, and, for that, does not support source management. \emph{User interfaces and API}: The system provides only command line user interfaces for interaction with the system. \emph{Verification and Compliance Function}: The system does not provide verification and compliance functionalities.
+The system supports only Ubuntu 18.04 LTS. Given that the system relies on the usage of Docker and Python - tools compatible with other systems - it seems trivial to extend support for those systems. Nonetheless, extensive OS compatibility tests have not been conducted thus support is not guaranteed. It would be important to perform this testing and needed modifications as it would strengthen the artifact.
+
+In \texttt{Blocked}, usage is performed through command-line interfaces, for each of the existing script. Hyperledger Sawtooth also provides us with a REST API that can be used to query the underlying blockchain. Nonetheless, there's no \gls{gui} or API to perform policy management. These would be relevant improvements to consider in \texttt{Blocked}. It would also be interesting to consider developing a \gls{gui} to perform other activities, such as viewing information pertaining to a certificate.
 
 \section{Comparative Analysis}
 
