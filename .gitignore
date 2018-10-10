@@ -23,3 +23,7 @@
 # minted package
 _minted-main/
 
+main.acr
+main.alg
+main.glg
+main.gls
