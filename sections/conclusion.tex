@@ -1,11 +1,34 @@
 \chapter{Conclusion}
 \label{chap:conclusion}
 
+We explored whether usage of permissioned blockchain would provide a solution for decentralization of access control, in the context of issuing, sharing and managing digital Educational Certificates. This problem emerges from the intersection of an increasingly distributed technological landscape, an increase in the amount in generation of digital information, the increase in the adoption of MOOC-based learning and the lack of tools for practical issuance and verification of those learning certificates. Previous research had provided options that are either not entirely decentralized, required complex \gls{pki} to use, lack integration with permissioned blockchains or are missing access control functionality, that allows users to control who accesses what information. We have sought, with this research, to explore whether building a system on top of a permissioned blockchain would allow us to provide those guarantees of decentralization.
+
+We have started by performing a statistical study in order to assess how users perceive blockchain-based technologies, in terms of security and complexity, and applications built on top of those, in order to assess the adoption that our proposed approach could potentially have. At the same time, we used that questionnaire to try and guide the design and architecture of the system that has been proposed. This initial step, guided by our choice of using \gls{dsrm}, as our research methodology, allowed us to cautiously conclude that our proposed solutions has potential in terms of user's adoption and is a small step towards resolving the presented issues.
+
+With that in mind, we designed a system \texttt{Blocked}, based on the concept of permissioned blockchains, to issue, share and manage Educational Certificates. This system relies on a permissioned blockchain platform, specifically Hyperledger Sawtooth, and cryptography-based permissions to allow decentralization of policy distribution, maintaining integrity and privacy of information stored inside the blockchain. \texttt{Blocked} has been developed to be used on a peer-to-peer network, where each node might be responsible for validating the current state of the blockchain. Apart from cryptography-based permissions, \texttt{Blocked} also allows for configuration of permissions at the network level, based on the identities of the nodes participating in the network, which is specially suitable from an organizational perspective.
+
+Finally, we have proved our concept through implementing the proposed design and running a simulation. We have also described how the implemented system fits in with the responsibilities of an access control system. This system is not meant to be a replacement for existing solutions (such as \emph{BlockCerts}) but rather it is meant to show an alternative way of solving the decentralization system, that is more suitable for specific use cases. We have also evaluated how the results of our exploratory statistical study describe potential impacts on the future study of blockchain-based research.
 
 \section{Contributions}
-\textcolor{red}{TODO}
+
+According to what has been described previously, our stated goal of exploring decentralization of access control through the usage of permissioned blockchains, this thesis produced an artifact in order to resolve that issue.
+
+Our main contribution is the \texttt{Blocked} system design, architecture and implementation, along with a proof-of-concept. This contribution, along with its evaluation, demonstrates that there's a real potential in using permissioned blockchains for decentralizing access control, in the context o issuing, sharing and managing Educational Certificates.
+
+A minor contribution, that was intrinsically connected with our major contribution, was the statistical study performed, in order to assess users' perceptions of blockchain-based technologies, in terms of security and complexity. The results have indicated a tendency for users to perceive blockchain technology as more secure but, alas, more complex too. We have evaluated the potential of these findings, in developing future applications relying on blockchains, during these thesis.
 
 \section{Future Research}
-\textcolor{red}{TODO}
+
+The contributions described in this thesis can be extended, or adapted, in different directions through future research. We have explored some of the limitations of this thesis, in a previous chapter, and those limitations are a guide to some of the directions in which this research could be extended. All of these extensions should, nonetheless, be focused on improving the applicability of these contributions to real-world scenarios and applications, rather than simulations.
+
+It would be interesting to expand on the results of the statistical study described in this thesis. This extensions should have 3 major focuses: increasing the number and diversity of participants; experimenting with different versions of questionnaires, to rule out a learning bias in the results; and use different platforms and methodologies (such as interviews instead of questionnaires) to \emph{(i)} reproduce the results and \emph{(ii)} gain a deeper understanding of user's perceptions on these topics. This would allow us to improve on the development workflows used to build blockchain-based applications.
+
+Another interesting extension would be to refine the design and architecture of \texttt{Blocked}. This should be done in different ways, overcoming the limitations described previously, by: further evaluating the \gls{poet} consensus algorithm; developing a more generalized system that would be decoupled from Hyperledger Sawtooth, being able to support other permisisoned blockchain platforms; and improving on some of the aspects of privacy mentioned in the limitations.
+
+Finally, improving the overall implementation provided in this thesis. This can be done by providing packaged solutions for ease of use, providing a \gls{gui} and improving usability of the artifact. At the same time, more experiments need to be done with different network configuration, different testbeds and real-world simulations, in order to continously assess the performance of the system.
+
+These suggestions of extensions are meant to focus future research on improving the existing prototype proof-of-concept implementation and design into a real-world production application that can have a practical impact on the problem we set out to explore.
+
+
 
 
