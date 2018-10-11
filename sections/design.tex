@@ -117,7 +117,3 @@ One of the main purposes of \texttt{Blocked} is to enable the control of acess t
 \subsection{Viewing a Certificate}
 
 Contrary to what has been presented thus far, viewing a certificate does not require the submission of a new transaction to the network. It is not enough to just look at the current state either because the information is encrypted. For an actor to view information pertaining to a given certificate, it should identify which address in the network stores the data for that certificate (through the certificate's identifier). It should then proceed to decrypt the existing permissions' list until it can decrypt one of those permissions and obtain the symmetric key. With the symmetric key decrypted, the actor should decrypt the certificate's information and will be able to view the certificate. This operation will only be available if access has been granted to that specific actor and is independent on the certificate being active or revoked.
-
-\section{Summary}
-
-\textcolor{red}{TODO}
