@@ -5,7 +5,6 @@ thesis: main.tex
 
 clean:
 	latexmk -CA
-	rm *.acn *.bbl *.glo *.ist *.lol *.run.xml *.synctex.gz
 
 publish: thesis
 	cp main.pdf ~/Thesis.pdf
