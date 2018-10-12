@@ -1,38 +1,38 @@
 \chapter{Implementation}
 \label{chap:implementation}
 
-After introducing the conceptual design and architecture of \texttt{Blocked}, this chapter introduces an implementation of the system. Section \ref{sec:implementation-technology} discusses the main technological components used for the implementation. Section \ref{sec:implementation-core} presents the internals of the implementation of \texttt{Blocked}. Finally, Section \ref{sec:implementation-poc} shows how to perform the activies needed with this implementation.
+After introducing the conceptual design and architecture of \texttt{Blocked}, this chapter introduces an implementation of the system. Section \ref{sec:implementation-technology} discusses the main technological components used for the implementation. Section \ref{sec:implementation-core} presents the internals of the implementation of \texttt{Blocked}. Finally, Section \ref{sec:implementation-poc} shows how to perform the activities needed with this implementation.
 
 \section{Selected Technologies}
 \label{sec:implementation-technology}
 
 \subsection{Hyperledger Sawtooth}
 
-The basis of the implementation i Hyperledger Sawtooth. Hyperledger Sawtooth is an open-source effort from The Linux Foundation \footnote{https://www.linuxfoundation.org/}, that introduces a modular platform for implementation of applications on top of permissioned distributed ledgers. We use it as the backbone of our implementation. As explained earlier, our approach needs to have a permissioned blockchain, which needs to be customized, to be suitable for our purposes. Hyperledger Sawtooth offers a complete set of tools to build applications on top of a distributed ledger that include: REST API, a validator network infrastructure, permissioning capabilities, events, a consensus protocol - \gls{poet} \cite{intel_poet} - and, of course, a blockchain. To connect all the pieces together it offers \gls{sdk}, in a variety of languages such as Go, Python or Javascript, easing the development of the implementation. Other projects exist, such as Hyperledger Fabric, offering a wide array of different features, which don't quite suit our approach - such as \textit{smart contracts}.
+The basis of the implementation is Hyperledger Sawtooth. Hyperledger Sawtooth is an open-source effort from The Linux Foundation \cite{linuxfoundation}, that introduces a modular platform for implementation of applications on top of permissioned distributed ledgers. We use it as the backbone of our implementation. As explained earlier, our approach needs to have a permissioned blockchain, which needs to be customized, to be suitable for our purposes. Hyperledger Sawtooth offers a complete set of tools to build applications on top of a distributed ledger that include: REST API, a validation network infrastructure, permissioning capabilities, events, a consensus protocol - \gls{poet} \cite{intel_poet} - and, of course, a blockchain. To connect all the pieces together it offers \gls{sdk}, in a variety of languages such as Go, Python or JavaScript, easing the development of the implementation.
 
 \subsection{Python}
 
-The implementation of \texttt{Blocked} has been developed with the Python\footnote{https://www.python.org/} programming language. Specifically, the implementation only supports Python 3. Python is a dynamically typed, general-purpose programming language widely popular in software development. It has an established and mature community, with a lot of resources available. Furthermore, Hyperledger Sawtooth provides 3 mature \gls{sdk} - Python, Go\footnote{https://golang.org/} and Javascript\footnote{https://nodejs.org/en/}. From those 3, only Python and Go had a mature Transaction Processor API. Given that situation, Python gives us more flexibility during development, being interpreted rather than compiled, while also providing us with a mature standard library, given it has almost 20 more years of development when compared with Go.
+The implementation of \texttt{Blocked} has been developed with the Python \cite{python} programming language. Specifically, the implementation only supports Python 3. Python is a dynamically typed, general-purpose programming language widely popular in software development. It has an established and mature community, with a lot of resources available. Furthermore, Hyperledger Sawtooth provides 3 mature \gls{sdk} - Python, Go \cite{golang} and JavaScript \cite{nodejs}. From those 3, only Python and Go had a mature Transaction Processor API. With that in mind, Python gives us more flexibility during development, being interpreted rather than compiled, while also providing us with a mature standard library, given it has almost 20 more years of development when compared with Go.
 
 \subsection{Docker}
 
-Docker is a platform for container execution. Setting up all the components that are needed to run the system can be complex. Hyperledger Sawtooth supports Docker files to help with configuration and execution of all the components at the same time. With that context, we used Docker in order to run containers of the Hyperledger Sawtooth infrastructure, in which we could execute our implementation against. This also eases setting up because it doesn't modify any part of the user's system.
+Docker is a platform for container execution. Setting up all the components that are needed to run the system can be complex. Hyperledger Sawtooth supports Docker files to help with configuration and execution of all the components at the same time. We used Docker in order to run containers of the Hyperledger Sawtooth infrastructure, in which we could execute our implementation against. This also eases setting up because it doesn't modify any part of the user's system.
 
 \section{Implementation}
 \label{sec:implementation-core}
 
-We briefly describe the key components of our implementation. All code can be found on Github\footnote{https://github.com/caramelomartins/Blocked}. The several pieces of this implementation, together, fully implement what we propose proposed with the  \texttt{Blocked} system, described previously.
+We briefly describe the key components of our implementation. All code can be found on GitHub \cite{blocked}. The several pieces of this implementation, together, fully implement what we propose with the  \texttt{Blocked} system, described previously.
 
-Our implementation consists of two main components: \textit{processor} and \textit{Blocked}. Both are Python packages, with several modules inside. Apart from that, a collection of executable scripts are provided, with which one could use the packages thus interacting with the blockchain. The Transaction Processor (Section \ref{sec:implementation-tp}) is the component executed along with the validators. This component processes and validates transactions, and modifies the state of the network. Remaining sections cover the several Python modules developed to perform the activities described in Chapter \ref{chap:design}.
+Our implementation consists of two main Python packages: \textit{processor} and \textit{blocked}. Both are Python packages, with several modules inside. Apart from that, a collection of executable scripts are provided, with which one could use the packages thus interacting with the blockchain. The Transaction Processor (Section \ref{sec:implementation-tp}) is the component executed together with the validation nodes. This component processes and validates tr	and modifies the state of the network. Remaining sections cover the several Python modules developed to perform the activities described in Chapter \ref{chap:design}.
 
 \subsection{Transaction Processor}
 \label{sec:implementation-tp}
 
-As previously explained, the Transaction Processor component connects to the validator running on the user's machine, or running somewhere else. The component has two modules: \texttt{main} and \texttt{handler}. \texttt{mainy} acts as an interface to start and stop the actual Transaction Processor, whose business logic is written in \texttt{handler}. When running, Transaction Processor will start by verifying an operation has been submitted, followed by determining the certificate address and fetching the existing certificate from state. It will then process the transaction according to what operation has been requested and modify state accordingly.
+As previously explained, the Transaction Processor component connects to the validator running on the user's machine, or running somewhere else. The component has two modules: \texttt{main} and \texttt{handler}. \texttt{main} acts as an interface to start and stop the actual Transaction Processor, whose business logic is written in \texttt{handler}. When running, Transaction Processor will start by verifying an operation has been submitted, followed by determining the certificate address and fetching the existing certificate from state. It will then process the transaction according to what operation has been requested and modify state accordingly.
 
 \subsection{Certificate Issuer}
 
-The Certificate Issuer component is responsible for submitting a new transaction to the validator networks. This component can be found in \texttt{cert\_issuer} and can be executed by running the Python script in \texttt{bin/cert-issuer}. To perform its responsabilities, the script receives the following parameters:
+The Certificate Issuer component is responsible for submitting a new transaction to the validator networks. This component can be found in \texttt{cert\_issuer} and can be executed by running the Python script in \texttt{bin/cert-issuer}. To perform its responsibilities, the script receives the following parameters:
 
 \begin{itemize}
 	\item Recipient: Recipient's DSA Public Key.
@@ -41,7 +41,7 @@ The Certificate Issuer component is responsible for submitting a new transaction
 	\item Issuer RSA: Path to Issuer's RSA Public Key.
 \end{itemize}
 
-With these parameters, the Certificate Issuer will start by generating a new symmetric key to encrypt the data, as well as a new certificate identifier. It will then proceed by generating the payload that will be embbeded in the transaction, and batch, to be submited. It will submit the new transaction and print out both the certificate's identifier and where to check for status of the transaction submission. A user can now validate if the transaction has been accepted. After this point, a certificate with the provided identifier has been generated.
+With these parameters, the Certificate Issuer will start by generating a new symmetric key to encrypt the data, as well as a new certificate identifier. It will then proceed by generating the payload that will be embedded in the transaction, and batch, to be submitted. It will submit the new transaction and print out both the certificate's identifier and where to check for status of the transaction submission. A user can now validate if the transaction has been accepted. After this point, a certificate with the provided identifier has been generated.
 
 \subsection{Certificate Revoker}
 
@@ -55,9 +55,9 @@ The Certificate Revoker component is responsible for executing the revocation pr
 
 The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, the component creates a payload with the same information but with the property \texttt{active} modified to \texttt{False} - this indicates the certificate is revoked. After generating the new payload, a transaction, and batch, are generated and submitted with the new information. Similarly to what happens with the Certificate Issuer, it will print out where to check for status of the transaction submission.
 
-\subsection{Certificate Manager}
+\subsection{Certificate Access Manager}
 
-The Certificate Manager component is responsible for performing the activities of granting and revoking access to a certificate by a particular subject. It can be executed by any user but the transactions will solely be approved if signed by the certificate's recipient. This component can be found in \texttt{manager} and can be executed by running the Python script in \texttt{bin/manager}. To perform its responsabilities, the script receives the following parameters:
+The Certificate Access Manager component is responsible for performing the activities of granting and revoking access to a certificate by a particular subject. It can be executed by any user but the transactions will solely be approved if signed by the certificate's recipient. This component can be found in \texttt{access-manager} and can be executed by running the Python script in \texttt{bin/access-manager}. To perform its responsibilities, the script receives the following parameters:
 
 \begin{itemize}
 	\item Certificate: Identifier of the certificate to revoke.
@@ -72,7 +72,7 @@ The component starts its execution by fetching the relevant certificate from the
 
 \subsection{Certificate Viewer}
 
-The Certificate Viewer component is responsible solely for displaying certificate information to the user, depending on the correct decryption of the data.  This component can be found in \texttt{cert\_viewer} and can be executed by running the Python script in \texttt{bin/cert-viewer}. To perform its responsabilities, the script receives the following parameters:
+The Certificate Viewer component is responsible solely for displaying certificate information to the user, depending on the correct decryption of the data.  This component can be found in \texttt{cert\_viewer} and can be executed by running the Python script in \texttt{bin/cert-viewer}. To perform its responsibilities, the script receives the following parameters:
 
 \begin{itemize}
 	\item Certificate: Identifier of the certificate to revoke.
@@ -92,12 +92,20 @@ The script works by determining the certificate's address and fetching the certi
 
 \subsection{Other Utilities}
 
-Apart from the core components, described above, we've implemented other utilities that are necessary in order for the system to be functional. The package \texttt{addressing}, with its module \texttt{addresser.py}, is shared throughout the other components and contains  information about the transaction definition (see Chapter \ref{chap:design}), such as: \emph{(i)} family name to use with Hyperledger Sawtooth, \emph{(ii)} family version that is currently being used and \emph{(iii)} prefix of the addressing scheme. It also contains a shared method \texttt{make\_certificate\_address(identifier)}, which is used across components to determine the address for a given certificate. Furthermore, in the module \texttt{utils}, we can find auxiliary methods for submitting a batch (\texttt{submit\_batch(data)}), fetching certificate information (\texttt{fetch\_state(certificate\_address)}), creating batches (\texttt{make\_batch(txn, signer)}), creating transactions (\texttt{make\_transaction(payload, signer, inputs, outputs)}), encrypting and decrypting, with both AES and RSA.
+Apart from the core components, described above, we've implemented other utilities that are necessary in order for the system to be functional. The package \texttt{addressing}, with its module \texttt{addresser}, is shared throughout the other components and contains  information about the transaction definition (see Chapter \ref{chap:design}), such as: \emph{(i)} family name to use with Hyperledger Sawtooth, \emph{(ii)} family version that is currently being used and \emph{(iii)} prefix of the addressing scheme. It also contains a shared method for address generation, which is used across components to determine the address for a given certificate. Furthermore, in the module \texttt{utils}, we can find auxiliary methods for:
+
+\begin{itemize}
+	\item submitting a batch (\texttt{submit\_batch(data)});
+	\item fetching certificate information (\texttt{fetch\_state(certificate\_address)});
+	\item creating batches (\texttt{make\_batch(txn, signer)});
+	\item creating transactions (\texttt{make\_transaction(payload, signer, inputs, outputs)});
+	\item encrypting and decrypting, with both AES and RSA.
+\end{itemize}
 
 \section{Proof-of-Concept}
 \label{sec:implementation-poc}
 
-We have described the design and architecture of \texttt{Blocked} (Chapter \ref{chap:design}) and an existing implementation of the system. This section provides a proof-of-concept, that uses our implementation of the system to demonstrate its applicability, in a real world scenario. We review issuing a certificate (Section \ref{sec:impl-issue}), viewing an existing certificate (Section \ref{sec:impl-view}), revoking an existing certificate (Section \ref{sec:impl-revoke}) and managing permissions for an existing certificate (Section \ref{sec:impl-grant-ac} and Section \ref{sec:impl-revoke-ac}). With this section we aim at providing a concrete example of the working \texttt{Blocked} system, as well as realize the initial idea proposed by this thesis. All examples on this section have been run with a single-node network.
+We have described the design and architecture of \texttt{Blocked} (Chapter \ref{chap:design}) and a matching implementation. This section provides a proof-of-concept, that uses our implementation of the system to demonstrate its applicability, in a real world scenario. We review issuing a certificate (Section \ref{sec:impl-issue}), viewing an existing certificate (Section \ref{sec:impl-view}), revoking an existing certificate (Section \ref{sec:impl-revoke}) and managing permissions for an existing certificate (Section \ref{sec:impl-grant-ac} and Section \ref{sec:impl-revoke-ac}). With this section we aim at providing a concrete example of the working \texttt{Blocked} implementation, as well as realize the initial idea proposed by this thesis. All examples on this section have been run with a two-node network, running a \gls{poet} algorithm on an SGX simulation.
 
 \subsection{Issuing a Certificate}
 \label{sec:impl-issue}
@@ -156,8 +164,7 @@ fontsize=\footnotesize,
 linenos,
 breaklines
 ]{sh}
-$ ./cert-viewer --certificate 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --sec
-ret-rsa ../keys/recipient.keys/rsa/recipient
+$ ./cert-viewer --certificate 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --secret-rsa ../keys/recipient.keys/rsa/recipient
 Generating Addresses...[OK]
 Fetching Data...[OK]
 Attempt 1...[Error]
@@ -180,7 +187,7 @@ As we demonstrate in Listing \ref{listing:view-results}, and present in Chapter 
 \subsection{Granting Access}
 \label{sec:impl-grant-ac}
 
-Let us now assume the following scenario: a recruiter approaches the recipient of the certificate, in the hopes of hiring the recipient. The recruiter wishes to verify the qualifications that the recipient claims to have. In that context, the recruiter will share the public keys, both for RSA and DSA, so that the recipient can provide the recruiter with access to the certificate stored in the blockchain. We demonstrate the results of this in Listing \ref{listing:grant-ac-results}. We achieve the desired results by running the \texttt{bin/manager} script with the appropriate parameters.
+Let us now assume the following scenario: a recruiter approaches the recipient of the certificate, in the hopes of hiring the recipient. The recruiter wishes to verify the qualifications that the recipient claims to have. In that context, the recruiter will share the public keys, both for RSA and DSA, so that the recipient can provide the recruiter with access to the certificate stored in the blockchain. We demonstrate the results of this in Listing \ref{listing:grant-ac-results}. We achieve the desired results by running the \texttt{bin/access-manager} script with the appropriate parameters.
 
 \begin{listing}[ht]
 	\begin{minted}[
@@ -191,9 +198,7 @@ fontsize=\footnotesize,
 linenos,
 breaklines
 ]{sh}
-$ ./manager -c 2136718e-d4cb-4cb2-b324-936444cf33bd  --subject-dsa 036933186998989510747d4f75860e163f7e00454a33bef557ec0c96bd4b4ce389 --subject-rsa ..
-/keys/recruiter.keys/rsa/recruiter.pub --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --secret-rsa ../keys/recipient.ke
-ys/rsa/recipient
+$ ./access-manager -c 2136718e-d4cb-4cb2-b324-936444cf33bd  --subject-dsa 036933186998989510747d4f75860e163f7e00454a33bef557ec0c96bd4b4ce389 --subject-rsa ../keys/recruiter.keys/rsa/recruiter.pub --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --secret-rsa ../keys/recipient.keys/rsa/recipient
 
 Generating Addresses...[OK]
 Fetching Data...[OK]
@@ -208,7 +213,7 @@ Status:
 http://localhost:8008/batch_statuses?id=046d0e13fb5bacafbeed3b8b353e44d6b6a9f1c4a6e9210d934870dee6c5c228474
 7fd62cb8035317bc98eb3a9b3067a8eb00558b5d6e69de7360494357a8bf3
 \end{minted}
-	\caption{Results of Granting Access with \texttt{manager}.}
+	\caption{Results of Granting Access with \texttt{access-manager}.}
 	\label{listing:grant-ac-results}
 \end{listing}
 
@@ -232,8 +237,7 @@ fontsize=\footnotesize,
 linenos,
 breaklines
 ]{sh}
-$ ./cert-viewer --certificate 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa 964fb14dad3764286e0620710d02eaea59aa04529bde19447f6ad3d6485a773c --sec
-ret-rsa ../keys/recruiter.keys/rsa/recruiter
+$ ./cert-viewer --certificate 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa 964fb14dad3764286e0620710d02eaea59aa04529bde19447f6ad3d6485a773c --secret-rsa ../keys/recruiter.keys/rsa/recruiter
 Generating Addresses...[OK]
 Fetching Data...[OK]
 Attempt 1...[Error]
@@ -254,7 +258,7 @@ Status: Active
 \subsection{Revoking Access}
 \label{sec:impl-revoke-ac}
 
-Let us now assume that, for some reason, the recruiter shall no longer have access to this certificate. The recipient is able to remove such permission from the certificate's permission list. To do this, it must submit a transaction through \texttt{Blocked} in order to remove the permission. We demonstrate this activity in Listing \ref{listing:revoke-ac-results}, in which we run \texttt{manager} with the appropriate \texttt{-r} flag.
+Let us now assume that, for some reason, the recruiter shall no longer have access to this certificate. The recipient is able to remove such permission from the certificate's permission list. To do this, it must submit a transaction through \texttt{Blocked} in order to remove the permission. We demonstrate this activity in Listing \ref{listing:revoke-ac-results}, in which we run \texttt{access-manager} with the appropriate \texttt{-r} flag.
 
 \begin{listing}[ht]
 	\begin{minted}[
@@ -265,7 +269,7 @@ fontsize=\footnotesize,
 linenos,
 breaklines
 ]{sh}
-$ ./manager -r -c 2136718e-d4cb-4cb2-b324-936444cf33bd  --subject-dsa 036933186998989510747d4f75860e163f7e00454a33bef557ec0c96bd4b4ce389 --subject-rsa
+$ ./access-manager -r -c 2136718e-d4cb-4cb2-b324-936444cf33bd  --subject-dsa 036933186998989510747d4f75860e163f7e00454a33bef557ec0c96bd4b4ce389 --subject-rsa
 ../keys/recruiter.keys/rsa/recruiter.pub --secret-dsa fff1224e60ee00f6580c3b303b7682f2af601b5180097216aeb18e15eff2e72c --secret-rsa ../keys/recipient
 .keys/rsa/recipient
 
@@ -282,7 +286,7 @@ Status:
 http://localhost:8008/batch_statuses?id=230706d8ad7897c563166ef3bf3853018bb4cf6f3e73dc5d681cbb227cf3644224d
 e247aee8c8173126aa9bef1dc56e1abbbd0174d56d1080bc412f0573be4dc
 \end{minted}
-	\caption{Results of Revoking Access with \texttt{manager}.}
+	\caption{Results of Revoking Access with \texttt{access-manager}.}
 	\label{listing:revoke-ac-results}
 \end{listing}
 
@@ -331,8 +335,7 @@ fontsize=\footnotesize,
 linenos,
 breaklines
 ]{sh}
-$ ./cert-revoker -c 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa 396b644103a8fbdebcd17aff319e7b7fc60d879282b54a7a56d8ca53c61d3876 --secret-rsa ..
-/keys/issuer.keys/rsa/issuer
+$ ./cert-revoker -c 2136718e-d4cb-4cb2-b324-936444cf33bd --secret-dsa 396b644103a8fbdebcd17aff319e7b7fc60d879282b54a7a56d8ca53c61d3876 --secret-rsa ../keys/issuer.keys/rsa/issuer
 
 Generating Addresses...[OK]
 Fetching Data...[OK]
