@@ -23,14 +23,14 @@ In \texttt{Blocked}, each stakeholder is expected to be a node in the network, a
 
 Given that \texttt{Blocked}'s backbone is a blockchain, and given blockchain's inherent decentralization, the appropriate way for a stakeholder to access information on the blockchain is effectively to consult a copy of the global state. There are two possible ways of doing this: either by consulting a copy through a proxy (such as REST API pointing to a copy, on another node) or possessing a local copy of the global state of the network on a stakeholder's own node. The latter is the approach designed in \texttt{Blocked}. When a stakeholder needs to access information on the network, it should connect a node to the network and download a local copy of the state.
 
-At the same time, given that managing a certificate requires submitting transactions and batches to the blockchain, to be processed by the validators, a stakeholder that needs to modify the existing state of the network needs to be connected to the network. This justifies our second statement that \emph{"in order to manage certificates, one must be connected to the network"}.
+At the same time, given that managing a certificate requires submitting transactions and batches to the blockchain, to be processed by the validator nodes, a stakeholder that needs to modify the existing state of the network needs to be connected to the network. This justifies our second statement that \emph{"in order to manage certificates, one must be connected to the network"}.
 
-There are two levels to our network. Each node is necessarily a peer in the network but, due to permissioning capabilities of the blockchain (detailed in Section \ref{sec:design-ac}), not necessarily a validator node in the network. One might be able to connect to the network as a node, and read information from it, and not be able to validate new blocks because it is not a participant on the validation network. The network allows for information to be shared between all nodes and, at the same time, for nodes to validate on new blocks consensually.
+There are two levels to our network. Each node is necessarily a peer in the network but, due to permissioning capabilities of the blockchain (detailed in Section \ref{sec:design-ac}), not necessarily a validator node in the network. One might be able to connect to the network as a node, and read information from it, and not be able to validate new blocks because it is not a participant on the validation network. The network allows for information to be shared between all nodes and, at the same time, for nodes to validate on new blocks universally.
 
 \subsection{State}
 \label{sec:design-state}
 
-We define \textit{state} as the information stored in a particular address of the blockchain. The global state of the system is the collection of all addresses currently maintained, with information, in the blockchain. The global state in \texttt{Blocked} is represented through a Radix Merkle tree. It can be modified by the validators and each node maintains its own copy of the global state. Validator nodes are responsible for ensuring that the global state is the same for all participants in the network. In \texttt{Blocked}, a state entry - an address - consists of the properties listed in Table \ref{tab:stateProperties}.
+We define \textit{state} as the information stored in a particular address of the blockchain. The global state of the system is the collection of all addresses currently maintained, with information, in the blockchain. The global state in \texttt{Blocked} is represented through a Radix Merkle tree. It can be modified by the validator nodes and each node maintains its own copy of the global state. Validator nodes are responsible for ensuring that the global state is the same for all participants in the network. In \texttt{Blocked}, a state entry - an address - consists of the properties listed in Table \ref{tab:stateProperties}.
 
 {
 \renewcommand{\arraystretch}{1.5}%
@@ -49,7 +49,7 @@ We define \textit{state} as the information stored in a particular address of th
 \end{table}
 }
 
-A state entry is stored at a particular address. An address uniquely identifies where information is stored in the global state - i.e. in the Radix Merkle tree. By fetching for a particular address, a client is able to fetch a particular piece of information stored in the global state thus being able to read the bytes, we will see in Section \ref{sec:design-ac} how reading bytes is different from accessing the information. Addressing then, in our use case, is the process of determining the address of a particular certificate - where its information is stored. Addresing is done through a process that is deterministic and must respect the following rules:
+A state entry is stored at a particular address. An address uniquely identifies where information is stored in the global state - i.e. in the Radix Merkle tree. By fetching for a particular address, a client is able to fetch a particular piece of information stored in the global state thus being able to read the bytes, we will see in Section \ref{sec:design-ac} how reading bytes is different from accessing the information. Addressing then, in our use case, is the process of determining the address of a particular certificate - where its information is stored. Addressing is done through a process that is deterministic and must respect the following rules:
 
 \begin{itemize}
 	\item An address consists of an hex-encoded string of 70 characters.
@@ -57,17 +57,17 @@ A state entry is stored at a particular address. An address uniquely identifies 
 	\item Remaining 64 characters of an address \textbf{must} be the first 64 characters of a SHA-512 hash of the certificate property \texttt{id}.
 \end{itemize}
 
-This addressing scheme enables a client node, and validators, to always generate the correct address for a given certificate, thus being able to access blockchain's state at that address. Following these rules is the only way of accessing the correct information for any given certificate.
+This addressing scheme enables a client node, and validator nodes, to always generate the correct address for a given certificate, thus being able to access blockchain's state at that address. Following these rules is the only way of accessing the correct information for any given certificate.
 
 \subsection{Transactions and Batches}
 \label{sec:design-transactions}
 
-Transactions allow nodes to modify the global state of the system. These are submitted to the validators and processed. If valid, the state is modified. If invalid, the new blocks will be rejected. Transactions are created by the clients in each node. In \texttt{Blocked}, transactions are wrapped in batches, with each batch assumed to have one and only one transaction. Transactions in \texttt{Blocked} allow clients to issue, share and revoke educational certificates. The structure of the transaction when it is being submitted is different from what has been presented in the global state, being dependent on the operations, presented in Section \ref{sec:design-interaction}. Each transaction payload should include the operation it is trying to perform. Allowed operations are \texttt{issue}, \texttt{revoke}, \texttt{grant\_access} and \texttt{revoke\_access}. Each transaction payload should also include a \texttt{data} property, variying from operation to operation. When performing an \texttt{issue}, a client should send the \texttt{data} with the same structure as the global state structure. When performing \texttt{revoke}, a client should send an \texttt{id} and \texttt{certificate} inside \texttt{data}. When performing either \texttt{grant\_access} or \texttt{revoke\_access}, a client should send the permission object to append or the identifier of the subject whose permissions are to be removed.
+Transactions allow nodes to modify the global state of the system. These are submitted to the validator nodes and processed. If valid, the state is modified. If invalid, the new blocks will be rejected. Transactions are created by the clients in each node. In \texttt{Blocked}, transactions are wrapped in batches, with each batch assumed to have one and only one transaction. Transactions in \texttt{Blocked} allow clients to issue, share and revoke educational certificates. The structure of the transaction when it is being submitted is different from what has been presented in the global state, being dependent on the operations, presented in Section \ref{sec:design-interaction}. Each transaction payload should include the operation it is trying to perform. Allowed operations are \texttt{issue}, \texttt{revoke}, \texttt{grant\_access} and \texttt{revoke\_access}. Each transaction payload should also include a \texttt{data} property, varying from operation to operation. When performing an \texttt{issue}, a client should send the \texttt{data} with the same structure as the global state structure. When performing \texttt{revoke}, a client should send an \texttt{id} and \texttt{certificate} inside \texttt{data}. When performing either \texttt{grant\_access} or \texttt{revoke\_access}, a client should send the permission object to append or the identifier of the subject whose permissions are to be removed.
 
 \subsection{Access Control}
 \label{sec:design-ac}
 
-Controlling access to the information, in \texttt{Blocked} can be achieved in two separate layers. Due to the permissioning nature of the system, we can configure which validators are allowed to modify state in the network. At the same time, there's an access control mechanism above the network layer that is used to guarantee that, even though each node has its own copy of the information, data cannot be correctly read without the relevant permissions.
+Controlling access to the information, in \texttt{Blocked} can be achieved in two separate layers. Due to the permissioning nature of the system, we can configure which validator nodes are allowed to modify state in the network. At the same time, there's an access control mechanism above the network layer that is used to guarantee that, even though each node has its own copy of the information, data cannot be correctly read without the relevant permissions.
 
 \subsubsection{Network Permissioning}
 
@@ -115,7 +115,7 @@ Revoking a certificate can be accomplished by both the issuer or recipient of a 
 
 \subsection{Granting/Revoking Access}
 
-One of the main purposes of \texttt{Blocked} is to enable the control of acess to the certificates stored in the network. Only the recipient of the certificate has the ability to control the access to certificates and change it. To do that, the following steps should be executed.
+One of the main purposes of \texttt{Blocked} is to enable the control of access to the certificates stored in the network. Only the recipient of the certificate has the ability to control the access to certificates and change it. To do that, the following steps should be executed.
 
 \subsubsection{Granting}
 
