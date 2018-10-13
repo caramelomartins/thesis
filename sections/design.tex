@@ -39,17 +39,17 @@ We define \textit{state} as the information stored in a particular address of th
 	\caption{State Properties}
 	\label{tab:stateProperties}
 	\begin{tabular}{p{0.15\textwidth}|p{0.75\textwidth}}
-		\hline \bf Property & \bf Description \\ \hline
-		\texttt{id}           &  Represents the identifier of a given educational certificate. A version 4 \gls{uuid} generated for each certificate issuance. \\ \hline
-		\texttt{certificate}  & Represents an encrypted issued certificate and should include \texttt{issuer}, \texttt{recipient}, \texttt{issued\_at} and \texttt{active}. \\ \hline
-		\texttt{owners}       &  List of public keys that identify both the issuer and recipient of the certificate. \\ \hline
-		\texttt{permissions}  &  List of subjects that are allowed access to read the information.\\
+		\hline \bf Property  & \bf Description                                                                                                                             \\ \hline
+		\texttt{id}          & Represents the identifier of a given educational certificate. A version 4 \gls{uuid} generated for each certificate issuance.               \\ \hline
+		\texttt{certificate} & Represents an encrypted issued certificate and should include \texttt{issuer}, \texttt{recipient}, \texttt{issued\_at} and \texttt{active}. \\ \hline
+		\texttt{owners}      & List of public keys that identify both the issuer and recipient of the certificate.                                                         \\ \hline
+		\texttt{permissions} & List of subjects that are allowed access to read the information.                                                                           \\
 		\hline
 	\end{tabular}
 \end{table}
 }
 
-A state entry is stored at a particular address. An address uniquely identifies where information is stored in the global state - i.e. in the Radix Merkle tree. By fetching for a particular address, a client is able to fetch a particular piece of information stored in the global state thus being able to read the bytes, we will see in Section \ref{sec:design-ac} how reading bytes is different from accessing the information. Addressing then, in our use case, is the process of determining the address of a particular certificate - where its information is stored. Addresing is done through a process that is deterministic and must respect the following rules: 
+A state entry is stored at a particular address. An address uniquely identifies where information is stored in the global state - i.e. in the Radix Merkle tree. By fetching for a particular address, a client is able to fetch a particular piece of information stored in the global state thus being able to read the bytes, we will see in Section \ref{sec:design-ac} how reading bytes is different from accessing the information. Addressing then, in our use case, is the process of determining the address of a particular certificate - where its information is stored. Addresing is done through a process that is deterministic and must respect the following rules:
 
 \begin{itemize}
 	\item An address consists of an hex-encoded string of 70 characters.
@@ -85,9 +85,9 @@ In order to be able to use \texttt{Blocked}, a subject needs to comply with the 
 \subsection{Setting Up}
 \label{sec:design-setup}
 
-For a user to use \texttt{Blocked}, it needs to have an identity. Identities are defined in two ways, both with asymmetric cryptography: a DSA-based identity and an RSA-based identity. DSA is used for signing the batches and transactions while RSA is used for encryption of the symmetric key. While RSA can be used for both encryption and decryption, DSA-based signatures are supported by most blockchain platforms for signing batches and transactions, which makes it easier for system implementation.
+For a user to use \texttt{Blocked}, it needs to have an identity. Identities are defined in two ways, both with asymmetric cryptography: a DSA-based identity and an RSA-based identity. \gls{dsa} \cite{cameron_f._kerry_digital_2013} is used for signing the batches and transactions while RSA \cite{rivest_method_1978} is used for encryption of the symmetric key. While RSA \cite{rivest_method_1978} can be used for both encryption and decryption, DSA-based signatures are supported by most blockchain platforms (such as Bitcoin and Ethereum) for signing batches and transactions, which makes it easier for system implementation.
 
-Users should generate their own keys before trying to join the network. They should generate an ECDSA key pair with secp256k1, as the parameters of the elliptic curve, and store an hexadecimal representation of those keys, in order for them to be used with \texttt{Blocked}. The same should be done for the RSA. The users should generate an RSA key pair according to PKCS\#1 OAEP and store those keys for future use in \texttt{Blocked}. After these steps are complete, users are able to identify themselves within the system thus are in a position to start using it.
+Users should generate their own keys before trying to join the network. They should generate an ECDSA \cite{johnson_elliptic_2001} key pair with secp256k1 \cite{secp256k1}, as the parameters of the elliptic curve, and store an hexadecimal representation of those keys, in order for them to be used with \texttt{Blocked}. The same should be done for the RSA keys \cite{rivest_method_1978}. The users should generate an RSA \cite{rivest_method_1978} key pair according to PKCS\#1 OAEP \cite{moriarty_pkcs_2016} and store those keys for future use in \texttt{Blocked}. After these steps are complete, users are able to identify themselves within the system thus are in a position to start using it.
 
 In order to run a network, one of the nodes, and only one, should generate a genesis block for the blockchain, as described in the beginning of this chapter. This means that, in broad terms, one of the nodes would have to be responsible for starting the actual network. From that moment on, after other nodes connect, that node will have the same relevance as the remaining nodes.
 
