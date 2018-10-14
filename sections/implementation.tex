@@ -1,7 +1,7 @@
 \chapter{Implementation}
 \label{chap:implementation}
 
-After introducing the conceptual design and architecture of \texttt{Blocked}, this chapter introduces an implementation of the system. Section \ref{sec:implementation-technology} discusses the main technological components used for the implementation. Section \ref{sec:implementation-core} presents the internals of the implementation of \texttt{Blocked}. Finally, Section \ref{sec:implementation-poc} shows how to perform the activities needed with this implementation.
+After introducing the conceptual design and architecture of \texttt{Blocked}, this chapter introduces an implementation of the system. Section \ref{sec:implementation-technology} discusses the main technological components used for the implementation. Section \ref{sec:implementation-core} presents the internals of the implementation of \texttt{Blocked}. Finally, Section \ref{sec:implementation-poc} shows how to perform the activities needed for this implementation.
 
 \section{Selected Technologies}
 \label{sec:implementation-technology}
@@ -23,12 +23,12 @@ Docker is a platform for container execution. Setting up all the components that
 
 We briefly describe the key components of our implementation. All code can be found on GitHub \cite{blocked}. The several pieces of this implementation, together, fully implement what we propose with the  \texttt{Blocked} system, described previously.
 
-Our implementation consists of two main Python packages: \textit{processor} and \textit{blocked}. Both are Python packages, with several modules inside. Apart from that, a collection of executable scripts are provided, with which one could use the packages thus interacting with the blockchain. The Transaction Processor (Section \ref{sec:implementation-tp}) is the component executed together with the validation nodes. This component processes and validates tr	and modifies the state of the network. Remaining sections cover the several Python modules developed to perform the activities described in Chapter \ref{chap:design}.
+Our implementation consists of two main Python packages: \textit{processor} and \textit{blocked}. Both are Python packages, with several modules inside. Apart from that, a collection of executable scripts are provided, with which one could use the packages thus interacting with the blockchain. The Transaction Processor (Section \ref{sec:implementation-tp}) is the component executed together with the validation nodes. This component processes and validates transactions and modifies the state of the network. Remaining sections cover the several Python modules developed to perform the activities described in Chapter \ref{chap:design}.
 
 \subsection{Transaction Processor}
 \label{sec:implementation-tp}
 
-As previously explained, the Transaction Processor component connects to the validator running on the user's machine, or running somewhere else. The component has two modules: \texttt{main} and \texttt{handler}. \texttt{main} acts as an interface to start and stop the actual Transaction Processor, whose business logic is written in \texttt{handler}. When running, Transaction Processor will start by verifying an operation has been submitted, followed by determining the certificate address and fetching the existing certificate from state. It will then process the transaction according to what operation has been requested and modify state accordingly.
+As previously explained, the Transaction Processor component connects to the validator running on the user's machine or running somewhere else. The component has two modules: \texttt{main} and \texttt{handler}. \texttt{main} acts as an interface to start and stop the actual Transaction Processor, whose business logic is written in \texttt{handler}. When running, Transaction Processor will start by verifying an operation has been submitted, followed by determining the certificate address and fetching the existing certificate from state. It will then process the transaction according to what operation has been requested and modify state accordingly.
 
 \subsection{Certificate Issuer}
 
@@ -41,7 +41,7 @@ The Certificate Issuer component is responsible for submitting a new transaction
 	\item Issuer RSA: Path to Issuer's RSA Public Key.
 \end{itemize}
 
-With these parameters, the Certificate Issuer will start by generating a new symmetric key to encrypt the data, as well as a new certificate identifier. It will then proceed by generating the payload that will be embedded in the transaction, and batch, to be submitted. It will submit the new transaction and print out both the certificate's identifier and where to check for status of the transaction submission. A user can now validate if the transaction has been accepted. After this point, a certificate with the provided identifier has been generated.
+With these parameters, the Certificate Issuer will start by generating a new symmetric key to encrypt the data, as well as a new certificate identifier. It will then proceed by generating the payload that will be embedded in the transaction, and batch, to be submitted. It will submit the new transaction and print out both the certificate's identifier and where to check for the status of the transaction submission. A user can now validate if the transaction has been accepted. After this point, a certificate with the provided identifier has been generated.
 
 \subsection{Certificate Revoker}
 
@@ -53,7 +53,7 @@ The Certificate Revoker component is responsible for executing the revocation pr
 	\item Secret RSA: RSA Private Key to decrypt the information.
 \end{itemize}
 
-The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, the component creates a payload with the same information but with the property \texttt{active} modified to \texttt{False} - this indicates the certificate is revoked. After generating the new payload, a transaction, and batch, are generated and submitted with the new information. Similarly to what happens with the Certificate Issuer, it will print out where to check for status of the transaction submission.
+The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, the component creates a payload with the same information but with the property \texttt{active} modified to \texttt{False} - this indicates the certificate is revoked. After generating the new payload, a transaction, and batch, are generated and submitted with the new information. Similarly to what happens with the Certificate Issuer, it will print out where to check for the status of the transaction submission.
 
 \subsection{Certificate Access Manager}
 
@@ -68,7 +68,7 @@ The Certificate Access Manager component is responsible for performing the activ
 	\item Remove: If the action to perform is revoking access, instead of granting.
 \end{itemize}
 
-The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, it creates a payload with the access modification operation, submits a new transaction and batch, and prints out where to check for status of the transaction submission. If the transaction is accepted, the permissions are updated, otherwise they will stay the same.
+The component starts its execution by fetching the relevant certificate from the blockchain. After fetching the certificate, it attempts to decrypt the symmetric key, in order to be able to access the information. If the decryption fails, the component exits with an error. If the decryption is successful, it creates a payload with the access modification operation, submits a new transaction and batch, and prints out where to check for the status of the transaction submission. If the transaction is accepted, the permissions are updated, otherwise, they will stay the same.
 
 \subsection{Certificate Viewer}
 
@@ -105,7 +105,7 @@ Apart from the core components, described above, we've implemented other utiliti
 \section{Proof-of-Concept}
 \label{sec:implementation-poc}
 
-We have described the design and architecture of \texttt{Blocked} (Chapter \ref{chap:design}) and a matching implementation. This section provides a proof-of-concept, that uses our implementation of the system to demonstrate its applicability, in a real world scenario. We review issuing a certificate (Section \ref{sec:impl-issue}), viewing an existing certificate (Section \ref{sec:impl-view}), revoking an existing certificate (Section \ref{sec:impl-revoke}) and managing permissions for an existing certificate (Section \ref{sec:impl-grant-ac} and Section \ref{sec:impl-revoke-ac}). With this section we aim at providing a concrete example of the working \texttt{Blocked} implementation, as well as realize the initial idea proposed by this thesis. All examples on this section have been run with a two-node network, running a \gls{poet} algorithm on an SGX simulation.
+We have described the design and architecture of \texttt{Blocked} (Chapter \ref{chap:design}) and a matching implementation. This section provides a proof-of-concept, that uses our implementation of the system to demonstrate its applicability, in a real-world scenario. We review issuing a certificate (Section \ref{sec:impl-issue}), viewing an existing certificate (Section \ref{sec:impl-view}), revoking an existing certificate (Section \ref{sec:impl-revoke}) and managing permissions for an existing certificate (Section \ref{sec:impl-grant-ac} and Section \ref{sec:impl-revoke-ac}). With this section, we aim at providing a concrete example of the working \texttt{Blocked} implementation, as well as realize the initial idea proposed by this thesis. All examples on this section have been run with a two-node network, running a \gls{poet} algorithm on an SGX simulation.
 
 \subsection{Issuing a Certificate}
 \label{sec:impl-issue}
@@ -217,7 +217,7 @@ http://localhost:8008/batch_statuses?id=046d0e13fb5bacafbeed3b8b353e44d6b6a9f1c4
 	\label{listing:grant-ac-results}
 \end{listing}
 
-Similary to what happens when issuing a certificate, the user must confirm that the transaction has been accepted. We demonstrate this in Figure \ref{fig:grant-ac-status}.
+Similarly to what happens when issuing a certificate, the user must confirm that the transaction has been accepted. We demonstrate this in Figure \ref{fig:grant-ac-status}.
 
 \begin{figure}[htb]
 	\centering
@@ -226,7 +226,7 @@ Similary to what happens when issuing a certificate, the user must confirm that 
 	\label{fig:grant-ac-status}
 \end{figure}
 
-After confirming that the permission has been granted, the recipient can now inform the recruiter what certificate address it should query for - in this case "2136718e-d4cb-4cb2-b324-936444cf33bd". We demonstrate this in Listing \ref{listing:view-recruiter-grant-results}, which uses the same components of the previous example, where we viewed the contents of the certificate. It is interesting to confirm that the certificate in question has, now, an additional iteration at decrypting the certificate - \emph{Attempt 3}. 
+After confirming that the permission has been granted, the recipient can now inform the recruiter what certificate address it should query for - in this case, "2136718e-d4cb-4cb2-b324-936444cf33bd". We demonstrate this in Listing \ref{listing:view-recruiter-grant-results}, which uses the same components of the previous example, where we viewed the contents of the certificate. It is interesting to confirm that the certificate in question has, now, an additional iteration at decrypting the certificate - \emph{Attempt 3}.
 
 \begin{listing}[ht]
 	\begin{minted}[
@@ -299,7 +299,7 @@ As previously, the recipient can confirm the revocation of the access by checkin
 	\label{fig:revoke-ac-status}
 \end{figure}
 
-In this case, contrary to what occurs in Listing \ref{listing:view-recruiter-grant-results}, if the recruiter tries to access the data, after access has been revoked, he will be met with an error. We demonstrate this in Listing \ref{listing:view-recruiter-revoke-results}. It is interesting to note, once again, that the \emph{number} of permissions has decreased, due to the revocation of the recruiter's permission.
+In this case, contrary to what occurs in Listing \ref{listing:view-recruiter-grant-results}, if the recruiter tries to access the data after access has been revoked, he will be met with an error. We demonstrate this in Listing \ref{listing:view-recruiter-revoke-results}. It is interesting to note, once again, that the \emph{number} of permissions has decreased, due to the revocation of the recruiter's permission.
 
 \begin{listing}[ht]
 	\begin{minted}[
@@ -354,7 +354,7 @@ http://localhost:8008/batch_statuses?id=cbec918ba2b42601e8d8b25158bde676150ce4e0
 	\label{listing:revoke-results}
 \end{listing}
 
-As with previous submission of transactions, the user should confirm that the transaction has been committed, by accessing the returned URL. We demonstrate this in Figure \ref{fig:revoke-status}.
+As with the previous submission of transactions, the user should confirm that the transaction has been committed, by accessing the returned URL. We demonstrate this in Figure \ref{fig:revoke-status}.
 
 \begin{figure}[htb]
 	\centering

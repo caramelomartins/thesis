@@ -8,11 +8,11 @@ In this chapter, we describe the conceptual design and architecture behind our p
 \section{Stakeholders}
 \label{sec:design-entities}
 
-\texttt{Blocked} is designed to be used by the following stakeholders: \textit{students}, \textit{institutions} and a third entity which we establish as being a \textit{verifiers}. According to the essence of our study, presented in Chapter \ref{chap:study}, where we present the same high-level stakeholders, with a \textit{verifier} being the \textit{Recruiter}. In this case, \textit{students} are stakeholders that will be issued certificates and that control access to those certificates. \textit{Students} are also expected to be an active part of the network, maintaining one node participating in the network - e.g. being a peer. Ultimately, \textit{Students} will also share the certificates for verification by another entity - in our previous study the \emph{Recruiter}. \textit{Institutions} are the entities responsible for issuing the certificates and, if needed, dealing with revocations of certificates. They are expected to only need to interact with the \textit{students}. At the same time, \emph{institutions} are also participants in the existing network, as we describe in Section \ref{sec:design-network}. Finally, \emph{verifiers} are the entities with which certificates are shared, by the \textit{students}, and whose role in the system is that they want to verify a given certificate, shared by another stakeholder, exists and is truthful. These stakeholders are not required to participate in the validation network, since their role is merely of fetching and visualizing information, but they are required to connect to the network in order to perform verification.
+\texttt{Blocked} is designed to be used by the following stakeholders: \textit{students}, \textit{institutions} and a third entity which we establish as being \textit{verifiers}. According to the essence of our study, presented in Chapter \ref{chap:study}, where we present the same high-level stakeholders, with a \textit{verifier} being the \textit{Recruiter}. In this case, \textit{students} are stakeholders that will be issued certificates and that control access to those certificates. \textit{Students} are also expected to be an active part of the network, maintaining one node participating in the network - e.g. being a peer. Ultimately, \textit{Students} will also share the certificates for verification by another entity - in our previous study the \emph{Recruiter}. \textit{Institutions} are the entities responsible for issuing the certificates and, if needed, dealing with revocations of certificates. They are expected to only need to interact with the \textit{students}. At the same time, \emph{institutions} are also participants in the existing network, as we describe in Section \ref{sec:design-network}. Finally, \emph{verifiers} are the entities with which certificates are shared, by the \textit{students}, and whose role in the system is that they want to verify a given certificate, shared by another stakeholder, exists and is truthful. These stakeholders are not required to participate in the validation network since their role is fetching and visualizing information, but they are required to connect to the network in order to perform verification.
 
 \section{Overview}
 
-\texttt{Blocked} has been designed to be a decentralized system for issuing, sharing and managing digital education certificates thus decentralizing control of access to the information. The system relies on a network of nodes (detailed in Section \ref{sec:design-network}), which maintains the information coherent in every node through consensus algorithms. \texttt{Blocked} relies on the nodes communicating between each other through peer-to-peer mechanisms. 
+\texttt{Blocked} has been designed to be a decentralized system for issuing, sharing and managing digital education certificates thus decentralizing control of access to the information. The system relies on a network of nodes (detailed in Section \ref{sec:design-network}), which maintains the information coherent in every node through consensus algorithms. \texttt{Blocked} relies on the nodes communicating between each other through peer-to-peer mechanisms.
 
 With \texttt{Blocked}, users are able to create new certificates and issue them on a permissioned blockchain. After issuing a certificate, users are able to read information about those certificates, provided they have the appropriate permissions. A certificate's recipient is able to manage access to its own certificate, through cryptography, so that it can share the certificate with third-parties. Those third-parties are then able to view the certificate's information until the access is revoked by the certificate's owner. Both the certificate's owner and issuer are able to revoke the certificate but the certificate is forever stored, even if revoked. Users viewing a certificate, after it has been revoked, will be able to clearly see that the certificate is revoked.
 
@@ -23,7 +23,7 @@ The components described previously are mapped into two architectural layers: \e
 \section{Technological Architecture}
 \label{sec:design-architecture}
 
-In order to understand the technological architecture of the system, we explain the inner workings of the network (Section \ref{sec:design-network}), how state is maintained throughout the network (Section \ref{sec:design-state}), how transactions are defined, processed and validated (Section \ref{sec:design-transactions}), and, finally, how management of access to information is performed (Section \ref{sec:design-ac}).
+In order to understand the technological architecture of the system, we explain the inner workings of the network (Section \ref{sec:design-network}), how state is maintained throughout the network (Section \ref{sec:design-state}), how transactions are defined, processed and validated (Section \ref{sec:design-transactions}), and, finally, how the management of access to information is performed (Section \ref{sec:design-ac}).
 
 \subsection{Network}
 \label{sec:design-network}
@@ -32,7 +32,7 @@ In \texttt{Blocked}, each stakeholder is expected to be a node in the network, a
 
 Given that \texttt{Blocked}'s backbone is a blockchain, and given blockchain's inherent decentralization, the appropriate way for a stakeholder to access information on the blockchain is effectively to consult a copy of the global state. There are two possible ways of doing this: either by consulting a copy through a proxy (such as REST API pointing to a copy, on another node) or possessing a local copy of the global state of the network on a stakeholder's own node. The latter is the approach designed in \texttt{Blocked}. When a stakeholder needs to access information on the network, it should connect a node to the network and download a local copy of the state.
 
-At the same time, given that managing a certificate requires submitting transactions and batches to the blockchain, to be processed by the validator nodes, a stakeholder that needs to modify the existing state of the network needs to be connected to the network. This justifies our second statement that \emph{"in order to manage certificates, one must be connected to the network"}.
+At the same time, considering that managing a certificate requires submitting transactions and batches to the blockchain, to be processed by the validator nodes, a stakeholder that needs to modify the existing state of the network needs to be connected to the network. This justifies our second statement that \emph{"in order to manage certificates, one must be connected to the network"}.
 
 There are two levels to our network. Each node is necessarily a peer in the network but, due to permissioning capabilities of the blockchain (detailed in Section \ref{sec:design-ac}), not necessarily a validator node in the network. One might be able to connect to the network as a node, and read information from it, and not be able to validate new blocks because it is not a participant on the validation network. The network allows for information to be shared between all nodes and, at the same time, for nodes to validate on new blocks universally.
 
@@ -62,8 +62,8 @@ A state entry is stored at a particular address. An address uniquely identifies 
 
 \begin{itemize}
 	\item An address consists of an hex-encoded string of 70 characters.
-	\item An address \textbf{must} always start with \emph{"49cb48"}. This value represents the first 6 characters of a SHA-512 hash of the string \emph{"blocked"} - the lowercase name of our system.
-	\item Remaining 64 characters of an address \textbf{must} be the first 64 characters of a SHA-512 hash of the certificate property \texttt{id}.
+	\item An address \textbf{must} always start with \emph{"49cb48"}. This value represents the first 6 characters of an SHA-512 hash of the string \emph{"blocked"} - the lowercase name of our system.
+	\item Remaining 64 characters of an address \textbf{must} be the first 64 characters of an SHA-512 hash of the certificate property \texttt{id}.
 \end{itemize}
 
 This addressing scheme enables a client node, and validator nodes, to always generate the correct address for a given certificate, thus being able to access blockchain's state at that address. Following these rules is the only way of accessing the correct information for any given certificate.
@@ -71,7 +71,7 @@ This addressing scheme enables a client node, and validator nodes, to always gen
 \subsection{Transactions and Batches}
 \label{sec:design-transactions}
 
-Transactions allow nodes to modify the global state of the system. These are submitted to the validator nodes and processed. If valid, the state is modified. If invalid, the new blocks will be rejected. Transactions are created by the clients in each node. In \texttt{Blocked}, transactions are wrapped in batches, with each batch assumed to have one and only one transaction. Transactions in \texttt{Blocked} allow clients to issue, share and revoke educational certificates. The structure of the transaction when it is being submitted is different from what has been presented in the global state, being dependent on the operations, presented in Section \ref{sec:design-interaction}. Each transaction payload should include the operation it is trying to perform. Allowed operations are \texttt{issue}, \texttt{revoke}, \texttt{grant\_access} and \texttt{revoke\_access}. Each transaction payload should also include a \texttt{data} property, varying from operation to operation. When performing an \texttt{issue}, a client should send the \texttt{data} with the same structure as the global state structure. When performing \texttt{revoke}, a client should send an \texttt{id} and \texttt{certificate} inside \texttt{data}. When performing either \texttt{grant\_access} or \texttt{revoke\_access}, a client should send the permission object to append or the identifier of the subject whose permissions are to be removed.
+Transactions allow nodes to modify the global state of the system. These are submitted to the validator nodes and processed. If valid, the state is modified. If invalid, the new blocks will be rejected. Transactions are created by the clients in each node. In \texttt{Blocked}, transactions are wrapped in batches, with each batch assumed to have one and only one transaction. Transactions in \texttt{Blocked} allow clients to issue, share and revoke educational certificates. The structure of the transaction when it is being submitted is different from what has been presented in the global state, it is dependent on the operations, presented in Section \ref{sec:design-interaction}. Each transaction payload should include the operation it is trying to perform. Allowed operations are \texttt{issue}, \texttt{revoke}, \texttt{grant\_access} and \texttt{revoke\_access}. Each transaction payload should also include a \texttt{data} property, varying from operation to operation. When performing an \texttt{issue}, a client should send the \texttt{data} with the same structure as the global state structure. When performing \texttt{revoke}, a client should send an \texttt{id} and \texttt{certificate} inside \texttt{data}. When performing either \texttt{grant\_access} or \texttt{revoke\_access}, a client should send the permission object to append or the identifier of the subject whose permissions are to be removed.
 
 \subsection{Access Control}
 \label{sec:design-ac}
@@ -80,7 +80,7 @@ Controlling access to the information, in \texttt{Blocked} can be achieved in tw
 
 \subsubsection{Network Permissioning}
 
-On validator nodes, we can define two separate levels of controlling modification to state: transactor-level and validator-level. At the transactor-level it is possible to control what public keys are allowed to submit batches and transactions. This type of permissioning, allows control over what identities are allowed to modify the state of the network, which can be relevant, for example, if a malicious node tries to submit new malicious information to the system. The latter level of permissioning, at the validator-level, allows the configuration of public keys as the only keys that are able to participate in the validation network, therefore controlling the subjects that are able to perform consensus and validate blocks thus modifying state. These permissioning capabilities are one of the key features of using a permissioned blockchain, instead of a permissionless blockchain.
+On validator nodes, we can define two separate levels of controlling modification to state: transactor-level and validator-level. At the transactor-level, it is possible to control what public keys are allowed to submit batches and transactions. This type of permissioning, allows control over what identities are allowed to modify the state of the network, which can be relevant, for example, if a malicious node tries to submit new malicious information to the system. The latter level of permissioning, at the validator-level, allows the configuration of public keys as the only keys that are able to participate in the validation network, therefore controlling the subjects that are able to perform consensus and validate blocks thus modifying state. These permissioning capabilities are one of the key features of using a permissioned blockchain, instead of a permissionless blockchain.
 
 \subsubsection{Cryptography-based Permissions}
 
@@ -89,16 +89,16 @@ Apart from the network-based access control, the system supports some safeguards
 \section{Functional Architecture}
 \label{sec:design-interaction}
 
-In order to be able to use \texttt{Blocked}, a subject needs to comply with the minimum requirements for setting up a node (Section \ref{sec:design-setup}), and be part of the network. The remaining sections describe the actions that can be performed with \texttt{Blocked}.
+In order to be able to use \texttt{Blocked}, a subject needs to comply with the minimum requirements for setting up a node (Section \ref{sec:design-setup}) and be part of the network. The remaining sections describe the actions that can be performed with \texttt{Blocked}.
 
 \subsection{Setting Up}
 \label{sec:design-setup}
 
 For a user to use \texttt{Blocked}, it needs to have an identity. Identities are defined in two ways, both with asymmetric cryptography: a DSA-based identity and an RSA-based identity. \gls{dsa} \cite{cameron_f._kerry_digital_2013} is used for signing the batches and transactions while RSA \cite{rivest_method_1978} is used for encryption of the symmetric key. While RSA \cite{rivest_method_1978} can be used for both encryption and decryption, DSA-based signatures are supported by most blockchain platforms (such as Bitcoin and Ethereum) for signing batches and transactions, which makes it easier for system implementation.
 
-Users should generate their own keys before trying to join the network. They should generate an ECDSA \cite{johnson_elliptic_2001} key pair with secp256k1 \cite{secp256k1}, as the parameters of the elliptic curve, and store an hexadecimal representation of those keys, in order for them to be used with \texttt{Blocked}. The same should be done for the RSA keys \cite{rivest_method_1978}. The users should generate an RSA \cite{rivest_method_1978} key pair according to PKCS\#1 OAEP \cite{moriarty_pkcs_2016} and store those keys for future use in \texttt{Blocked}. After these steps are complete, users are able to identify themselves within the system thus are in a position to start using it.
+Users should generate their own keys before trying to join the network. They should generate an ECDSA \cite{johnson_elliptic_2001} key pair with secp256k1 \cite{secp256k1}, as the parameters of the elliptic curve, and store a hexadecimal representation of those keys, in order for them to be used with \texttt{Blocked}. The same should be done for the RSA keys \cite{rivest_method_1978}. The users should generate an RSA \cite{rivest_method_1978} key pair according to PKCS\#1 OAEP \cite{moriarty_pkcs_2016} and store those keys for future use in \texttt{Blocked}. After these steps are complete, users are able to identify themselves within the system thus are in a position to start using it.
 
-In order to run a network, one of the nodes, and only one, should generate a genesis block for the blockchain, as described in the beginning of this chapter. This means that, in broad terms, one of the nodes would have to be responsible for starting the actual network. From that moment on, after other nodes connect, that node will have the same relevance as the remaining nodes.
+In order to run a network, one of the nodes, and only one should generate a genesis block for the blockchain, as described at the beginning of this chapter. This means that, in broad terms, one of the nodes would have to be responsible for starting the actual network. From that moment on, after other nodes connect, that node will have the same relevance as the remaining nodes.
 
 \subsection{Issuing a Certificate}
 
@@ -119,7 +119,7 @@ Revoking a certificate can be accomplished by both the issuer or recipient of a 
 
 \begin{enumerate}
 	\item A transaction should be submitted to the network with the identifier of the certificate to revoke. The transaction should represent the \texttt{revoke} operation.
-	\item The network validates that the transaction has been submitted by either the issuer or receiver of the certificate and modifies the state, revoking the certificate. Otherwise it will reject the transaction.
+	\item The network validates that the transaction has been submitted by either the issuer or receiver of the certificate and modifies the state, revoking the certificate. Otherwise, it will reject the transaction.
 \end{enumerate}
 
 \subsection{Granting/Revoking Access}
@@ -131,14 +131,14 @@ One of the main purposes of \texttt{Blocked} is to enable the control of access 
 \begin{enumerate}
 	\item The recipient should request, and the subject, to be granted access, should provide, both public keys for the DSA-based and RSA-based identity.
 	\item The recipient will submit a new transaction to the network, containing the symmetric key encrypted with the RSA public key shared by the subject. The transaction should represent the \texttt{grant\_access} operation.
-	\item The network validates that the transaction is valid, including validating the transaction signer as being the recipient, and modifies the state, appending the permission to existing permissions. Otherwise it will reject the transaction.
+	\item The network validates that the transaction is valid, including validating the transaction signer as being the recipient, and modifies the state, appending the permission to existing permissions. Otherwise, it will reject the transaction.
 \end{enumerate}
 
 \subsubsection{Revoking}
 
 \begin{enumerate}
 	\item The recipient will submit a new transaction to the network, with the DSA-based identity shared by the subject, when the access was granted. The transaction should represent the \texttt{revoke\_access} operation.
-	\item The network validates that the transaction is valid, including validating the transaction signer as being the recipient, and modifies the state, removing the permission from existing permissions. Otherwise it will reject the transaction.
+	\item The network validates that the transaction is valid, including validating the transaction signer as being the recipient, and modifies the state, removing the permission from existing permissions. Otherwise, it will reject the transaction.
 \end{enumerate}
 
 \subsection{Viewing a Certificate}

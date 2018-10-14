@@ -19,6 +19,17 @@
 *.lof
 *.lot
 *.toc
+*.html
+*.css
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.tmp
+*.tmp
+*.xref
+*.png
+*.pyg
 
 # minted package
 _minted-main/
