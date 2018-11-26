@@ -43,7 +43,7 @@ file = {Yu et al_2010_Achieving Secure, Scalable, and Fine-grained Data Access C
 }
 
 @inproceedings{maesa_blockchain_2017,
-	title = {Blockchain based access control},
+	title = {Blockchain Based Access Control},
 	booktitle = {{IFIP} {International} {Conference} on {Distributed} {Applications} and {Interoperable} {Systems}},
 	publisher = {Springer},
 	author = {Maesa, Damiano Di Francesco and Mori, Paolo and Ricci, Laura},
@@ -1152,58 +1152,34 @@ file = {Thomas_1997_Team-based Access Control (TMAC).pdf:/home/hmartins/Dropbox/
 	file = {Park_Sandhu_2000_Binding identities and attributes using digitally signed certificates.pdf:/home/hmartins/Dropbox/Papers/Park_Sandhu_2000_Binding identities and attributes using digitally signed certificates.pdf:application/pdf}
 }
 
-@inproceedings{miklau_controlling_2003,
-	title = {Controlling access to published data using cryptography},
-	url = {http://dl.acm.org/citation.cfm?id=1315528},
-	urldate = {2017-09-30},
-	booktitle = {Proceedings of the 29th international conference on {Very} large data bases-{Volume} 29},
-	publisher = {VLDB Endowment},
+@incollection{freytag_controlling_2003,
+	address = {San Francisco},
+	title = {Controlling {Access} to {Published} {Data} {Using} {Cryptography}},
+	isbn = {978-0-12-722442-8},
+	url = {http://www.sciencedirect.com/science/article/pii/B9780127224428500847},
+	abstract = {Publisher Summary This chapter proposes a framework for enforcing access control policies on published XML documents using cryptography. In this framework, the owner publishes a single data instance, which is partially encrypted, and which enforces all access control policies. The contributions include a declarative language for access policies and the resolution of these policies into a logical “protection model,” which protects an XML tree with keys. The data owner enforces an access control policy by granting keys to users. The model is quite powerful, allowing the data owner to describe complex access scenarios, and is also quite elegant, allowing logical optimizations to be described as rewriting rules. The chapter also describes cryptographic techniques for enforcing the protection model on published data, and provides a performance analysis using real datasets.},
+	booktitle = {Proceedings 2003 {VLDB} {Conference}},
+	publisher = {Morgan Kaufmann},
 	author = {Miklau, Gerome and Suciu, Dan},
+	editor = {Freytag, Johann-Christoph and Lockemann, Peter and Abiteboul, Serge and Carey, Michael and Selinger, Patricia and Heuer, Andreas},
 	year = {2003},
-	note = {00360},
-	keywords = {Read, Master's},
-	pages = {898--909},
-	annote = {Extracted Annotations (10/2/2017, 10:44:29 PM)
-"Recent research into integration systems and peer-to-peer databases has created new ways for diverse groups to share and process data [23, 34, 21, 28]." (Miklau and Suciu 2003:898)
-"The trust, confidentiality and security issues involved in sharing data are immense however [18, 31], and there are few tools for managing access to the data that peers are encouraged or required to share (especially when distributed data processing is needed)." (Miklau and Suciu 2003:898)
-"Database security has been studied extensively in the past [13, 1, 9], however none of that work applies to data publishing." (Miklau and Suciu 2003:898)
-"More recent work has also addressed the client's security [10]:" (Miklau and Suciu 2003:899)
-"Current Approaches to Access Control There are two traditional approaches to controlled access to data. The first keeps the data on a secure server that authenticates users and enforces the access policies, without publishing the data. The other is to publish multiple views of the data, one for each user or class of users." (Miklau and Suciu 2003:901)
-"[10] B. Chor, O. Goldreich, E. Kushilevitz, and M. Sudan. Private information retrieval. In Foundations of Computer Science (FOCS), 1995." (Miklau and Suciu 2003:909)
-"[11] J. Daemen and V. Rijmen. The block cipher rijndael. In CARDIS, pages 277-284, 1998." (Miklau and Suciu 2003:909)
-"[21] S. Gribble, A. Halevy, Z. Ives, M. Rodrig, and D. Suciu. What can peer-to-peer do for databases, and vice versa? WebDB Workshop on Databases and the Web, June 2001." (Miklau and Suciu 2003:909)},
-	file = {Miklau_Suciu_2003_Controlling access to published data using cryptography.pdf:/home/hmartins/Dropbox/Papers/Miklau_Suciu_2003_Controlling access to published data using cryptography.pdf:application/pdf}
+	doi = {10.1016/B978-012722442-8/50084-7},
+	note = {00000 },
+	pages = {898 -- 909}
 }
 
 @inproceedings{di_vimercati_over-encryption:_2007,
-	title = {Over-encryption: {Management} of access control evolution on outsourced data},
-	shorttitle = {Over-encryption},
-	url = {http://dl.acm.org/citation.cfm?id=1325869},
-	urldate = {2017-08-17},
-	booktitle = {Proceedings of the 33rd international conference on {Very} large data bases},
-	publisher = {VLDB endowment},
-	author = {Di Vimercati, Sabrina De Capitani and Foresti, Sara and Jajodia, Sushil and Paraboschi, Stefano and Samarati, Pierangela},
+	address = {Vienna, Austria},
+	series = {{VLDB} '07},
+	title = {Over-encryption: {Management} of {Access} {Control} {Evolution} on {Outsourced} {Data}},
+	isbn = {978-1-59593-649-3},
+	url = {http://dl.acm.org/citation.cfm?id=1325851.1325869},
+	booktitle = {Proceedings of the 33rd {International} {Conference} on {Very} {Large} {Data} {Bases}},
+	publisher = {VLDB Endowment},
+	author = {di Vimercati, Sabrina De Capitani and Foresti, Sara and Jajodia, Sushil and Paraboschi, Stefano and Samarati, Pierangela},
 	year = {2007},
-	note = {00468},
-	keywords = {Read, Master's},
+	note = {00476},
 	pages = {123--134},
-	annote = {Extracted Annotations (10/8/2017, 2:35:32 PM)
-"the enforcement of selective authorization policies and the support of policy updates in dynamic scenarios." (Di Vimercati et al 2007:123)
-"t, it is legitimate for the data owner to demand the data not to be disclosed to the service provider itself," (Di Vimercati et al 2007:123)
-"The model allows the definition of an encryption policy equivalent to the authorization policy to be enforced on the resources." (Di Vimercati et al 2007:124)
-"we propose the use of a two-layer approach to enforce selective encryption without requesting the owner to re-encrypt the resources every time there is a change in the authorization policy." (Di Vimercati et al 2007:124)
-"). Since keys need to remain secret, while tokens are public, the use of tokens greatly simplifies key management." (Di Vimercati et al 2007:124)
-"Authorizations are of the form huser,resource i.1" (Di Vimercati et al 2007:124)
-"To avoid users having to store and manage a huge number of (secret) keys, we exploit the key derivation method via tokens. Exploiting tokens, the release to each user of a set of keys K = \{k1 , . . . , kn\} can be equivalently obtained by the release to each user of a single key ki ∈ K and the publication of a set of tokens allowing to derive (directly or indirectly) all keys kj ∈ K, j 6= i." (Di Vimercati et al 2007:125)
-"The owner encrypts the resources and sends them to the server in encrypted form; the server can impose another layer of encryption (following directions by the data owner)." (Di Vimercati et al 2007:126)
-"derivation keys and access keys . Access keys are the ones actually used to encrypt resources, while derivation keys are used to provide the derivation capability via tokens," (Di Vimercati et al 2007:126)
-"Policy update operations can be of three kinds: 1) inserting/deleting a user; 2) inserting/deleting a resource; and 3) granting/revoking an authorization." (Di Vimercati et al 2007:127)
-"There is an emerging trend towards scenarios where resource management is outsourced to an external service providing storage capabilities and high-bandwidth distribution channels." (Di Vimercati et al 2007:134)
-"[3] S. Akl and P. Taylor. Cryptographic solution to a problem of access control in a hierarchy. ACM TOCS, 1(3):239-248, August 1983. [4] M. Atallah, K. Frikken, and M. Blanton. Dynamic and efficient key management for access hierarchies. In Proc. of the 12th ACM CCS05, Alexandria, VA, USA, Nov. 2005." (Di Vimercati et al 2007:134)
-"[8] J. Crampton, K. Martin, and P. Wild. On key assignment for hierarchical access control. In Proc. of the 19th IEEE CSFW'06, Venice, Italy, July 2006." (Di Vimercati et al 2007:134)
-"[10] H. Hacig ̈um ̈us, B. Iyer, and S. Mehrotra. Providing database as a service. In Proc. of 18th ICDE, San Jose, CA, USA, Feb. 2002. [11] H. Hacig ̈um ̈us, B. Iyer, S. Mehrotra, and C. Li. Executing SQL over encrypted data in the database-service-provider model. In Proc. of the ACM SIGMOD 2002, Madison, Wisconsin, USA, June 2002." (Di Vimercati et al 2007:134)
-"[13] G. Miklau and D. Suciu. Controlling access to published data using cryptography. In Proc. of the 29th VLDB conference, Berlin, Germany, Sept. 2003." (Di Vimercati et al 2007:134)
-"[15] R. Sandhu. On some cryptographic solutions for access control in a tree hierarchy. In Proc. of the FJCC'87, Dallas, TX, USA, Oct. 1987." (Di Vimercati et al 2007:134)},
 	file = {Di Vimercati et al_2007_Over-encryption.pdf:/home/hmartins/Dropbox/Papers/Di Vimercati et al_2007_Over-encryption.pdf:application/pdf}
 }
 
